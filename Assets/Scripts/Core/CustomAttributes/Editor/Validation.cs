@@ -1,0 +1,116 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Core.CustomAttributes.Validation.Base;
+using UnityEngine;
+using Object = UnityEngine.Object;
+
+namespace Core.CustomAttributes.Editor
+{
+    [Serializable]
+    public class ErrorObjectPair : Named<string, Object>
+    {
+
+        public ErrorObjectPair(string error, Object obj)
+        {
+            _key = error.Replace("\n", " ");
+            _value = obj;
+        }
+    }
+
+    public static class Validation
+    {
+        public static IEnumerable<FieldInfo> GetAllFields(Type t)
+        {
+            const BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic |
+                                       BindingFlags.Static | BindingFlags.Instance |
+                                       BindingFlags.DeclaredOnly;
+            return t == null ? Enumerable.Empty<FieldInfo>() : t.GetFields(flags).Concat(GetAllFields(t.BaseType));
+        }
+
+        public static IEnumerable<Attribute> GetAllAttributes(Type t)
+        {
+            return t == null
+                       ? Enumerable.Empty<Attribute>()
+                       : t.GetCustomAttributes(typeof(ClassValidationAttribute)).Concat(GetAllAttributes(t.BaseType));
+        }
+
+        public static IEnumerable<ErrorObjectPair> ErrorObjectPairs(GameObject o)
+        {
+            var behaviours = o.GetComponentsInChildren<MonoBehaviour>(true);
+            var listErrors = new List<ErrorObjectPair>();
+
+            foreach (var b in behaviours)
+            {
+                var fields = GetAllFields(b.GetType());
+
+                foreach (var f in fields)
+                {
+                    var atts = f.GetCustomAttributes(typeof(FieldValidationAttribute), true);
+
+                    foreach (var a in atts)
+                    {
+                        if (!(a is FieldValidationAttribute vatt) ||
+                            vatt.Validate(f, b))
+                            continue;
+                        listErrors.Add(new ErrorObjectPair (vatt.ErrorMessage, b));
+                        if (vatt.ShowError) ShowError(vatt.ErrorMessage, b);
+                    }
+                }
+                var attributes = GetAllAttributes(b.GetType());
+
+                foreach (var a in attributes)
+                {
+                    if (!(a is ClassValidationAttribute vatt) ||
+                        vatt.Validate(b))
+                        continue;
+                    listErrors.Add(new ErrorObjectPair (vatt.ErrorMessage, b));
+                    if (vatt.ShowError) ShowError(vatt.ErrorMessage, b);
+                }
+            }
+            return listErrors;
+        }
+
+        public static IEnumerable<ErrorObjectPair> ErrorObjectPairs()
+        {
+            var behaviours = Object.FindObjectsOfType<MonoBehaviour>();
+            var listErrors = new List<ErrorObjectPair>();
+
+            foreach (var b in behaviours)
+            {
+                var fields = GetAllFields(b.GetType());
+
+                foreach (var f in fields)
+                {
+                    var atts = f.GetCustomAttributes(typeof(FieldValidationAttribute), true);
+
+                    foreach (var a in atts)
+                    {
+                        if (!(a is FieldValidationAttribute vatt) ||
+                            vatt.Validate(f, b))
+                            continue;
+                        listErrors.Add(new ErrorObjectPair (vatt.ErrorMessage, b));
+                        if (vatt.ShowError) ShowError(vatt.ErrorMessage, b);
+                    }
+                }
+                var attributes = GetAllAttributes(b.GetType());
+
+                foreach (var a in attributes)
+                {
+                    if (!(a is ClassValidationAttribute vatt) ||
+                        vatt.Validate(b))
+                        continue;
+                    listErrors.Add(new ErrorObjectPair (vatt.ErrorMessage, b));
+                    if (vatt.ShowError) ShowError(vatt.ErrorMessage, b);
+                }
+            }
+            return listErrors;
+        }
+
+        public static void ShowError(string msg, Object o)
+        {
+            Debug.LogError(msg.Replace("\n", " "), o);
+        }
+    }
+}
