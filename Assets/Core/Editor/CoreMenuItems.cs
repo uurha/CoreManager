@@ -16,12 +16,13 @@
 using System.IO;
 using Core.Cross.SceneData;
 using Core.Managers;
+using Core.UISystem;
 using UnityEditor;
 using UnityEngine;
 
 namespace Core.Editor
 {
-    public class CoreMenuItems
+    public static class CoreMenuItems
     {
         [MenuItem("Core/Create Core Manager")]
         private static void CreateCoreManager()
@@ -54,7 +55,7 @@ namespace Core.Editor
                     foreach (var o in objects) ShowError($"Should be only one {typeof(T).Name} in scene", o);
                     return;
                 }
-                var prefab = (GameObject) PrefabUtility.InstantiatePrefab(componentOrGameObject);
+                if (!(PrefabUtility.InstantiatePrefab(componentOrGameObject) is GameObject prefab)) return;
                 prefab.name = componentOrGameObject.name;
                 prefab.transform.SetAsLastSibling();
             }

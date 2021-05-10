@@ -54,7 +54,7 @@ namespace Core.ReferenceDistribution
         }
 
         /// <summary>
-        /// Finding reference if passed parameter not null.
+        /// Finding reference if passed parameter is null.
         /// Use this if you need reference not in Start() and/or reference should be received in some event
         /// </summary>
         /// <param name="reference"></param>
