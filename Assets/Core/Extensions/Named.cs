@@ -16,7 +16,7 @@
 using System;
 using UnityEngine;
 
-namespace Core
+namespace Core.Extensions
 {
     [Serializable]
     public class Named<TKey, TValue>

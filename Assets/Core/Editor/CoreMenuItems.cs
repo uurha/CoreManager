@@ -55,7 +55,7 @@ namespace Core.Editor
                     foreach (var o in objects) ShowError($"Should be only one {typeof(T).Name} in scene", o);
                     return;
                 }
-                if (!(PrefabUtility.InstantiatePrefab(componentOrGameObject) is GameObject prefab)) return;
+                if (!(PrefabUtility.InstantiatePrefab(componentOrGameObject) is T prefab)) return;
                 prefab.name = componentOrGameObject.name;
                 prefab.transform.SetAsLastSibling();
             }

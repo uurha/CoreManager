@@ -28,11 +28,8 @@ namespace Core.Managers
     /// Main Core manager.
     /// </summary>
     [OnlyOneInScene]
-    public class CoreManager : Singleton<CoreManager>
+    public class CoreManager : MonoBehaviour
     {
-        private const string MainCanvasTag = "Canvas/UI";
-        private const string PlayerTag = "Player/Player";
-
         [ReferencesHeader]
         [SerializeField] [NotNull]
         private ReferenceDistributor referenceDistributor;
@@ -41,18 +38,10 @@ namespace Core.Managers
         [SerializeField] [PrefabRequired] [HasComponent(typeof(IManager))]
         private List<GameObject> managers;
 
-        private Transform _mainCanvas;
-        private Transform _playerTransform;
-
-        public Transform MainCanvas => _mainCanvas;
-
-        public Transform PlayerTransform => _playerTransform;
-
         private void Awake()
         {
             //Instantiate all managers.
             InitializeManagers();
-            InitializeLayers();
             referenceDistributor.Initialize();
         }
 
@@ -75,15 +64,6 @@ namespace Core.Managers
                 Debug.Log($"Create manager: {o.name}");
                 #endif
             }
-        }
-
-        /// <summary>
-        /// try to find the layer by tag.
-        /// </summary>
-        private void InitializeLayers()
-        {
-            _mainCanvas = GameObject.FindWithTag(MainCanvasTag)?.transform;
-            _playerTransform = GameObject.FindWithTag(PlayerTag)?.transform;
         }
     }
 }
