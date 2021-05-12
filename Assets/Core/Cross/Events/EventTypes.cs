@@ -24,7 +24,7 @@ namespace Core.Cross.Events
     ///
     /// </code>
     /// </summary>
-    public sealed class EventTypes
+    public class EventTypes
     {
     }
 }

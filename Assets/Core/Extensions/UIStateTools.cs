@@ -13,7 +13,6 @@
 
 #endregion
 
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -34,14 +33,12 @@ namespace Core.Extensions
             Cursor.visible = state;
         }
 
-        public static IEnumerator ChangeGroupState(CanvasGroup canvas, bool isVisible, float delay,
-                                                   Action<CanvasGroup> action = null)
+        public static IEnumerator ChangeGroupState(CanvasGroup canvas, bool isVisible, float delay)
         {
             canvas.alpha = isVisible ? 1 : 0;
             canvas.blocksRaycasts = isVisible;
             yield return new WaitForSeconds(delay);
             canvas.interactable = isVisible;
-            action?.Invoke(canvas);
         }
     }
 }

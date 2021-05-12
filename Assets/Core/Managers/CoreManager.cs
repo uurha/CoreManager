@@ -19,7 +19,6 @@ using Core.CustomAttributes.Headers;
 using Core.CustomAttributes.Validation;
 using Core.Managers.Interface;
 using Core.ReferenceDistribution;
-using Core.Singletons;
 using UnityEngine;
 
 namespace Core.Managers
@@ -58,11 +57,11 @@ namespace Core.Managers
         {
             foreach (var o in managers.Select(m => Instantiate(m, transform)))
             {
-                if (!o.TryGetComponent(out IManager manager)) continue;
-                manager.InitializeElements();
                 #if DEBUG
                 Debug.Log($"Create manager: {o.name}");
                 #endif
+                if (!o.TryGetComponent(out IManager manager)) continue;
+                manager.InitializeElements();
             }
         }
     }

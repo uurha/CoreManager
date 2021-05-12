@@ -20,15 +20,21 @@ namespace Core.UISystem.UI
 
         public string PageName => pageName;
 
-        public CanvasGroup Initialize()
+        public CanvasGroup Group => _canvasGroup;
+
+        private CanvasGroup _canvasGroup;
+
+        public UIPage Initialize()
         {
+            _canvasGroup = GetComponent<CanvasGroup>();
+
             foreach (var o in elements.Select(m => Instantiate(m, transform)))
             {
                 #if DEBUG
                 Debug.Log($"Create element: {o.name}");
                 #endif
             }
-            return GetComponent<CanvasGroup>();
+            return this;
         }
     }
 }
