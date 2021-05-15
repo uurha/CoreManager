@@ -1,0 +1,95 @@
+\doxysection{Core.\+Cross.\+Events.\+Interface.\+ICross\+Event\+Handler Interface Reference}
+\label{interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler}\index{Core.Cross.Events.Interface.ICrossEventHandler@{Core.Cross.Events.Interface.ICrossEventHandler}}
+
+
+\doxyref{Interface}{p.}{namespace_core_1_1_cross_1_1_events_1_1_interface} for event handler. 
+
+public void Subscribe(params Delegate[$\,$] subscriber) \{ foreach (var action in subscriber.\+Of\+Type$<$Cross\+Event\+Types.\+Delegate\+Class/$>$()) \{ My\+Event += action; \} \}  
+
+
+Inheritance diagram for Core.\+Cross.\+Events.\+Interface.\+ICross\+Event\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Invoke\+Events} ()
+\begin{DoxyCompactList}\small\item\em Invoking events what need to be invoked on scene initializing. \end{DoxyCompactList}\item 
+void \textbf{ Subscribe} (IEnumerable$<$ Delegate $>$ subscribers)
+\begin{DoxyCompactList}\small\item\em Subscribing delegates to event \end{DoxyCompactList}\item 
+void \textbf{ Unsubscribe} (IEnumerable$<$ Delegate $>$ unsubscribers)
+\begin{DoxyCompactList}\small\item\em Unsubscribing delegates to event \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxyref{Interface}{p.}{namespace_core_1_1_cross_1_1_events_1_1_interface} for event handler. 
+
+public void Subscribe(params Delegate[$\,$] subscriber) \{ foreach (var action in subscriber.\+Of\+Type$<$Cross\+Event\+Types.\+Delegate\+Class/$>$()) \{ My\+Event += action; \} \} 
+
+
+
+Definition at line 33 of file ICross\+Event\+Handler.\+cs.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler_a2f2f5077d066fd5fe47fa1ff276a81cf}} 
+\index{Core.Cross.Events.Interface.ICrossEventHandler@{Core.Cross.Events.Interface.ICrossEventHandler}!InvokeEvents@{InvokeEvents}}
+\index{InvokeEvents@{InvokeEvents}!Core.Cross.Events.Interface.ICrossEventHandler@{Core.Cross.Events.Interface.ICrossEventHandler}}
+\doxysubsubsection{InvokeEvents()}
+{\footnotesize\ttfamily void Core.\+Cross.\+Events.\+Interface.\+ICross\+Event\+Handler.\+Invoke\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Invoking events what need to be invoked on scene initializing. 
+
+
+
+Implemented in \textbf{ Core.\+Samples.\+Scripts.\+Demo.\+Cross\+Scene\+Data\+Sender\+Demo} \doxyref{}{p.}{class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_sender_demo_a76b90c92d2e439b631c59a305c8b4ef9}.
+
+\mbox{\label{interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler_a6aa52dffc0bc82f8f69b23ce930ad375}} 
+\index{Core.Cross.Events.Interface.ICrossEventHandler@{Core.Cross.Events.Interface.ICrossEventHandler}!Subscribe@{Subscribe}}
+\index{Subscribe@{Subscribe}!Core.Cross.Events.Interface.ICrossEventHandler@{Core.Cross.Events.Interface.ICrossEventHandler}}
+\doxysubsubsection{Subscribe()}
+{\footnotesize\ttfamily void Core.\+Cross.\+Events.\+Interface.\+ICross\+Event\+Handler.\+Subscribe (\begin{DoxyParamCaption}\item[{IEnumerable$<$ Delegate $>$}]{subscribers }\end{DoxyParamCaption})}
+
+
+
+Subscribing delegates to event 
+
+
+\begin{DoxyParams}{Parameters}
+{\em subscribers} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \textbf{ Core.\+Samples.\+Scripts.\+Demo.\+Cross\+Scene\+Data\+Sender\+Demo} \doxyref{}{p.}{class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_sender_demo_a469f5f2616fd11f4ea36711f91f4448f}.
+
+\mbox{\label{interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler_ae64ed454d73babe4547d4de4ac1844b9}} 
+\index{Core.Cross.Events.Interface.ICrossEventHandler@{Core.Cross.Events.Interface.ICrossEventHandler}!Unsubscribe@{Unsubscribe}}
+\index{Unsubscribe@{Unsubscribe}!Core.Cross.Events.Interface.ICrossEventHandler@{Core.Cross.Events.Interface.ICrossEventHandler}}
+\doxysubsubsection{Unsubscribe()}
+{\footnotesize\ttfamily void Core.\+Cross.\+Events.\+Interface.\+ICross\+Event\+Handler.\+Unsubscribe (\begin{DoxyParamCaption}\item[{IEnumerable$<$ Delegate $>$}]{unsubscribers }\end{DoxyParamCaption})}
+
+
+
+Unsubscribing delegates to event 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unsubscribers} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \textbf{ Core.\+Samples.\+Scripts.\+Demo.\+Cross\+Scene\+Data\+Sender\+Demo} \doxyref{}{p.}{class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_sender_demo_a8b30b696dd89588ff80ea4a31bf5ed5f}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Cross/\+Events/\+Interface/ICross\+Event\+Handler.\+cs\end{DoxyCompactItemize}

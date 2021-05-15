@@ -1,0 +1,230 @@
+\doxysection{Core.\+File\+System.\+File\+System Class Reference}
+\label{class_core_1_1_file_system_1_1_file_system}\index{Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}}
+
+
+Class for saving Json file to disk.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ File\+System} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\textbf{ File\+System} (string path)
+\begin{DoxyCompactList}\small\item\em Overloaded constructor which changes default path. \end{DoxyCompactList}\item 
+\textbf{ File\+System} (string path, string extension)
+\begin{DoxyCompactList}\small\item\em Overloaded constructor which changes default path and file extension. \end{DoxyCompactList}\item 
+void \textbf{ Save$<$ T $>$} (T data, Action$<$ Exception $>$ on\+Error, Object context=null)
+\begin{DoxyCompactList}\small\item\em Saves class to file with name of class. \end{DoxyCompactList}\item 
+void \textbf{ Save$<$ T $>$} (T data, string file\+Name, Action$<$ Exception $>$ on\+Error, Object context=null)
+\begin{DoxyCompactList}\small\item\em Saves class to file. \end{DoxyCompactList}\item 
+void \textbf{ Load$<$ T $>$} (Action$<$ T $>$ on\+Loaded, Action$<$ Exception $>$ on\+Error, Object context=null)
+\begin{DoxyCompactList}\small\item\em Loads file. \end{DoxyCompactList}\item 
+void \textbf{ Load$<$ T $>$} (string file\+Name, Action$<$ T $>$ on\+Loaded, Action$<$ Exception $>$ on\+Error, Object context=null)
+\begin{DoxyCompactList}\small\item\em Loads file with different file name from passed class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for saving Json file to disk. 
+
+
+
+Definition at line 27 of file Save\+System.\+cs.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_core_1_1_file_system_1_1_file_system_a1ea33518de71e35e8389042700ce731c}} 
+\index{Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}!FileSystem@{FileSystem}}
+\index{FileSystem@{FileSystem}!Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}}
+\doxysubsubsection{FileSystem()\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Core.\+File\+System.\+File\+System.\+File\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+
+
+Definition at line 36 of file Save\+System.\+cs.
+
+\mbox{\label{class_core_1_1_file_system_1_1_file_system_a832df33a90d1bb2abe13fda409877713}} 
+\index{Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}!FileSystem@{FileSystem}}
+\index{FileSystem@{FileSystem}!Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}}
+\doxysubsubsection{FileSystem()\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Core.\+File\+System.\+File\+System.\+File\+System (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded constructor which changes default path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 45 of file Save\+System.\+cs.
+
+\mbox{\label{class_core_1_1_file_system_1_1_file_system_ace0a5fe424c83390512540d780a9ec76}} 
+\index{Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}!FileSystem@{FileSystem}}
+\index{FileSystem@{FileSystem}!Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}}
+\doxysubsubsection{FileSystem()\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Core.\+File\+System.\+File\+System.\+File\+System (\begin{DoxyParamCaption}\item[{string}]{path,  }\item[{string}]{extension }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded constructor which changes default path and file extension. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+{\em extension} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 55 of file Save\+System.\+cs.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_core_1_1_file_system_1_1_file_system_af1c53611e0082adbf5be3afe4e01754c}} 
+\index{Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}!Load$<$ T $>$@{Load$<$ T $>$}}
+\index{Load$<$ T $>$@{Load$<$ T $>$}!Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}}
+\doxysubsubsection{Load$<$ T $>$()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Core.\+File\+System.\+File\+System.\+Load$<$ T $>$ (\begin{DoxyParamCaption}\item[{Action$<$ T $>$}]{on\+Loaded,  }\item[{Action$<$ Exception $>$}]{on\+Error,  }\item[{Object}]{context = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Loads file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em on\+Loaded} & \\
+\hline
+{\em on\+Error} & \\
+\hline
+{\em context} & Required if errors should be shown on Object\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Serializable.\+Serializable}]\end{description}
+\end{Desc}
+
+
+Definition at line 115 of file Save\+System.\+cs.
+
+\mbox{\label{class_core_1_1_file_system_1_1_file_system_a2d18454a242caca7249b963a48836dab}} 
+\index{Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}!Load$<$ T $>$@{Load$<$ T $>$}}
+\index{Load$<$ T $>$@{Load$<$ T $>$}!Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}}
+\doxysubsubsection{Load$<$ T $>$()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Core.\+File\+System.\+File\+System.\+Load$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{file\+Name,  }\item[{Action$<$ T $>$}]{on\+Loaded,  }\item[{Action$<$ Exception $>$}]{on\+Error,  }\item[{Object}]{context = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Loads file with different file name from passed class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & \\
+\hline
+{\em on\+Loaded} & \\
+\hline
+{\em on\+Error} & \\
+\hline
+{\em context} & Required if errors should be shown on Object\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Serializable.\+Serializable}]\end{description}
+\end{Desc}
+
+
+Definition at line 128 of file Save\+System.\+cs.
+
+\mbox{\label{class_core_1_1_file_system_1_1_file_system_a1231b31ee93aee9d354f0e17bbdf11e1}} 
+\index{Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}!Save$<$ T $>$@{Save$<$ T $>$}}
+\index{Save$<$ T $>$@{Save$<$ T $>$}!Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}}
+\doxysubsubsection{Save$<$ T $>$()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Core.\+File\+System.\+File\+System.\+Save$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{data,  }\item[{Action$<$ Exception $>$}]{on\+Error,  }\item[{Object}]{context = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Saves class to file with name of class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+{\em on\+Error} & \\
+\hline
+{\em context} & Required if errors should be shown on Object\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Serializable.\+Serializable}]\end{description}
+\end{Desc}
+
+
+Definition at line 67 of file Save\+System.\+cs.
+
+\mbox{\label{class_core_1_1_file_system_1_1_file_system_a8d4bc273d1cef1ef922878e27b3c777b}} 
+\index{Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}!Save$<$ T $>$@{Save$<$ T $>$}}
+\index{Save$<$ T $>$@{Save$<$ T $>$}!Core.FileSystem.FileSystem@{Core.FileSystem.FileSystem}}
+\doxysubsubsection{Save$<$ T $>$()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Core.\+File\+System.\+File\+System.\+Save$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{data,  }\item[{string}]{file\+Name,  }\item[{Action$<$ Exception $>$}]{on\+Error,  }\item[{Object}]{context = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Saves class to file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+{\em file\+Name} & \\
+\hline
+{\em on\+Error} & \\
+\hline
+{\em context} & Required if errors should be shown on Object\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Serializable.\+Serializable}]\end{description}
+\end{Desc}
+
+
+Definition at line 80 of file Save\+System.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+File\+System/Save\+System.\+cs\end{DoxyCompactItemize}
