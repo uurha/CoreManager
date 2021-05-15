@@ -23,6 +23,9 @@ using UnityEngine.Events;
 
 namespace Core.UISystem
 {
+    /// <summary>
+    /// Base implementation of UIManager.
+    /// </summary>
     [RequireComponent(typeof(SubPagesController))]
     public class UIManager : BaseManager
     {

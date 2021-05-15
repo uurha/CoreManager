@@ -15,13 +15,27 @@
 
 namespace Core.Interface
 {
+    /// <summary>
+    /// Interface for deep clone
+    /// </summary>
     public interface IDeepClone<out T> : IDeepClone
     {
+        /// <summary>
+        /// Clones instance of object
+        /// </summary>
+        /// <returns></returns>
         public new T DeepClone();
     }
 
+    /// <summary>
+    /// Interface for deep clone
+    /// </summary>
     public interface IDeepClone
     {
+        /// <summary>
+        /// Clones instance of object
+        /// </summary>
+        /// <returns></returns>
         public object DeepClone();
     }
 }

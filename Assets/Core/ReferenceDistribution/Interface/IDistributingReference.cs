@@ -15,6 +15,10 @@
 
 namespace Core.ReferenceDistribution.Interface
 {
+    /// <summary>
+    /// Flag interface for MonoBehaviour classes what need to referenced from another class.
+    /// Strongly recommended to use CrossEvents instead reference distribution.
+    /// </summary>
     public interface IDistributingReference
     {
     }

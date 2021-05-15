@@ -20,14 +20,23 @@ namespace Core.Extensions
 {
     public static class UnityEditorExtension
     {
+        /// <summary>
+        /// Override for default Inspector HelpBox with RTF text
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="type"></param>
         public static void HelpBox(string message, MessageType type)
         {
             var style = new GUIStyle(EditorStyles.helpBox) {richText = true, fontSize = 11};
-            var icon = IconName(type);
-            EditorGUILayout.Space();
-            EditorGUILayout.LabelField(GUIContent.none, EditorGUIUtility.TrTextContentWithIcon(message, icon), style);
+            HelpBox(message, type, style);
         }
 
+        /// <summary>
+        /// Override for default Inspector HelpBox with style
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="type"></param>
+        /// <param name="style"></param>
         public static void HelpBox(string message, MessageType type, GUIStyle style)
         {
             var icon = IconName(type);
@@ -35,6 +44,11 @@ namespace Core.Extensions
             EditorGUILayout.LabelField(GUIContent.none, EditorGUIUtility.TrTextContentWithIcon(message, icon), style);
         }
 
+        /// <summary>
+        /// Getting Icon Name from Unity Inspector
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static string IconName(MessageType type)
         {
             var icon = type switch

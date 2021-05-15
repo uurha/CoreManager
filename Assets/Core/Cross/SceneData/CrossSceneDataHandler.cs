@@ -21,6 +21,9 @@ using Core.Singletons;
 
 namespace Core.Cross.SceneData
 {
+    /// <summary>
+    /// Singleton for data passing between scenes
+    /// </summary>
     [OnlyOneInScene]
     public class CrossSceneDataHandler : Singleton<CrossSceneDataHandler>
     {
@@ -38,6 +41,11 @@ namespace Core.Cross.SceneData
             _instance = this;
         }
 
+        /// <summary>
+        /// Adding data to dictionary by passed Type
+        /// </summary>
+        /// <param name="data"></param>
+        /// <typeparam name="T"></typeparam>
         public void AddData<T>(T data) where T : ISceneData, new()
         {
             var isContains = _data.ContainsKey(typeof(T));
@@ -48,6 +56,11 @@ namespace Core.Cross.SceneData
                 _data.Add(typeof(T), data);
         }
 
+        /// <summary>
+        /// Getting data from dictionary by passed Type
+        /// </summary>
+        /// <param name="data"></param>
+        /// <typeparam name="T"></typeparam>
         public bool GetData<T>(out T data) where T : ISceneData, new()
         {
             var isGet = _data.TryGetValue(typeof(T), out var buffer);
@@ -55,6 +68,10 @@ namespace Core.Cross.SceneData
             return isGet;
         }
 
+        /// <summary>
+        /// Removing data from dictionary by passed Type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         public void RemoveData<T>() where T : ISceneData, new()
         {
             if (_data.ContainsKey(typeof(T))) _data.Remove(typeof(T));

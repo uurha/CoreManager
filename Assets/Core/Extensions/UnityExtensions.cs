@@ -23,21 +23,41 @@ using Object = UnityEngine.Object;
 namespace Core.Extensions
 {
 
+    /// <summary>
+    /// Extension class for default Unity classes
+    /// </summary>
     public static class UnityExtensions
     {
-        public static bool IsNotNullAndNotEqual(this ISerializable handledItem, ISerializable newItem)
+        /// <summary>
+        /// Checks if left item is null and not equals right item
+        /// </summary>
+        /// <param name="lci">Left compare item</param>
+        /// <param name="rci">Right compare item</param>
+        /// <returns></returns>
+        public static bool IsNotNullAndNotEqual(this ISerializable lci, ISerializable rci)
         {
-            return handledItem?.Equals(newItem) == false;
+            return lci?.Equals(rci) == false;
+        }
+        
+        /// <summary>
+        /// Checks if left item is null and equals right item
+        /// </summary>
+        /// <param name="lci">Left compare item</param>
+        /// <param name="rci">Right compare item</param>
+        /// <returns></returns>
+        public static bool IsNotNullAndEqual(this ISerializable lci, ISerializable rci)
+        {
+            return lci?.Equals(rci) == true;
         }
 
-        public static bool IsNotNullAndEqual(this ISerializable handledItem, ISerializable newItem)
-        {
-            return handledItem?.Equals(newItem) == true;
-        }
-
+        /// <summary>
+        /// Clearing list and destroying it items
+        /// </summary>
+        /// <param name="list"></param>
+        /// <typeparam name="T"></typeparam>
         public static void Clear<T>(ref List<T> list) where T : MonoBehaviour
         {
-            for (var index = 0; index < list.Count; index++) Object.Destroy(list[index].gameObject);
+            foreach (var item in list) Object.Destroy(item.gameObject);
             list.Clear();
         }
 
@@ -70,19 +90,36 @@ namespace Core.Extensions
             return index;
         }
 
+        /// <summary>
+        /// Trying to find object on scene what inherited from T
+        /// </summary>
+        /// <param name="result"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static bool TryToFindObjectOfType<T>(out T result)
         {
             result = default;
             if (TryToFindObjectsOfType(out IEnumerable<T> bufferResults)) result = bufferResults.FirstOrDefault();
             return result != null;
         }
-
+        /// <summary>
+        /// Trying to find objects on scene what inherited from T
+        /// </summary>
+        /// <param name="result"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static bool TryToFindObjectsOfType<T>(out IEnumerable<T> result)
         {
             result = Object.FindObjectsOfType<MonoBehaviour>().OfType<T>();
             return result.Any();
         }
 
+        /// <summary>
+        /// Trying to find object on scene what inherited from T
+        /// </summary>
+        /// <param name="result"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static bool TryToFindObjectsOfType<T>(out IList<T> result)
         {
             result = Object.FindObjectsOfType<MonoBehaviour>().OfType<T>().ToList();

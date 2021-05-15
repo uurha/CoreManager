@@ -21,13 +21,13 @@ namespace Core.Cross.Events.Interface
 
     /// <summary>
     /// Interface for subscribers.
-    /// <code>
+    /// <example>
     /// public IEnumerable<Delegate/> GetSubscribers()
     /// {
     ///     var list = new Delegate[] {(CrossEventTypes.DelegateClass) MyMethod, (CrossEventTypes.DelegateClass2) MyMethod2};
     ///     return list;
     /// }
-    /// </code>
+    /// </example>
     /// </summary>
     public interface ICrossEventSubscriber
     {

@@ -13,17 +13,22 @@
 
 #endregion
 
-namespace Core.Managers.Interface
+using TMPro;
+using UnityEngine;
+
+namespace Core.Samples.Scripts.Model
 {
-    
-    /// <summary>
-    /// Interface for Manager declaration.
-    /// </summary>
-    public interface IManager
+    [RequireComponent(typeof(Renderer))]
+    public class InstancedObject : MonoBehaviour
     {
-        /// <summary>
-        /// Initializing all managers elements.
-        /// </summary>
-        public void InitializeElements();
+        [SerializeField] private TMP_Text text;
+        private Renderer _renderer;
+
+        public void Initialize(Color color, string str)
+        {
+            _renderer = GetComponent<Renderer>();
+            _renderer.material.color = color;
+            text.text = str;
+        }
     }
 }

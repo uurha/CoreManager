@@ -35,24 +35,46 @@ namespace Core.Managers
             foreach (var crossEventHandler in _handlers) crossEventHandler.Subscribe(crossEventSubscribers.SelectMany(x => x.GetSubscribers()));
         }
 
+        /// <summary>
+        /// Subscribing event subscriber after scene Awoken to event handlers.
+        /// </summary>
+        /// <param name="subscriber"></param>
         public static void Subscribe(ICrossEventSubscriber subscriber)
         {
             foreach (var crossEventHandler in _handlers) crossEventHandler.Subscribe(subscriber.GetSubscribers());
         }
 
+        /// <summary>
+        /// Unsubscribing event subscriber after scene Awoken from event handlers.
+        /// </summary>
+        /// <param name="subscriber"></param>
         public static void Unsubscribe(ICrossEventSubscriber subscriber)
         {
             foreach (var crossEventHandler in _handlers) crossEventHandler.Unsubscribe(subscriber.GetSubscribers());
         }
 
-        public static void AddHandler(ICrossEventHandler handler, bool invokeNeeded)
+        /// <summary>
+        /// Adding new handler after scene Awoken to list of event handlers.
+        /// </summary>
+        /// <param name="handler"></param>
+        /// <param name="subscriptionsNeeded">If false invokeNeeded will not be called</param>
+        /// <param name="invokeNeeded"></param>
+        public static void AddHandler(ICrossEventHandler handler, bool subscriptionsNeeded = true, bool invokeNeeded = false)
         {
             _handlers.Add(handler);
-            if (UnityExtensions.TryToFindObjectsOfType(out IList<ICrossEventSubscriber> crossEventSubscribers)) return;
-            handler.Subscribe(crossEventSubscribers.SelectMany(x => x.GetSubscribers()));
+            if (!subscriptionsNeeded) return;
+
+            if (UnityExtensions.TryToFindObjectsOfType(out IList<ICrossEventSubscriber> crossEventSubscribers))
+            {
+                handler.Subscribe(crossEventSubscribers.SelectMany(x => x.GetSubscribers()));
+            }
             if (invokeNeeded) handler.InvokeEvents();
         }
 
+        /// <summary>
+        /// Removing event handler after scene Awoken from list
+        /// </summary>
+        /// <param name="handler"></param>
         public static void RemoveHandler(ICrossEventHandler handler)
         {
             _handlers.Remove(handler);

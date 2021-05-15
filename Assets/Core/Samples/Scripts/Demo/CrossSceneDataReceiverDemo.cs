@@ -13,31 +13,31 @@
 
 #endregion
 
-using System.Collections.Generic;
-using System.Linq;
-using Core.CustomAttributes.Headers;
+using Core.Cross.SceneData;
 using Core.CustomAttributes.Validation;
-using Core.Managers.Interface;
+using Core.Samples.Scripts.Model;
+using TMPro;
 using UnityEngine;
 
-namespace Core.Managers
+namespace Core.Samples.Scripts.Demo
 {
-    /// <summary>
-    /// Base implementation of IManager.
-    /// </summary>
-    public abstract class BaseManager : MonoBehaviour, IManager
+    public class CrossSceneDataReceiverDemo : MonoBehaviour
     {
-        [PrefabHeader]
-        [SerializeField] [PrefabRequired] private protected List<GameObject> elements;
+        [SerializeField] [NotNull] private TMP_Text intText;
+        [SerializeField] [NotNull] private TMP_Text colorText;
+        [SerializeField] [NotNull] private TMP_Text stringText;
 
-        public virtual void InitializeElements()
+        private void Awake()
         {
-            foreach (var o in elements.Select(m => Instantiate(m, transform)))
-            {
-                #if DEBUG
-                Debug.Log($"Create element: {o.name}");
-                #endif
-            }
+            ReceiveData();
+        }
+
+        public void ReceiveData()
+        {
+            if (!CrossSceneDataHandler.Instance.GetData(out DataTransfer data)) return;
+            intText.text = data.IntData.ToString();
+            colorText.text = data.ColorData.ToString();
+            stringText.text = data.StrData;
         }
     }
 }

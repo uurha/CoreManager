@@ -21,32 +21,62 @@ using Object = UnityEngine.Object;
 
 namespace Core.FileSystem
 {
-    public class SaveSystem
+    /// <summary>
+    /// Class for saving Json file to disk.
+    /// </summary>
+    public class FileSystem
     {
         private static SemaphoreSlim _semaphoreSlim;
         private readonly string _defaultExtension = ".json";
         private readonly string _defaultPath = Application.persistentDataPath;
 
-        public SaveSystem()
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public FileSystem()
         {
             _semaphoreSlim ??= new SemaphoreSlim(1, 1);
         }
 
-        public SaveSystem(string path) : this()
+        /// <summary>
+        /// Overloaded constructor which changes default path.
+        /// </summary>
+        /// <param name="path"></param>
+        public FileSystem(string path) : this()
         {
             _defaultPath = path;
         }
 
-        public SaveSystem(string path, string extension) : this(path)
+        /// <summary>
+        /// Overloaded constructor which changes default path and file extension.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="extension"></param>
+        public FileSystem(string path, string extension) : this(path)
         {
             _defaultExtension = extension;
         }
 
+        /// <summary>
+        /// Saves class to file with name of class.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="onError"></param>
+        /// <param name="context">Required if errors should be shown on Object</param>
+        /// <typeparam name="T"></typeparam>
         public void Save<T>(T data, Action<Exception> onError, Object context = null) where T : Serializable.Serializable
         {
             Save(data, typeof(T).Name, onError, context);
         }
 
+        /// <summary>
+        /// Saves class to file.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="fileName"></param>
+        /// <param name="onError"></param>
+        /// <param name="context">Required if errors should be shown on Object</param>
+        /// <typeparam name="T"></typeparam>
         public void Save<T>(T data, string fileName, Action<Exception> onError, Object context = null) where T : Serializable.Serializable
         {
             SaveInternal(data, fileName, onError, context);
@@ -75,11 +105,26 @@ namespace Core.FileSystem
             }
         }
 
+        /// <summary>
+        /// Loads file.
+        /// </summary>
+        /// <param name="onLoaded"></param>
+        /// <param name="onError"></param>
+        /// <param name="context">Required if errors should be shown on Object</param>
+        /// <typeparam name="T"></typeparam>
         public void Load<T>(Action<T> onLoaded, Action<Exception> onError, Object context = null) where T : Serializable.Serializable
         {
             Load(typeof(T).Name, onLoaded, onError, context);
         }
 
+        /// <summary>
+        /// Loads file with different file name from passed class.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="onLoaded"></param>
+        /// <param name="onError"></param>
+        /// <param name="context">Required if errors should be shown on Object</param>
+        /// <typeparam name="T"></typeparam>
         public void Load<T>(string fileName, Action<T> onLoaded, Action<Exception> onError, Object context = null) where T : Serializable.Serializable
         {
             LoadInternal(fileName, onLoaded, onError, context);

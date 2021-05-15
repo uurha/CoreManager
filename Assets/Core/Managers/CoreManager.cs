@@ -24,7 +24,7 @@ using UnityEngine;
 namespace Core.Managers
 {
     /// <summary>
-    /// Main Core manager.
+    /// Manager for initialization of sub manager in scene. 
     /// </summary>
     [OnlyOneInScene]
     public class CoreManager : MonoBehaviour

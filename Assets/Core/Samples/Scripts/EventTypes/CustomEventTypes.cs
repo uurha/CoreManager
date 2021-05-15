@@ -13,17 +13,13 @@
 
 #endregion
 
-namespace Core.Managers.Interface
+using Core.Samples.Scripts.Model;
+
+namespace Core.Samples.Scripts.EventTypes
 {
-    
-    /// <summary>
-    /// Interface for Manager declaration.
-    /// </summary>
-    public interface IManager
+    public class CustomEventTypes : Cross.Events.EventTypes
     {
-        /// <summary>
-        /// Initializing all managers elements.
-        /// </summary>
-        public void InitializeElements();
+        public delegate void IsValidDataParsedDelegate(bool isValid);
+        public delegate void DataParsedDelegate(DataTransfer data);
     }
 }

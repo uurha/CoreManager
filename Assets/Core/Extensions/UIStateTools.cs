@@ -15,11 +15,20 @@
 
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Internal;
 
 namespace Core.Extensions
 {
+    /// <summary>
+    /// UI state tool for canvas groups
+    /// </summary>
     public static class UIStateTools
     {
+        /// <summary>
+        /// Changing canvas visibility and interactivity
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="isVisible"></param>
         public static void ChangeGroupState(CanvasGroup group, bool isVisible)
         {
             group.alpha = isVisible ? 1 : 0;
@@ -27,18 +36,25 @@ namespace Core.Extensions
             group.blocksRaycasts = isVisible;
         }
 
+        [ExcludeFromDocs]
         public static void ChangeCursorState(bool state)
         {
             Cursor.lockState = state ? CursorLockMode.Confined : CursorLockMode.Locked;
             Cursor.visible = state;
         }
 
-        public static IEnumerator ChangeGroupState(CanvasGroup canvas, bool isVisible, float delay)
+        /// <summary>
+        /// Changing canvas visibility and interactivity after delay
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="isVisible"></param>
+        /// <param name="delay"></param>
+        public static IEnumerator ChangeGroupState(CanvasGroup group, bool isVisible, float delay)
         {
-            canvas.alpha = isVisible ? 1 : 0;
-            canvas.blocksRaycasts = isVisible;
+            group.alpha = isVisible ? 1 : 0;
+            group.blocksRaycasts = isVisible;
             yield return new WaitForSeconds(delay);
-            canvas.interactable = isVisible;
+            group.interactable = isVisible;
         }
     }
 }

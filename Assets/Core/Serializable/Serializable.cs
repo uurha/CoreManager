@@ -19,6 +19,9 @@ using UnityEngine;
 
 namespace Core.Serializable
 {
+    /// <summary>
+    /// Base class for classes what need to saved in Json file.
+    /// </summary>
     [Serializable]
     public class Serializable : ISerializable
     {

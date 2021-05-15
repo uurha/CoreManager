@@ -1,4 +1,4 @@
-﻿#region license
+#region license
 
 // Copyright 2021 Arcueid Elizabeth D'athemon
 // Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -13,17 +13,11 @@
 
 #endregion
 
-namespace Core.Managers.Interface
+using Core.Managers;
+
+namespace Core.Samples.Scripts.Managers
 {
-    
-    /// <summary>
-    /// Interface for Manager declaration.
-    /// </summary>
-    public interface IManager
+    public class ObjectManager : BaseManager
     {
-        /// <summary>
-        /// Initializing all managers elements.
-        /// </summary>
-        public void InitializeElements();
     }
 }

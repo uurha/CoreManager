@@ -20,7 +20,7 @@ namespace Core.Cross.Events.Interface
 {
     /// <summary>
     /// Interface for event handler.
-    /// <code>
+    /// <example>
     /// public void Subscribe(params Delegate[] subscriber)
     /// {
     ///     foreach (var action in subscriber.OfType<CrossEventTypes.DelegateClass/>())
@@ -28,8 +28,7 @@ namespace Core.Cross.Events.Interface
     ///         MyEvent += action;
     ///     }
     /// }
-    ///
-    /// </code>
+    /// </example>
     /// </summary>
     public interface ICrossEventHandler
     {
@@ -38,8 +37,16 @@ namespace Core.Cross.Events.Interface
         /// </summary>
         public void InvokeEvents();
 
+        /// <summary>
+        /// Subscribing delegates to event
+        /// </summary>
+        /// <param name="subscribers"></param>
         public void Subscribe(IEnumerable<Delegate> subscribers);
 
+        /// <summary>
+        /// Unsubscribing delegates to event
+        /// </summary>
+        /// <param name="unsubscribers"></param>
         public void Unsubscribe(IEnumerable<Delegate> unsubscribers);
     }
 }

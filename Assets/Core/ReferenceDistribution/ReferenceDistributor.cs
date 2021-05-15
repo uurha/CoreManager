@@ -27,7 +27,6 @@ namespace Core.ReferenceDistribution
     [OnlyOneInScene]
     public class ReferenceDistributor : MonoBehaviour
     {
-
         private static ReferenceDistributor _instance;
         private IEnumerable<IDistributingReference> _distributingReferences;
         private bool _isInitialized;
@@ -37,6 +36,9 @@ namespace Core.ReferenceDistribution
             _instance = null;
         }
 
+        /// <summary>
+        /// Initializing distribution references
+        /// </summary>
         public void Initialize()
         {
             _isInitialized = UnityExtensions.TryToFindObjectsOfType(out _distributingReferences);
@@ -66,6 +68,11 @@ namespace Core.ReferenceDistribution
             return ReferenceEquals(reference, null);
         }
 
+        /// <summary>
+        /// Getting references by type from list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static IEnumerable<T> GetReferences<T>() where T : MonoBehaviour, IDistributingReference
         {
             return _instance._isInitialized ? _instance._distributingReferences.OfType<T>() : null;

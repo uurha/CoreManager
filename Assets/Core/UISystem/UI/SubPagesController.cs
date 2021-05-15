@@ -15,7 +15,6 @@
 
 using System;
 using System.Collections.Generic;
-using Core.CustomAttributes.Validation;
 using Core.Extensions;
 using TMPro;
 using UnityEngine;
@@ -23,9 +22,12 @@ using UnityEngine.Events;
 
 namespace Core.UISystem.UI
 {
+    /// <summary>
+    /// Class designated for UI subpages.
+    /// </summary>
     public class SubPagesController : MonoBehaviour
     {
-        [SerializeField] private TMP_Text textField;
+        [SerializeField] private TMP_Text header;
         [SerializeField] private float delayTime;
         [SerializeField] private bool showFirstOnAwake = true;
 
@@ -53,21 +55,35 @@ namespace Core.UISystem.UI
             SetText(page);
         }
 
+        /// <summary>
+        /// Adding new UIPage to this subpages controller
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="openPage"></param>
         public void AddPage(UIPage page, out Action openPage)
         {
             _pages.Add(page);
             openPage = () => { OpenPage(page); };
         }
 
+        /// <summary>
+        /// Adding new UIPage to this subpages controller
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="openPage"></param>
         public void AddPage(UIPage page, out UnityAction openPage)
         {
             _pages.Add(page);
             openPage = () => { OpenPage(page); };
         }
 
+        /// <summary>
+        /// Setting text to subpage header
+        /// </summary>
+        /// <param name="namedGroup"></param>
         private void SetText(UIPage namedGroup)
         {
-            if (textField != null) textField.text = namedGroup.PageName;
+            if (header != null) header.text = namedGroup.PageName;
         }
 
         private bool IsContains(UIPage page)
@@ -76,18 +92,35 @@ namespace Core.UISystem.UI
             return namedGroup;
         }
 
+        /// <summary>
+        /// Enables page interaction after delay
+        /// </summary>
+        /// <param name="page"></param>
         public void DelayedOpenPage(UIPage page)
+        {
+            DelayedOpenPage(page, delayTime);
+        }
+
+        /// <summary>
+        /// Enables page interaction after delay
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="delay"></param>
+        public void DelayedOpenPage(UIPage page, float delay)
         {
             HideAllTables();
             if (IsContains(page)) return;
             SetText(page);
 
-            StartCoroutine(UIStateTools.ChangeGroupState(page.Group, true, delayTime));
+            StartCoroutine(UIStateTools.ChangeGroupState(page.Group, true, delay));
         }
 
+        /// <summary>
+        /// Hides all pages in this subpage controller
+        /// </summary>
         public void HideAllTables()
         {
-            for (var i = 0; i < _pages.Count; i++) UIStateTools.ChangeGroupState(_pages[i].Group, false);
+            foreach (var page in _pages) UIStateTools.ChangeGroupState(page.Group, false);
         }
     }
 }

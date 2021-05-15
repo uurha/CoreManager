@@ -14,10 +14,16 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Core.Extensions
 {
+    /// <summary>
+    /// Class for dictionary replacing in Unity Inspector
+    /// </summary>
+    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="TValue"></typeparam>
     [Serializable]
     public class Named<TKey, TValue>
     {
@@ -35,13 +41,24 @@ namespace Core.Extensions
             get => _value;
             set => _value = value;
         }
-    }
 
+        public static implicit operator KeyValuePair<TKey, TValue>(Named<TKey, TValue> obj)
+        {
+            return new KeyValuePair<TKey, TValue>(obj.Key, obj.Value);
+        }
+    }
+    
+    /// <summary>
+    /// Class for more complex list when dictionary
+    /// </summary>
+    /// <typeparam name="TName"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="TValue"></typeparam>
     public class Named<TName, TKey, TValue>
     {
-        [SerializeField] private protected TKey _key;
-        [SerializeField] private protected TName _name;
-        [SerializeField] private protected TValue _value;
+        [SerializeField] protected TKey _key;
+        [SerializeField] protected TName _name;
+        [SerializeField] protected TValue _value;
 
         public TName Name
         {

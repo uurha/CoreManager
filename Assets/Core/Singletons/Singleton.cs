@@ -18,6 +18,11 @@ using Core.Extensions;
 
 namespace Core.Singletons
 {
+    /// <summary>
+    /// Base for all singletons.
+    /// Strongly recommended to use singletons as little as possible.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         private protected static T _instance;
