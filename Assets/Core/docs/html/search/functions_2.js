@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['filesystem_162',['FileSystem',['../class_core_1_1_file_system_1_1_file_system.html#a1ea33518de71e35e8389042700ce731c',1,'Core.FileSystem.FileSystem.FileSystem()'],['../class_core_1_1_file_system_1_1_file_system.html#a832df33a90d1bb2abe13fda409877713',1,'Core.FileSystem.FileSystem.FileSystem(string path)'],['../class_core_1_1_file_system_1_1_file_system.html#ace0a5fe424c83390512540d780a9ec76',1,'Core.FileSystem.FileSystem.FileSystem(string path, string extension)']]]
+  ['deepclone_159',['DeepClone',['../interface_core_1_1_interface_1_1_i_deep_clone.html#a5de5971b3b778091ee2bf869d81fb4da',1,'Core.Interface.IDeepClone.DeepClone()'],['../interface_core_1_1_interface_1_1_i_deep_clone.html#afb1272b8b4f58c1751d99de0bcc14b40',1,'Core.Interface.IDeepClone.DeepClone()']]],
+  ['delayedopenpage_160',['DelayedOpenPage',['../class_core_1_1_u_i_system_1_1_u_i_1_1_sub_pages_controller.html#a4811dc2e9f6652892c227c357013ca3f',1,'Core.UISystem.UI.SubPagesController.DelayedOpenPage(UIPage page)'],['../class_core_1_1_u_i_system_1_1_u_i_1_1_sub_pages_controller.html#ad28a791da80b277017d009ee16639814',1,'Core.UISystem.UI.SubPagesController.DelayedOpenPage(UIPage page, float delay)']]]
 ];

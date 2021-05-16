@@ -20,6 +20,9 @@ using Core.Extensions;
 
 namespace Core.Managers
 {
+    /// <summary>
+    /// Class responsible for reference initialization
+    /// </summary>
     public static class GameManager
     {
         private static IList<ICrossEventHandler> _handlers;

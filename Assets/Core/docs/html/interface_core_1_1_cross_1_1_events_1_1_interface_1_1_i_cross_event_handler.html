@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Core Manager: Core.Cross.Events.Interface.ICrossEventHandler Interface Reference</title>
+<title>Core Manager: ICrossEventHandler Interface Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,48 +86,44 @@ $(document).ready(function(){initNavTree('interface_core_1_1_cross_1_1_events_1_
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Core.Cross.Events.Interface.ICrossEventHandler Interface Reference</div>  </div>
+<div class="title">ICrossEventHandler Interface Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="namespace_core_1_1_cross_1_1_events_1_1_interface.html">Interface</a> for event handler. public void Subscribe(params Delegate[] subscriber) { foreach (var action in subscriber.OfType&lt;CrossEventTypes.DelegateClass/&gt;()) { MyEvent += action; } }  
+<p><a class="el" href="namespace_core_1_1_cross_1_1_events_1_1_interface.html">Interface</a> for event handler.  
  <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for Core.Cross.Events.Interface.ICrossEventHandler:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.png" usemap="#Core.Cross.Events.Interface.ICrossEventHandler_map" alt=""/>
-  <map id="Core.Cross.Events.Interface.ICrossEventHandler_map" name="Core.Cross.Events.Interface.ICrossEventHandler_map">
-<area href="class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_sender_demo.html" alt="Core.Samples.Scripts.Demo.CrossSceneDataSenderDemo" shape="rect" coords="0,56,342,80"/>
-  </map>
-</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2f2f5077d066fd5fe47fa1ff276a81cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#a2f2f5077d066fd5fe47fa1ff276a81cf">InvokeEvents</a> ()</td></tr>
-<tr class="memdesc:a2f2f5077d066fd5fe47fa1ff276a81cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoking events what need to be invoked on scene initializing.  <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#a2f2f5077d066fd5fe47fa1ff276a81cf">More...</a><br /></td></tr>
-<tr class="separator:a2f2f5077d066fd5fe47fa1ff276a81cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6aa52dffc0bc82f8f69b23ce930ad375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#a6aa52dffc0bc82f8f69b23ce930ad375">Subscribe</a> (IEnumerable&lt; Delegate &gt; subscribers)</td></tr>
-<tr class="memdesc:a6aa52dffc0bc82f8f69b23ce930ad375"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribing delegates to event  <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#a6aa52dffc0bc82f8f69b23ce930ad375">More...</a><br /></td></tr>
-<tr class="separator:a6aa52dffc0bc82f8f69b23ce930ad375"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae64ed454d73babe4547d4de4ac1844b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#ae64ed454d73babe4547d4de4ac1844b9">Unsubscribe</a> (IEnumerable&lt; Delegate &gt; unsubscribers)</td></tr>
-<tr class="memdesc:ae64ed454d73babe4547d4de4ac1844b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribing delegates to event  <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#ae64ed454d73babe4547d4de4ac1844b9">More...</a><br /></td></tr>
-<tr class="separator:ae64ed454d73babe4547d4de4ac1844b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd8844a6097d0b5e1b4fa63f03e2ee32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#acd8844a6097d0b5e1b4fa63f03e2ee32">InvokeEvents</a> ()</td></tr>
+<tr class="memdesc:acd8844a6097d0b5e1b4fa63f03e2ee32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoking events what need to be invoked on scene initializing.  <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#acd8844a6097d0b5e1b4fa63f03e2ee32">More...</a><br /></td></tr>
+<tr class="separator:acd8844a6097d0b5e1b4fa63f03e2ee32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2104e6e7501ad11c1f6dc270022eb35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#ad2104e6e7501ad11c1f6dc270022eb35">Subscribe</a> (IEnumerable&lt; Delegate &gt; subscribers)</td></tr>
+<tr class="memdesc:ad2104e6e7501ad11c1f6dc270022eb35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribing delegates to event  <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#ad2104e6e7501ad11c1f6dc270022eb35">More...</a><br /></td></tr>
+<tr class="separator:ad2104e6e7501ad11c1f6dc270022eb35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd0b81033ef2c4c69a87072d569479b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#abd0b81033ef2c4c69a87072d569479b1">Unsubscribe</a> (IEnumerable&lt; Delegate &gt; unsubscribers)</td></tr>
+<tr class="memdesc:abd0b81033ef2c4c69a87072d569479b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribing delegates to event  <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html#abd0b81033ef2c4c69a87072d569479b1">More...</a><br /></td></tr>
+<tr class="separator:abd0b81033ef2c4c69a87072d569479b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="namespace_core_1_1_cross_1_1_events_1_1_interface.html">Interface</a> for event handler. </p>
-<p>public void Subscribe(params Delegate[] subscriber) { foreach (var action in subscriber.OfType&lt;CrossEventTypes.DelegateClass/&gt;()) { MyEvent += action; } } </p>
-
-<p class="definition">Definition at line <a class="el" href="_i_cross_event_handler_8cs_source.html#l00033">33</a> of file <a class="el" href="_i_cross_event_handler_8cs_source.html">ICrossEventHandler.cs</a>.</p>
+<p><code> <br  />
+public void Subscribe(params Delegate[] subscriber) <br  />
+{ <br  />
+ foreach (var action in subscriber.OfType&lt;CrossEventTypes.DelegateClass&gt;()) <br  />
+ { <br  />
+ MyEvent += action; <br  />
+ } <br  />
+} </code></p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2f2f5077d066fd5fe47fa1ff276a81cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f2f5077d066fd5fe47fa1ff276a81cf">&#9670;&nbsp;</a></span>InvokeEvents()</h2>
+<a id="acd8844a6097d0b5e1b4fa63f03e2ee32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd8844a6097d0b5e1b4fa63f03e2ee32">&#9670;&nbsp;</a></span>InvokeEvents()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Core.Cross.Events.Interface.ICrossEventHandler.InvokeEvents </td>
+          <td class="memname">void InvokeEvents </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -137,18 +133,16 @@ Public Member Functions</h2></td></tr>
 
 <p>Invoking events what need to be invoked on scene initializing. </p>
 
-<p>Implemented in <a class="el" href="class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_sender_demo.html#a76b90c92d2e439b631c59a305c8b4ef9">Core.Samples.Scripts.Demo.CrossSceneDataSenderDemo</a>.</p>
-
 </div>
 </div>
-<a id="a6aa52dffc0bc82f8f69b23ce930ad375"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6aa52dffc0bc82f8f69b23ce930ad375">&#9670;&nbsp;</a></span>Subscribe()</h2>
+<a id="ad2104e6e7501ad11c1f6dc270022eb35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2104e6e7501ad11c1f6dc270022eb35">&#9670;&nbsp;</a></span>Subscribe()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Core.Cross.Events.Interface.ICrossEventHandler.Subscribe </td>
+          <td class="memname">void Subscribe </td>
           <td>(</td>
           <td class="paramtype">IEnumerable&lt; Delegate &gt;&#160;</td>
           <td class="paramname"><em>subscribers</em></td><td>)</td>
@@ -165,18 +159,16 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_sender_demo.html#a469f5f2616fd11f4ea36711f91f4448f">Core.Samples.Scripts.Demo.CrossSceneDataSenderDemo</a>.</p>
-
 </div>
 </div>
-<a id="ae64ed454d73babe4547d4de4ac1844b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae64ed454d73babe4547d4de4ac1844b9">&#9670;&nbsp;</a></span>Unsubscribe()</h2>
+<a id="abd0b81033ef2c4c69a87072d569479b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd0b81033ef2c4c69a87072d569479b1">&#9670;&nbsp;</a></span>Unsubscribe()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Core.Cross.Events.Interface.ICrossEventHandler.Unsubscribe </td>
+          <td class="memname">void Unsubscribe </td>
           <td>(</td>
           <td class="paramtype">IEnumerable&lt; Delegate &gt;&#160;</td>
           <td class="paramname"><em>unsubscribers</em></td><td>)</td>
@@ -193,12 +185,10 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_sender_demo.html#a8b30b696dd89588ff80ea4a31bf5ed5f">Core.Samples.Scripts.Demo.CrossSceneDataSenderDemo</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
-<li>Cross/Events/Interface/<a class="el" href="_i_cross_event_handler_8cs_source.html">ICrossEventHandler.cs</a></li>
+<li>Cross/Events/Interface/ICrossEventHandler.cs</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

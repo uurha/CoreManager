@@ -18,7 +18,6 @@ var annotated_dup =
       ] ],
       [ "CustomAttributes", "namespace_core_1_1_custom_attributes.html", [
         [ "Editor", "namespace_core_1_1_custom_attributes_1_1_editor.html", [
-          [ "ErrorObjectPair", "class_core_1_1_custom_attributes_1_1_editor_1_1_error_object_pair.html", "class_core_1_1_custom_attributes_1_1_editor_1_1_error_object_pair" ],
           [ "ValidationAttributeEditor", "class_core_1_1_custom_attributes_1_1_editor_1_1_validation_attribute_editor.html", "class_core_1_1_custom_attributes_1_1_editor_1_1_validation_attribute_editor" ]
         ] ],
         [ "Headers", "namespace_core_1_1_custom_attributes_1_1_headers.html", [
@@ -41,10 +40,14 @@ var annotated_dup =
         ] ]
       ] ],
       [ "Editor", "namespace_core_1_1_editor.html", [
+        [ "CoreMenuItems", "class_core_1_1_editor_1_1_core_menu_items.html", null ],
         [ "CustomInspectorCoreManager", "class_core_1_1_editor_1_1_custom_inspector_core_manager.html", "class_core_1_1_editor_1_1_custom_inspector_core_manager" ]
       ] ],
       [ "Extensions", "namespace_core_1_1_extensions.html", [
-        [ "Named", "class_core_1_1_extensions_1_1_named.html", "class_core_1_1_extensions_1_1_named" ]
+        [ "Named", "class_core_1_1_extensions_1_1_named.html", "class_core_1_1_extensions_1_1_named" ],
+        [ "UIStateTools", "class_core_1_1_extensions_1_1_u_i_state_tools.html", "class_core_1_1_extensions_1_1_u_i_state_tools" ],
+        [ "UnityEditorExtension", "class_core_1_1_extensions_1_1_unity_editor_extension.html", "class_core_1_1_extensions_1_1_unity_editor_extension" ],
+        [ "UnityExtensions", "class_core_1_1_extensions_1_1_unity_extensions.html", "class_core_1_1_extensions_1_1_unity_extensions" ]
       ] ],
       [ "FileSystem", "namespace_core_1_1_file_system.html", [
         [ "FileSystem", "class_core_1_1_file_system_1_1_file_system.html", "class_core_1_1_file_system_1_1_file_system" ]
@@ -57,33 +60,14 @@ var annotated_dup =
           [ "IManager", "interface_core_1_1_managers_1_1_interface_1_1_i_manager.html", "interface_core_1_1_managers_1_1_interface_1_1_i_manager" ]
         ] ],
         [ "BaseManager", "class_core_1_1_managers_1_1_base_manager.html", "class_core_1_1_managers_1_1_base_manager" ],
-        [ "CoreManager", "class_core_1_1_managers_1_1_core_manager.html", null ]
+        [ "CoreManager", "class_core_1_1_managers_1_1_core_manager.html", null ],
+        [ "GameManager", "class_core_1_1_managers_1_1_game_manager.html", "class_core_1_1_managers_1_1_game_manager" ]
       ] ],
       [ "ReferenceDistribution", "namespace_core_1_1_reference_distribution.html", [
         [ "Interface", "namespace_core_1_1_reference_distribution_1_1_interface.html", [
           [ "IDistributingReference", "interface_core_1_1_reference_distribution_1_1_interface_1_1_i_distributing_reference.html", null ]
         ] ],
         [ "ReferenceDistributor", "class_core_1_1_reference_distribution_1_1_reference_distributor.html", "class_core_1_1_reference_distribution_1_1_reference_distributor" ]
-      ] ],
-      [ "Samples", "namespace_core_1_1_samples.html", [
-        [ "Scripts", "namespace_core_1_1_samples_1_1_scripts.html", [
-          [ "Demo", "namespace_core_1_1_samples_1_1_scripts_1_1_demo.html", [
-            [ "CrossSceneDataReceiverDemo", "class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_receiver_demo.html", "class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_receiver_demo" ],
-            [ "CrossSceneDataSenderDemo", "class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_sender_demo.html", "class_core_1_1_samples_1_1_scripts_1_1_demo_1_1_cross_scene_data_sender_demo" ]
-          ] ],
-          [ "EventTypes", "namespace_core_1_1_samples_1_1_scripts_1_1_event_types.html", [
-            [ "CustomEventTypes", "class_core_1_1_samples_1_1_scripts_1_1_event_types_1_1_custom_event_types.html", "class_core_1_1_samples_1_1_scripts_1_1_event_types_1_1_custom_event_types" ]
-          ] ],
-          [ "Managers", "namespace_core_1_1_samples_1_1_scripts_1_1_managers.html", [
-            [ "ObjectManager", "class_core_1_1_samples_1_1_scripts_1_1_managers_1_1_object_manager.html", null ]
-          ] ],
-          [ "Model", "namespace_core_1_1_samples_1_1_scripts_1_1_model.html", [
-            [ "DataTransfer", "class_core_1_1_samples_1_1_scripts_1_1_model_1_1_data_transfer.html", "class_core_1_1_samples_1_1_scripts_1_1_model_1_1_data_transfer" ],
-            [ "InstancedObject", "class_core_1_1_samples_1_1_scripts_1_1_model_1_1_instanced_object.html", "class_core_1_1_samples_1_1_scripts_1_1_model_1_1_instanced_object" ]
-          ] ],
-          [ "ObjectSpawner", "class_core_1_1_samples_1_1_scripts_1_1_object_spawner.html", null ],
-          [ "SceneLoader", "class_core_1_1_samples_1_1_scripts_1_1_scene_loader.html", "class_core_1_1_samples_1_1_scripts_1_1_scene_loader" ]
-        ] ]
       ] ],
       [ "Serializable", "namespace_core_1_1_serializable.html", [
         [ "Interface", "namespace_core_1_1_serializable_1_1_interface.html", [

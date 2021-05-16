@@ -36,7 +36,10 @@ namespace Core.Extensions
             group.blocksRaycasts = isVisible;
         }
 
-        [ExcludeFromDocs]
+        /// <summary>
+        /// Changing state of mouse cursor
+        /// </summary>
+        /// <param name="state"></param>
         public static void ChangeCursorState(bool state)
         {
             Cursor.lockState = state ? CursorLockMode.Confined : CursorLockMode.Locked;

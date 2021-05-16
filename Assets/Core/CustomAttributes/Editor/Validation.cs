@@ -25,7 +25,7 @@ using Object = UnityEngine.Object;
 namespace Core.CustomAttributes.Editor
 {
     [Serializable]
-    public class ErrorObjectPair : Named<string, Object>
+    internal class ErrorObjectPair : Named<string, Object>
     {
 
         public ErrorObjectPair(string error, Object obj)
@@ -35,7 +35,7 @@ namespace Core.CustomAttributes.Editor
         }
     }
 
-    public static class Validation
+    internal static class Validation
     {
         public static IEnumerable<FieldInfo> GetAllFields(Type t)
         {
@@ -70,7 +70,7 @@ namespace Core.CustomAttributes.Editor
                         if (!(a is FieldValidationAttribute vatt) ||
                             vatt.Validate(f, b))
                             continue;
-                        listErrors.Add(new ErrorObjectPair (vatt.ErrorMessage, b));
+                        listErrors.Add(new ErrorObjectPair(vatt.ErrorMessage, b));
                         if (vatt.ShowError) ShowError(vatt.ErrorMessage, b);
                     }
                 }
@@ -81,7 +81,7 @@ namespace Core.CustomAttributes.Editor
                     if (!(a is ClassValidationAttribute vatt) ||
                         vatt.Validate(b))
                         continue;
-                    listErrors.Add(new ErrorObjectPair (vatt.ErrorMessage, b));
+                    listErrors.Add(new ErrorObjectPair(vatt.ErrorMessage, b));
                     if (vatt.ShowError) ShowError(vatt.ErrorMessage, b);
                 }
             }
@@ -106,7 +106,7 @@ namespace Core.CustomAttributes.Editor
                         if (!(a is FieldValidationAttribute vatt) ||
                             vatt.Validate(f, b))
                             continue;
-                        listErrors.Add(new ErrorObjectPair (vatt.ErrorMessage, b));
+                        listErrors.Add(new ErrorObjectPair(vatt.ErrorMessage, b));
                         if (vatt.ShowError) ShowError(vatt.ErrorMessage, b);
                     }
                 }
@@ -117,7 +117,7 @@ namespace Core.CustomAttributes.Editor
                     if (!(a is ClassValidationAttribute vatt) ||
                         vatt.Validate(b))
                         continue;
-                    listErrors.Add(new ErrorObjectPair (vatt.ErrorMessage, b));
+                    listErrors.Add(new ErrorObjectPair(vatt.ErrorMessage, b));
                     if (vatt.ShowError) ShowError(vatt.ErrorMessage, b);
                 }
             }

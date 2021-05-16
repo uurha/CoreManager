@@ -230,22 +230,22 @@ PrefabInstance:
     - target: {fileID: 969821489131568817, guid: d63553e8dd70f264fb2cae58d2659540, type: 3}
       propertyPath: managers.Array.data[0]
       value: 
-      objectReference: {fileID: 653897983884744021, guid: aa8d7be4d2e5ba44c8eca15a880af3b9, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4942092020452449894, guid: d63553e8dd70f264fb2cae58d2659540, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4942092020452449894, guid: d63553e8dd70f264fb2cae58d2659540, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2902745
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4942092020452449894, guid: d63553e8dd70f264fb2cae58d2659540, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.543462
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4942092020452449894, guid: d63553e8dd70f264fb2cae58d2659540, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.6223239
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4942092020452449894, guid: d63553e8dd70f264fb2cae58d2659540, type: 3}
       propertyPath: m_LocalRotation.w

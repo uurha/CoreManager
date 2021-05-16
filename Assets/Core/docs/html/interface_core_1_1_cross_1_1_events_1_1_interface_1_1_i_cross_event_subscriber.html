@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Core Manager: Core.Cross.Events.Interface.ICrossEventSubscriber Interface Reference</title>
+<title>Core Manager: ICrossEventSubscriber Interface Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,42 +86,36 @@ $(document).ready(function(){initNavTree('interface_core_1_1_cross_1_1_events_1_
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Core.Cross.Events.Interface.ICrossEventSubscriber Interface Reference</div>  </div>
+<div class="title">ICrossEventSubscriber Interface Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="namespace_core_1_1_cross_1_1_events_1_1_interface.html">Interface</a> for subscribers. public IEnumerable&lt;Delegate&gt; <a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber.html#ac95ef40515dda68991e619eb47ee6dd1" title="Returns IEnumerable with all methods which need to be subscribed.">GetSubscribers()</a> { var list = new Delegate[] {(CrossEventTypes.DelegateClass) MyMethod, (CrossEventTypes.DelegateClass2) MyMethod2}; return list; }  
+<p><a class="el" href="namespace_core_1_1_cross_1_1_events_1_1_interface.html">Interface</a> for subscribers.  
  <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber.html#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for Core.Cross.Events.Interface.ICrossEventSubscriber:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber.png" usemap="#Core.Cross.Events.Interface.ICrossEventSubscriber_map" alt=""/>
-  <map id="Core.Cross.Events.Interface.ICrossEventSubscriber_map" name="Core.Cross.Events.Interface.ICrossEventSubscriber_map">
-<area href="class_core_1_1_samples_1_1_scripts_1_1_scene_loader.html" alt="Core.Samples.Scripts.SceneLoader" shape="rect" coords="0,56,307,80"/>
-  </map>
-</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac95ef40515dda68991e619eb47ee6dd1"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; Delegate &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber.html#ac95ef40515dda68991e619eb47ee6dd1">GetSubscribers</a> ()</td></tr>
-<tr class="memdesc:ac95ef40515dda68991e619eb47ee6dd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns IEnumerable with all methods which need to be subscribed.  <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber.html#ac95ef40515dda68991e619eb47ee6dd1">More...</a><br /></td></tr>
-<tr class="separator:ac95ef40515dda68991e619eb47ee6dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6272d5998614320c1a9ebb42bc388e67"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; Delegate &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber.html#a6272d5998614320c1a9ebb42bc388e67">GetSubscribers</a> ()</td></tr>
+<tr class="memdesc:a6272d5998614320c1a9ebb42bc388e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns IEnumerable with all methods which need to be subscribed.  <a href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber.html#a6272d5998614320c1a9ebb42bc388e67">More...</a><br /></td></tr>
+<tr class="separator:a6272d5998614320c1a9ebb42bc388e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="namespace_core_1_1_cross_1_1_events_1_1_interface.html">Interface</a> for subscribers. </p>
-<p>public IEnumerable&lt;Delegate&gt; <a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber.html#ac95ef40515dda68991e619eb47ee6dd1" title="Returns IEnumerable with all methods which need to be subscribed.">GetSubscribers()</a> { var list = new Delegate[] {(CrossEventTypes.DelegateClass) MyMethod, (CrossEventTypes.DelegateClass2) MyMethod2}; return list; } </p>
-
-<p class="definition">Definition at line <a class="el" href="_i_cross_event_subscriber_8cs_source.html#l00032">32</a> of file <a class="el" href="_i_cross_event_subscriber_8cs_source.html">ICrossEventSubscriber.cs</a>.</p>
+<p><code> <br  />
+public IEnumerable&lt;Delegate&gt; <a class="el" href="interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber.html#a6272d5998614320c1a9ebb42bc388e67" title="Returns IEnumerable with all methods which need to be subscribed.">GetSubscribers()</a> <br  />
+{ <br  />
+ var list = new Delegate[] {(CrossEventTypes.DelegateClass) MyMethod, (CrossEventTypes.DelegateClass2) MyMethod2}; <br  />
+ return list; <br  />
+} </code></p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac95ef40515dda68991e619eb47ee6dd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac95ef40515dda68991e619eb47ee6dd1">&#9670;&nbsp;</a></span>GetSubscribers()</h2>
+<a id="a6272d5998614320c1a9ebb42bc388e67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6272d5998614320c1a9ebb42bc388e67">&#9670;&nbsp;</a></span>GetSubscribers()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">IEnumerable&lt;Delegate&gt; Core.Cross.Events.Interface.ICrossEventSubscriber.GetSubscribers </td>
+          <td class="memname">IEnumerable&lt;Delegate&gt; GetSubscribers </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -132,12 +126,10 @@ Public Member Functions</h2></td></tr>
 <p>Returns IEnumerable with all methods which need to be subscribed. </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Implemented in <a class="el" href="class_core_1_1_samples_1_1_scripts_1_1_scene_loader.html#a72e6900de6d9f13647fcce191063a9b8">Core.Samples.Scripts.SceneLoader</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
-<li>Cross/Events/Interface/<a class="el" href="_i_cross_event_subscriber_8cs_source.html">ICrossEventSubscriber.cs</a></li>
+<li>Cross/Events/Interface/ICrossEventSubscriber.cs</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -20,6 +20,9 @@ using UnityEngine;
 
 namespace Core.CustomAttributes.Editor
 {
+    /// <summary>
+    /// Class responsible for pre play mode validation checks
+    /// </summary>
     [InitializeOnLoad]
     internal static class PlayModeState
     {

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['deepclone_160',['DeepClone',['../interface_core_1_1_interface_1_1_i_deep_clone.html#a984246f19e9a445277d3df4e1adbd0a7',1,'Core.Interface.IDeepClone.DeepClone()'],['../interface_core_1_1_interface_1_1_i_deep_clone.html#a62feb7ba2ba2bafa9ddefd90d2feda4b',1,'Core.Interface.IDeepClone.DeepClone()']]],
-  ['delayedopenpage_161',['DelayedOpenPage',['../class_core_1_1_u_i_system_1_1_u_i_1_1_sub_pages_controller.html#a099460581b6d09c6304cf7d0a030ffbb',1,'Core.UISystem.UI.SubPagesController.DelayedOpenPage(UIPage page)'],['../class_core_1_1_u_i_system_1_1_u_i_1_1_sub_pages_controller.html#a1de40d39506a63b7b37e18eba0999c15',1,'Core.UISystem.UI.SubPagesController.DelayedOpenPage(UIPage page, float delay)']]]
+  ['changecursorstate_156',['ChangeCursorState',['../class_core_1_1_extensions_1_1_u_i_state_tools.html#a40ee95a9df62c3393716bdf8c408bf30',1,'Core::Extensions::UIStateTools']]],
+  ['changegroupstate_157',['ChangeGroupState',['../class_core_1_1_extensions_1_1_u_i_state_tools.html#a0c8e045888c00b4428e09f70c86bb17d',1,'Core.Extensions.UIStateTools.ChangeGroupState(CanvasGroup group, bool isVisible)'],['../class_core_1_1_extensions_1_1_u_i_state_tools.html#a622e74913c86de65e59e2928f8cca427',1,'Core.Extensions.UIStateTools.ChangeGroupState(CanvasGroup group, bool isVisible, float delay)']]],
+  ['clear_3c_20t_20_3e_158',['Clear&lt; T &gt;',['../class_core_1_1_extensions_1_1_unity_extensions.html#a5ed49b7d34005cd67dff3a4383943306',1,'Core::Extensions::UnityExtensions']]]
 ];

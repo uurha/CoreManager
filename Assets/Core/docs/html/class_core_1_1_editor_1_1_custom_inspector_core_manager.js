@@ -1,5 +1,5 @@
 var class_core_1_1_editor_1_1_custom_inspector_core_manager =
 [
-    [ "OnEnable", "class_core_1_1_editor_1_1_custom_inspector_core_manager.html#a08124f418003ba40a5959e1a33c42a8a", null ],
-    [ "OnInspectorGUI", "class_core_1_1_editor_1_1_custom_inspector_core_manager.html#a4186c975e9e0b0e390f834afcc68f092", null ]
+    [ "OnEnable", "class_core_1_1_editor_1_1_custom_inspector_core_manager.html#ad34f3aa16da2426e67c8ecc8a0b08008", null ],
+    [ "OnInspectorGUI", "class_core_1_1_editor_1_1_custom_inspector_core_manager.html#a9292d21427a3a3c9c6727380f50ec25a", null ]
 ];

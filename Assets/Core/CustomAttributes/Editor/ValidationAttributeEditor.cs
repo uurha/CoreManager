@@ -15,7 +15,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Core.CustomAttributes.Validation.Base;
 using Core.Extensions;
@@ -25,12 +24,16 @@ using Object = UnityEngine.Object;
 
 namespace Core.CustomAttributes.Editor
 {
+    /// <summary>
+    /// Custom editor for Unity.Object class.
+    /// If you want to create own custom editor inherit this class.
+    /// </summary>
     [CanEditMultipleObjects]
     [CustomEditor(typeof(Object), true)]
     public class ValidationAttributeEditor : UnityEditor.Editor
     {
-        private IEnumerable<FieldInfo> _fields = new FieldInfo[0];
         private IEnumerable<Attribute> _classAttributes = new ClassValidationAttribute[0];
+        private IEnumerable<FieldInfo> _fields = new FieldInfo[0];
 
         private bool _shouldShowErrors = true;
 
@@ -76,14 +79,11 @@ namespace Core.CustomAttributes.Editor
             if (attribute.ShowError && _shouldShowErrors) Validation.ShowError(attribute.ErrorMessage, target);
         }
 
-        
-
         private SerializedProperty GetSerializedProperty(FieldInfo field)
         {
             // Do not display properties marked with HideInInspector attribute
             var hideAtts = field.GetCustomAttributes(typeof(HideInInspector), true);
             return hideAtts.Length > 0 ? null : serializedObject.FindProperty(field.Name);
         }
-
     }
 }

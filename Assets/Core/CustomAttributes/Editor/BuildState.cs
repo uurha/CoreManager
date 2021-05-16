@@ -13,18 +13,18 @@
 
 #endregion
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.Build;
-using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Core.CustomAttributes.Editor
 {
+    /// <summary>
+    /// Class responsible for pre build validation checks
+    /// </summary>
     [InitializeOnLoad]
     internal static class BuildState
     {
@@ -34,11 +34,10 @@ namespace Core.CustomAttributes.Editor
         }
 
         private static void CheckSceneObjects(BuildPlayerOptions buildPlayerOptions)
-        { 
+        {
             var errorObjectPairs = Enumerable.Empty<ErrorObjectPair>();
             errorObjectPairs = errorObjectPairs.Concat(CheckSceneObjects());
             errorObjectPairs = errorObjectPairs.Concat(CheckPrefabs());
-            
             var errors = errorObjectPairs as ErrorObjectPair[] ?? errorObjectPairs.ToArray();
 
             if (!errors.Any())
@@ -53,26 +52,26 @@ namespace Core.CustomAttributes.Editor
         private static IEnumerable<ErrorObjectPair> CheckPrefabs()
         {
             var allAssets = AssetDatabase.GetAllAssetPaths();
+
             var objs =
                 allAssets.Select(a => AssetDatabase.LoadAssetAtPath(a, typeof(GameObject)) as GameObject)
-                         .Zip(allAssets, (o, s) => new {obj = o, path = s} );
-
+                         .Zip(allAssets, (o, s) => new {obj = o, path = s});
             var errors = Enumerable.Empty<ErrorObjectPair>();
 
             return objs.Where(x => x.obj != null)
-                       .Aggregate(errors, (current, value) => 
+                       .Aggregate(errors, (current, value) =>
                                               current.Concat(Validation.ErrorObjectPairs(value.obj)
-                                                                                       .Select(x =>
-                                                                                               {
-                                                                                                   x.Key += $"\n<b>Prefab path:</b> <i>\"{value.path}\"</i>";
-                                                                                                   return x;
-                                                                                               })));
+                                                                       .Select(x =>
+                                                                               {
+                                                                                   x.Key += $"\n<b>Prefab path:</b> <i>\"{value.path}\"</i>";
+                                                                                   return x;
+                                                                               })));
         }
 
         private static IEnumerable<ErrorObjectPair> CheckSceneObjects()
         {
             var errors = Enumerable.Empty<ErrorObjectPair>();
-            var openScene = EditorSceneManager.GetActiveScene().path;
+            var openScene = SceneManager.GetActiveScene().path;
 
             if (EditorBuildSettings.scenes.Length > 0)
                 foreach (var s in EditorBuildSettings.scenes)

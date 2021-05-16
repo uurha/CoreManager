@@ -18,6 +18,9 @@ using UnityEngine;
 
 namespace Core.CustomAttributes.Headers
 {
+    /// <summary>
+    /// Replace for Header("References")
+    /// </summary>
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = true, Inherited = true)]
     public class ReferencesHeaderAttribute : HeaderAttribute
     {

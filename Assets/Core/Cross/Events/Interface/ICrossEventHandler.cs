@@ -20,15 +20,15 @@ namespace Core.Cross.Events.Interface
 {
     /// <summary>
     /// Interface for event handler.
-    /// <example>
-    /// public void Subscribe(params Delegate[] subscriber)
-    /// {
-    ///     foreach (var action in subscriber.OfType<CrossEventTypes.DelegateClass/>())
-    ///     {
-    ///         MyEvent += action;
-    ///     }
-    /// }
-    /// </example>
+    /// <code>
+    /// <br/>public void Subscribe(params Delegate[] subscriber)
+    /// <br/>{
+    /// <br/>    foreach (var action in subscriber.OfType<CrossEventTypes.DelegateClass>())
+    /// <br/>    {
+    /// <br/>        MyEvent += action;
+    /// <br/>    }
+    /// <br/>}
+    /// </code>
     /// </summary>
     public interface ICrossEventHandler
     {
