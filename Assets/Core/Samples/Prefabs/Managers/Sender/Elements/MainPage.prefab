@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadButton: {fileID: 5273351035435926332}
-  sceneIndex: 1
+  scene: Receiver
 --- !u!1 &8349899687539088943
 GameObject:
   m_ObjectHideFlags: 0

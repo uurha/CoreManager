@@ -28,7 +28,7 @@ namespace Core.Samples.Scripts
     public class SceneLoader : MonoBehaviour, ICrossEventSubscriber
     {
         [SerializeField] private Button loadButton;
-        [SerializeField] private int sceneIndex;
+        [SerializeField] private string scene;
 
         private DataTransfer _data;
 
@@ -52,9 +52,8 @@ namespace Core.Samples.Scripts
         private void LoadScene()
         {
             if (_data == null) return;
-            if (sceneIndex >= SceneManager.sceneCountInBuildSettings) return;
             CrossSceneDataHandler.Instance.AddData(_data);
-            SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
+            SceneManager.LoadScene(scene, LoadSceneMode.Single);
         }
 
         public IEnumerable<Delegate> GetSubscribers()

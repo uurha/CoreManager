@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Core/Demo/Scenes/DemoSender.unity
+    path: Assets/Core/Samples/Scenes/Sender.unity
     guid: 397e2e699de4225458f753508fe42f01
   - enabled: 1
-    path: Assets/Core/Demo/Scenes/DemoReceiver.unity
+    path: Assets/Core/Samples/Scenes/Receiver.unity
     guid: cdb01b8ca2fd485429b30dc48560a7c8
   m_configObjects: {}
