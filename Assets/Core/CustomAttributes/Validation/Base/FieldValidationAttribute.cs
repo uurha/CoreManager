@@ -20,6 +20,11 @@ using Object = UnityEngine.Object;
 
 namespace Core.CustomAttributes.Validation.Base
 {
+    /// <summary>
+    /// Base attribute for field validation.
+    /// </summary>
+    /// 
+    [AttributeUsage(AttributeTargets.Field)]
     public abstract class FieldValidationAttribute : ValidationAttribute
     {
         protected FieldValidationAttribute(bool showError = false) : base(showError)

@@ -13,8 +13,8 @@
 
 #endregion
 
-using UnityEngine;
 using Core.Extensions;
+using UnityEngine;
 
 namespace Core.Singletons
 {

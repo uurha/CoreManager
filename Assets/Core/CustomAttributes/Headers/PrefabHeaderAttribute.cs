@@ -21,7 +21,7 @@ namespace Core.CustomAttributes.Headers
     /// <summary>
     /// Replace for Header("Prefabs")
     /// </summary>
-    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
     public class PrefabHeaderAttribute : HeaderAttribute
     {
         public PrefabHeaderAttribute() : base("Prefabs")

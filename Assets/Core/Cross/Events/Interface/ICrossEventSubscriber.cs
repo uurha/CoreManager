@@ -29,6 +29,7 @@ namespace Core.Cross.Events.Interface
     /// <br/>}
     /// </code>
     /// </summary>
+    /// <seealso cref="Core.Cross.Events.EventTypes"/>
     public interface ICrossEventSubscriber
     {
         /// <summary>

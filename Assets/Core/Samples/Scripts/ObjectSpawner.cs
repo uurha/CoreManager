@@ -32,7 +32,7 @@ namespace Core.Samples.Scripts
         {
             if (!CrossSceneDataHandler.Instance.GetData(out DataTransfer data)) return;
 
-            for (int i = 0; i < data.IntData; i++)
+            for (var i = 0; i < data.IntData; i++)
             {
                 var o = Instantiate(prefab, spawnPoint.position + Vector3.right * i * 2, Quaternion.identity, spawnPoint);
                 o.Initialize(data.ColorData, $"#{i} {data.StrData}");

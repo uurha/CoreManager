@@ -111,7 +111,6 @@ namespace Core.UISystem.UI
             HideAllTables();
             if (IsContains(page)) return;
             SetText(page);
-
             StartCoroutine(UIStateTools.ChangeGroupState(page.Group, true, delay));
         }
 

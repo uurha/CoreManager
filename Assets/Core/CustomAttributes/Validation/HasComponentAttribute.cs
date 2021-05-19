@@ -20,6 +20,9 @@ using UnityEngine;
 
 namespace Core.CustomAttributes.Validation
 {
+    /// <summary>
+    /// Attribute validating if Object in field contains component or all objects in list have component.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
     public class HasComponentAttribute : FieldValidationAttribute
     {

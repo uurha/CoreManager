@@ -47,7 +47,7 @@ namespace Core.Extensions
             return new KeyValuePair<TKey, TValue>(obj.Key, obj.Value);
         }
     }
-    
+
     /// <summary>
     /// Class for more complex list when dictionary
     /// </summary>

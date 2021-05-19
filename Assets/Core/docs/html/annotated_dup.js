@@ -1,90 +1,91 @@
 var annotated_dup =
 [
-    [ "Core", "namespace_core.html", [
-      [ "Cross", "namespace_core_1_1_cross.html", [
-        [ "Events", "namespace_core_1_1_cross_1_1_events.html", [
-          [ "Interface", "namespace_core_1_1_cross_1_1_events_1_1_interface.html", [
-            [ "ICrossEventHandler", "interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler.html", "interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_handler" ],
-            [ "ICrossEventSubscriber", "interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber.html", "interface_core_1_1_cross_1_1_events_1_1_interface_1_1_i_cross_event_subscriber" ]
+    [ "Core", "a00140.html", [
+      [ "Cross", "a00141.html", [
+        [ "Events", "a00142.html", [
+          [ "Interface", "a00143.html", [
+            [ "ICrossEventHandler", "a00187.html", "a00187" ],
+            [ "ICrossEventSubscriber", "a00191.html", "a00191" ]
           ] ],
-          [ "EventTypes", "class_core_1_1_cross_1_1_events_1_1_event_types.html", null ]
+          [ "EventTypes", "a00183.html", null ]
         ] ],
-        [ "SceneData", "namespace_core_1_1_cross_1_1_scene_data.html", [
-          [ "Interface", "namespace_core_1_1_cross_1_1_scene_data_1_1_interface.html", [
-            [ "ISceneData", "interface_core_1_1_cross_1_1_scene_data_1_1_interface_1_1_i_scene_data.html", null ]
+        [ "SceneData", "a00144.html", [
+          [ "Interface", "a00145.html", [
+            [ "ISceneData", "a00199.html", null ]
           ] ],
-          [ "CrossSceneDataHandler", "class_core_1_1_cross_1_1_scene_data_1_1_cross_scene_data_handler.html", "class_core_1_1_cross_1_1_scene_data_1_1_cross_scene_data_handler" ]
+          [ "CrossSceneDataHandler", "a00195.html", "a00195" ]
         ] ]
       ] ],
-      [ "CustomAttributes", "namespace_core_1_1_custom_attributes.html", [
-        [ "Editor", "namespace_core_1_1_custom_attributes_1_1_editor.html", [
-          [ "ValidationAttributeEditor", "class_core_1_1_custom_attributes_1_1_editor_1_1_validation_attribute_editor.html", "class_core_1_1_custom_attributes_1_1_editor_1_1_validation_attribute_editor" ]
+      [ "CustomAttributes", "a00146.html", [
+        [ "Editor", "a00147.html", [
+          [ "ValidationAttributeEditor", "a00235.html", "a00235" ]
         ] ],
-        [ "Headers", "namespace_core_1_1_custom_attributes_1_1_headers.html", [
-          [ "PrefabHeaderAttribute", "class_core_1_1_custom_attributes_1_1_headers_1_1_prefab_header_attribute.html", "class_core_1_1_custom_attributes_1_1_headers_1_1_prefab_header_attribute" ],
-          [ "ReferencesHeaderAttribute", "class_core_1_1_custom_attributes_1_1_headers_1_1_references_header_attribute.html", "class_core_1_1_custom_attributes_1_1_headers_1_1_references_header_attribute" ],
-          [ "SettingsHeaderAttribute", "class_core_1_1_custom_attributes_1_1_headers_1_1_settings_header_attribute.html", "class_core_1_1_custom_attributes_1_1_headers_1_1_settings_header_attribute" ],
-          [ "StateHeaderAttribute", "class_core_1_1_custom_attributes_1_1_headers_1_1_state_header_attribute.html", "class_core_1_1_custom_attributes_1_1_headers_1_1_state_header_attribute" ]
+        [ "Headers", "a00149.html", [
+          [ "PrefabHeaderAttribute", "a00239.html", "a00239" ],
+          [ "ReferencesHeaderAttribute", "a00243.html", "a00243" ],
+          [ "SettingsHeaderAttribute", "a00247.html", "a00247" ],
+          [ "StateHeaderAttribute", "a00251.html", "a00251" ]
         ] ],
-        [ "Validation", "namespace_core_1_1_custom_attributes_1_1_validation.html", [
-          [ "Base", "namespace_core_1_1_custom_attributes_1_1_validation_1_1_base.html", [
-            [ "ClassValidationAttribute", "class_core_1_1_custom_attributes_1_1_validation_1_1_base_1_1_class_validation_attribute.html", "class_core_1_1_custom_attributes_1_1_validation_1_1_base_1_1_class_validation_attribute" ],
-            [ "FieldValidationAttribute", "class_core_1_1_custom_attributes_1_1_validation_1_1_base_1_1_field_validation_attribute.html", "class_core_1_1_custom_attributes_1_1_validation_1_1_base_1_1_field_validation_attribute" ],
-            [ "ValidationAttribute", "class_core_1_1_custom_attributes_1_1_validation_1_1_base_1_1_validation_attribute.html", "class_core_1_1_custom_attributes_1_1_validation_1_1_base_1_1_validation_attribute" ]
+        [ "Validation", "a00150.html", [
+          [ "Base", "a00151.html", [
+            [ "ClassValidationAttribute", "a00255.html", "a00255" ],
+            [ "FieldValidationAttribute", "a00259.html", "a00259" ],
+            [ "ValidationAttribute", "a00263.html", "a00263" ]
           ] ],
-          [ "HasComponentAttribute", "class_core_1_1_custom_attributes_1_1_validation_1_1_has_component_attribute.html", "class_core_1_1_custom_attributes_1_1_validation_1_1_has_component_attribute" ],
-          [ "NotNullAttribute", "class_core_1_1_custom_attributes_1_1_validation_1_1_not_null_attribute.html", "class_core_1_1_custom_attributes_1_1_validation_1_1_not_null_attribute" ],
-          [ "OnlyOneInSceneAttribute", "class_core_1_1_custom_attributes_1_1_validation_1_1_only_one_in_scene_attribute.html", "class_core_1_1_custom_attributes_1_1_validation_1_1_only_one_in_scene_attribute" ],
-          [ "PrefabRequiredAttribute", "class_core_1_1_custom_attributes_1_1_validation_1_1_prefab_required_attribute.html", "class_core_1_1_custom_attributes_1_1_validation_1_1_prefab_required_attribute" ],
-          [ "SceneObjectRequiredAttribute", "class_core_1_1_custom_attributes_1_1_validation_1_1_scene_object_required_attribute.html", "class_core_1_1_custom_attributes_1_1_validation_1_1_scene_object_required_attribute" ]
+          [ "HasComponentAttribute", "a00267.html", "a00267" ],
+          [ "NotNullAttribute", "a00271.html", "a00271" ],
+          [ "OnlyOneInSceneAttribute", "a00275.html", "a00275" ],
+          [ "PrefabRequiredAttribute", "a00279.html", "a00279" ],
+          [ "SceneObjectRequiredAttribute", "a00283.html", "a00283" ]
         ] ]
       ] ],
-      [ "Editor", "namespace_core_1_1_editor.html", [
-        [ "CoreMenuItems", "class_core_1_1_editor_1_1_core_menu_items.html", null ],
-        [ "CustomInspectorCoreManager", "class_core_1_1_editor_1_1_custom_inspector_core_manager.html", "class_core_1_1_editor_1_1_custom_inspector_core_manager" ]
+      [ "Editor", "a00152.html", [
+        [ "CoreMenuItems", "a00287.html", null ],
+        [ "CustomInspectorCoreManager", "a00291.html", "a00291" ],
+        [ "TagHelper", "a00295.html", "a00295" ]
       ] ],
-      [ "Extensions", "namespace_core_1_1_extensions.html", [
-        [ "Named", "class_core_1_1_extensions_1_1_named.html", "class_core_1_1_extensions_1_1_named" ],
-        [ "UIStateTools", "class_core_1_1_extensions_1_1_u_i_state_tools.html", "class_core_1_1_extensions_1_1_u_i_state_tools" ],
-        [ "UnityEditorExtension", "class_core_1_1_extensions_1_1_unity_editor_extension.html", "class_core_1_1_extensions_1_1_unity_editor_extension" ],
-        [ "UnityExtensions", "class_core_1_1_extensions_1_1_unity_extensions.html", "class_core_1_1_extensions_1_1_unity_extensions" ]
+      [ "Extensions", "a00153.html", [
+        [ "Named", "a00299.html", "a00299" ],
+        [ "UIStateTools", "a00303.html", "a00303" ],
+        [ "UnityEditorExtension", "a00307.html", "a00307" ],
+        [ "UnityExtensions", "a00311.html", "a00311" ]
       ] ],
-      [ "FileSystem", "namespace_core_1_1_file_system.html", [
-        [ "FileSystem", "class_core_1_1_file_system_1_1_file_system.html", "class_core_1_1_file_system_1_1_file_system" ]
+      [ "FileSystem", "a00154.html", [
+        [ "FileSystem", "a00315.html", "a00315" ]
       ] ],
-      [ "Interface", "namespace_core_1_1_interface.html", [
-        [ "IDeepClone", "interface_core_1_1_interface_1_1_i_deep_clone.html", "interface_core_1_1_interface_1_1_i_deep_clone" ]
+      [ "Interface", "a00155.html", [
+        [ "IDeepClone", "a00319.html", "a00319" ]
       ] ],
-      [ "Managers", "namespace_core_1_1_managers.html", [
-        [ "Interface", "namespace_core_1_1_managers_1_1_interface.html", [
-          [ "IManager", "interface_core_1_1_managers_1_1_interface_1_1_i_manager.html", "interface_core_1_1_managers_1_1_interface_1_1_i_manager" ]
+      [ "Managers", "a00156.html", [
+        [ "Interface", "a00157.html", [
+          [ "IManager", "a00335.html", "a00335" ]
         ] ],
-        [ "BaseManager", "class_core_1_1_managers_1_1_base_manager.html", "class_core_1_1_managers_1_1_base_manager" ],
-        [ "CoreManager", "class_core_1_1_managers_1_1_core_manager.html", null ],
-        [ "GameManager", "class_core_1_1_managers_1_1_game_manager.html", "class_core_1_1_managers_1_1_game_manager" ]
+        [ "BaseManager", "a00323.html", "a00323" ],
+        [ "CoreManager", "a00327.html", null ],
+        [ "GameManager", "a00331.html", "a00331" ]
       ] ],
-      [ "ReferenceDistribution", "namespace_core_1_1_reference_distribution.html", [
-        [ "Interface", "namespace_core_1_1_reference_distribution_1_1_interface.html", [
-          [ "IDistributingReference", "interface_core_1_1_reference_distribution_1_1_interface_1_1_i_distributing_reference.html", null ]
+      [ "ReferenceDistribution", "a00158.html", [
+        [ "Interface", "a00159.html", [
+          [ "IDistributingReference", "a00339.html", null ]
         ] ],
-        [ "ReferenceDistributor", "class_core_1_1_reference_distribution_1_1_reference_distributor.html", "class_core_1_1_reference_distribution_1_1_reference_distributor" ]
+        [ "ReferenceDistributor", "a00343.html", "a00343" ]
       ] ],
-      [ "Serializable", "namespace_core_1_1_serializable.html", [
-        [ "Interface", "namespace_core_1_1_serializable_1_1_interface.html", [
-          [ "ISerializable", "interface_core_1_1_serializable_1_1_interface_1_1_i_serializable.html", "interface_core_1_1_serializable_1_1_interface_1_1_i_serializable" ]
+      [ "Serializable", "a00160.html", [
+        [ "Interface", "a00161.html", [
+          [ "ISerializable", "a00347.html", "a00347" ]
         ] ],
-        [ "Serializable", "class_core_1_1_serializable_1_1_serializable.html", "class_core_1_1_serializable_1_1_serializable" ]
+        [ "Serializable", "a00351.html", "a00351" ]
       ] ],
-      [ "Singletons", "namespace_core_1_1_singletons.html", [
-        [ "Singleton", "class_core_1_1_singletons_1_1_singleton.html", "class_core_1_1_singletons_1_1_singleton" ]
+      [ "Singletons", "a00162.html", [
+        [ "Singleton", "a00355.html", "a00355" ]
       ] ],
-      [ "UISystem", "namespace_core_1_1_u_i_system.html", [
-        [ "UI", "namespace_core_1_1_u_i_system_1_1_u_i.html", [
-          [ "ButtonWithText", "class_core_1_1_u_i_system_1_1_u_i_1_1_button_with_text.html", "class_core_1_1_u_i_system_1_1_u_i_1_1_button_with_text" ],
-          [ "SubPagesController", "class_core_1_1_u_i_system_1_1_u_i_1_1_sub_pages_controller.html", "class_core_1_1_u_i_system_1_1_u_i_1_1_sub_pages_controller" ],
-          [ "UIPage", "class_core_1_1_u_i_system_1_1_u_i_1_1_u_i_page.html", "class_core_1_1_u_i_system_1_1_u_i_1_1_u_i_page" ]
+      [ "UISystem", "a00163.html", [
+        [ "UI", "a00164.html", [
+          [ "ButtonWithText", "a00359.html", "a00359" ],
+          [ "SubPagesController", "a00363.html", "a00363" ],
+          [ "UIPage", "a00367.html", "a00367" ]
         ] ],
-        [ "UIManager", "class_core_1_1_u_i_system_1_1_u_i_manager.html", "class_core_1_1_u_i_system_1_1_u_i_manager" ]
+        [ "UIManager", "a00371.html", "a00371" ]
       ] ]
     ] ]
 ];

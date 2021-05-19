@@ -37,6 +37,12 @@ namespace Core.Samples.Scripts
             loadButton.onClick.AddListener(LoadScene);
         }
 
+        public IEnumerable<Delegate> GetSubscribers()
+        {
+            var delegates = new Delegate[] {(CustomEventTypes.IsValidDataParsedDelegate) IsDataValid, (CustomEventTypes.DataParsedDelegate) DataReceiver};
+            return delegates;
+        }
+
         private void IsDataValid(bool isValid)
         {
             loadButton.interactable = isValid;
@@ -54,12 +60,6 @@ namespace Core.Samples.Scripts
             if (_data == null) return;
             CrossSceneDataHandler.Instance.AddData(_data);
             SceneManager.LoadScene(scene, LoadSceneMode.Single);
-        }
-
-        public IEnumerable<Delegate> GetSubscribers()
-        {
-            var delegates = new Delegate[] {(CustomEventTypes.IsValidDataParsedDelegate) IsDataValid, (CustomEventTypes.DataParsedDelegate) DataReceiver};
-            return delegates;
         }
     }
 }

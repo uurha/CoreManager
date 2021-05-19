@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['basemanager_92',['BaseManager',['../class_core_1_1_managers_1_1_base_manager.html',1,'Core::Managers']]],
-  ['buttonwithtext_93',['ButtonWithText',['../class_core_1_1_u_i_system_1_1_u_i_1_1_button_with_text.html',1,'Core::UISystem::UI']]]
+  ['basemanager_93',['BaseManager',['../a00323.html',1,'Core::Managers']]],
+  ['buttonwithtext_94',['ButtonWithText',['../a00359.html',1,'Core::UISystem::UI']]]
 ];

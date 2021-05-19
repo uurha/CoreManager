@@ -23,6 +23,8 @@ namespace Core.Cross.Events
     /// <br/>public delegate void DelegateClass2(Type type2, Type type3);
     ///
     /// </code>
+    /// <seealso cref="Core.Cross.Events.Interface.ICrossEventHandler"/>
+    /// <seealso cref="Core.Cross.Events.Interface.ICrossEventSubscriber"/>
     /// </summary>
     public class EventTypes
     {

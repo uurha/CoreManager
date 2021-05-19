@@ -17,6 +17,7 @@ namespace Core.Cross.SceneData.Interface
 {
     /// <summary>
     /// Flag interface for classes or structs to pass between scenes
+    /// <seealso cref="Core.Cross.SceneData.CrossSceneDataHandler"/>
     /// </summary>
     public interface ISceneData
     {

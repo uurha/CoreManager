@@ -15,7 +15,7 @@
 
 namespace Core.Managers.Interface
 {
-    
+
     /// <summary>
     /// Interface for Manager declaration.
     /// </summary>

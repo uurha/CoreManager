@@ -18,6 +18,9 @@ using Core.CustomAttributes.Validation.Base;
 
 namespace Core.CustomAttributes.Validation
 {
+    /// <summary>
+    /// Attribute validating if field is not null or element in list not null.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
     public class NotNullAttribute : FieldValidationAttribute
     {

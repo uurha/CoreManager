@@ -18,7 +18,6 @@ using UnityEngine;
 
 namespace Core.Editor
 {
-    #if UNITY_EDITOR
     public static class TagHelper
     {
         public static void AddTag(string tag)
@@ -35,7 +34,7 @@ namespace Core.Editor
             so.Update();
         }
 
-        public static bool IsTagsExists(params string[] tags)
+        internal static bool IsTagsExists(params string[] tags)
         {
             if (GetTagsProperty(out var _, out var tagsProperty)) return false;
 
@@ -84,5 +83,4 @@ namespace Core.Editor
             return false;
         }
     }
-    #endif
 }

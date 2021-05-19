@@ -23,6 +23,7 @@ namespace Core.FileSystem
 {
     /// <summary>
     /// Class for saving Json file to disk.
+    /// <seealso cref="Serializable.Serializable"/>
     /// </summary>
     public class FileSystem
     {
@@ -130,7 +131,8 @@ namespace Core.FileSystem
             LoadInternal(fileName, onLoaded, onError, context);
         }
 
-        private async void LoadInternal<T>(string fileName, Action<T> onLoaded, Action<Exception> onError, Object context) where T : Serializable.Serializable
+        private async void LoadInternal<T>(string fileName, Action<T> onLoaded, Action<Exception> onError, Object context)
+            where T : Serializable.Serializable
         {
             try
             {

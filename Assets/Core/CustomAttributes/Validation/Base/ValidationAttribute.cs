@@ -17,6 +17,9 @@ using System;
 
 namespace Core.CustomAttributes.Validation.Base
 {
+    /// <summary>
+    /// Base attribute for validation
+    /// </summary>
     public abstract class ValidationAttribute : Attribute
     {
         private protected string _error;

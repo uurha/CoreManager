@@ -17,6 +17,9 @@ using UnityEngine;
 
 namespace Core.CustomAttributes.Validation.Base
 {
+    /// <summary>
+    /// Base attribute for class validation.
+    /// </summary>
     public abstract class ClassValidationAttribute : ValidationAttribute
     {
         protected ClassValidationAttribute(bool showError = false) : base(showError)

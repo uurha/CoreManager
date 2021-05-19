@@ -19,7 +19,8 @@ namespace Core.Samples.Scripts.EventTypes
 {
     public class CustomEventTypes : Cross.Events.EventTypes
     {
-        public delegate void IsValidDataParsedDelegate(bool isValid);
         public delegate void DataParsedDelegate(DataTransfer data);
+
+        public delegate void IsValidDataParsedDelegate(bool isValid);
     }
 }

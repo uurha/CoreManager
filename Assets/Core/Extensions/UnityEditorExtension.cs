@@ -18,6 +18,9 @@ using UnityEngine;
 
 namespace Core.Extensions
 {
+    /// <summary>
+    /// Extensions for Unity Editor classes
+    /// </summary>
     public static class UnityEditorExtension
     {
         /// <summary>

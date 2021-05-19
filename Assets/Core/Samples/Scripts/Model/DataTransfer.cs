@@ -20,9 +20,6 @@ namespace Core.Samples.Scripts.Model
 {
     public class DataTransfer : ISceneData
     {
-        public DataTransfer()
-        {
-        }
 
         public int IntData { get; set; }
 

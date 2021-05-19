@@ -23,6 +23,7 @@ namespace Core.Cross.SceneData
 {
     /// <summary>
     /// Singleton for data passing between scenes
+    /// <seealso cref="Core.Cross.SceneData.Interface.ISceneData"/>
     /// </summary>
     [OnlyOneInScene]
     public class CrossSceneDataHandler : Singleton<CrossSceneDataHandler>

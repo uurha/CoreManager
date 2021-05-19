@@ -27,7 +27,6 @@ namespace Core.CustomAttributes.Editor
     [Serializable]
     internal class ErrorObjectPair : Named<string, Object>
     {
-
         public ErrorObjectPair(string error, Object obj)
         {
             _key = error.Replace("\n", " ");

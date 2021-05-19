@@ -38,7 +38,7 @@ namespace Core.Extensions
         {
             return lci?.Equals(rci) == false;
         }
-        
+
         /// <summary>
         /// Checks if left item is null and equals right item
         /// </summary>
@@ -102,6 +102,7 @@ namespace Core.Extensions
             if (TryToFindObjectsOfType(out IEnumerable<T> bufferResults)) result = bufferResults.FirstOrDefault();
             return result != null;
         }
+
         /// <summary>
         /// Trying to find objects on scene what inherited from T
         /// </summary>

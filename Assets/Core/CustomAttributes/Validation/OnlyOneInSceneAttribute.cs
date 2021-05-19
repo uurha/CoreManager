@@ -21,7 +21,10 @@ using Object = UnityEngine.Object;
 
 namespace Core.CustomAttributes.Validation
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
+    /// <summary>
+    /// Attribute validating if class only one in scene.
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     public class OnlyOneInSceneAttribute : ClassValidationAttribute
     {
         private Type _type;

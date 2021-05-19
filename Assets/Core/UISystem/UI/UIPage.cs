@@ -34,13 +34,13 @@ namespace Core.UISystem.UI
 
         [SerializeField] [PrefabRequired] private protected List<GameObject> elements;
 
+        private CanvasGroup _canvasGroup;
+
         public ButtonWithText PageButtonPrefab => pageButtonPrefab;
 
         public string PageName => pageName;
 
         public CanvasGroup Group => _canvasGroup;
-
-        private CanvasGroup _canvasGroup;
 
         /// <summary>
         /// Initializes elements for this UIPage

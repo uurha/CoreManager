@@ -15,7 +15,6 @@
 
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Internal;
 
 namespace Core.Extensions
 {

@@ -30,12 +30,9 @@ namespace Core.Samples.Scripts.Demo
         [SerializeField] [NotNull] private TMP_InputField intField;
         [SerializeField] [NotNull] private TMP_InputField colorField;
         [SerializeField] [NotNull] private TMP_InputField stringField;
-
-        private event CustomEventTypes.DataParsedDelegate DataParsedEvent;
-        private event CustomEventTypes.IsValidDataParsedDelegate IsValidDataParsedEvent;
+        private readonly DataTransfer _data = new DataTransfer();
 
         private readonly bool[] _isFieldsValid = new bool[3];
-        private readonly DataTransfer _data = new DataTransfer();
 
         private void Awake()
         {
@@ -43,6 +40,28 @@ namespace Core.Samples.Scripts.Demo
             colorField.onValueChanged.AddListener(ColorValidate);
             stringField.onValueChanged.AddListener(StringValidate);
         }
+
+        public void InvokeEvents()
+        {
+            IsValidDataParsedEvent?.Invoke(false);
+        }
+
+        public void Subscribe(IEnumerable<Delegate> subscribers)
+        {
+            var enumerable = subscribers as Delegate[] ?? subscribers.ToArray();
+            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.DataParsedDelegate>()) DataParsedEvent += parsedDelegate;
+            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.IsValidDataParsedDelegate>()) IsValidDataParsedEvent += parsedDelegate;
+        }
+
+        public void Unsubscribe(IEnumerable<Delegate> unsubscribers)
+        {
+            var enumerable = unsubscribers as Delegate[] ?? unsubscribers.ToArray();
+            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.DataParsedDelegate>()) DataParsedEvent -= parsedDelegate;
+            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.IsValidDataParsedDelegate>()) IsValidDataParsedEvent -= parsedDelegate;
+        }
+
+        private event CustomEventTypes.DataParsedDelegate DataParsedEvent;
+        private event CustomEventTypes.IsValidDataParsedDelegate IsValidDataParsedEvent;
 
         private void IntValidate(string data)
         {
@@ -62,6 +81,7 @@ namespace Core.Samples.Scripts.Demo
         private void ColorValidate(string data)
         {
             var bufferData = data.IndexOf('#') != 0 ? "#" + data : data;
+
             if (!ColorUtility.TryParseHtmlString(bufferData, out var colorData))
             {
                 colorField.textComponent.color = Color.red;
@@ -78,7 +98,7 @@ namespace Core.Samples.Scripts.Demo
 
         private void StringValidate(string data)
         {
-            if(data.Length <= 0)
+            if (data.Length <= 0)
             {
                 _isFieldsValid[2] = false;
                 CheckValidity();
@@ -93,44 +113,8 @@ namespace Core.Samples.Scripts.Demo
         {
             var isValid = _isFieldsValid.All(x => x);
             IsValidDataParsedEvent?.Invoke(isValid);
-            
             if (!isValid) return;
             DataParsedEvent?.Invoke(_data);
-        }
-
-        public void InvokeEvents()
-        {
-            IsValidDataParsedEvent?.Invoke(false);
-        }
-
-        public void Subscribe(IEnumerable<Delegate> subscribers)
-        {
-            var enumerable = subscribers as Delegate[] ?? subscribers.ToArray();
-
-            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.DataParsedDelegate>())
-            {
-                DataParsedEvent += parsedDelegate;
-            }
-
-            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.IsValidDataParsedDelegate>())
-            {
-                IsValidDataParsedEvent += parsedDelegate;
-            }
-        }
-
-        public void Unsubscribe(IEnumerable<Delegate> unsubscribers)
-        {
-            var enumerable = unsubscribers as Delegate[] ?? unsubscribers.ToArray();
-
-            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.DataParsedDelegate>())
-            {
-                DataParsedEvent -= parsedDelegate;
-            }
-
-            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.IsValidDataParsedDelegate>())
-            {
-                IsValidDataParsedEvent -= parsedDelegate;
-            }
         }
     }
 

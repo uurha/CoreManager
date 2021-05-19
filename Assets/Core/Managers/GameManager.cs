@@ -22,6 +22,8 @@ namespace Core.Managers
 {
     /// <summary>
     /// Class responsible for reference initialization
+    /// <seealso cref="Core.Cross.Events.Interface.ICrossEventHandler"/>
+    /// <seealso cref="Core.Cross.Events.Interface.ICrossEventSubscriber"/>
     /// </summary>
     public static class GameManager
     {
@@ -68,9 +70,7 @@ namespace Core.Managers
             if (!subscriptionsNeeded) return;
 
             if (UnityExtensions.TryToFindObjectsOfType(out IList<ICrossEventSubscriber> crossEventSubscribers))
-            {
                 handler.Subscribe(crossEventSubscribers.SelectMany(x => x.GetSubscribers()));
-            }
             if (invokeNeeded) handler.InvokeEvents();
         }
 

@@ -23,6 +23,10 @@ using UnityEngine;
 
 namespace Core.ReferenceDistribution
 {
+    /// <summary>
+    /// Class responsible for reference distribution inside one scene.
+    /// <remarks> Strongly recommended to use <see cref="Core.Cross.Events"/> and <see cref="Core.Cross.Events.Interface"/> instead of direct reference serialization.</remarks>
+    /// </summary>
     [RequireComponent(typeof(CoreManager))]
     [OnlyOneInScene]
     public class ReferenceDistributor : MonoBehaviour

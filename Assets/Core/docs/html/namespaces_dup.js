@@ -1,4 +1,4 @@
 var namespaces_dup =
 [
-    [ "Core", "namespace_core.html", "namespace_core" ]
+    [ "Core", "a00140.html", "a00140" ]
 ];
