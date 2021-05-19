@@ -33,21 +33,13 @@ namespace Core.Editor
     {
         private CoreManager _manager;
 
-        private const string EnableReleaseLogs = "ENABLE_RELEASE_LOGS";
-
-        private Dictionary<string, bool> Symbols = new Dictionary<string, bool> {{EnableReleaseLogs, false}};
+        private readonly SymbolDefiner _symbolDefiner = new SymbolDefiner();
 
         protected override void OnEnable()
         {
             base.OnEnable();
             _manager = (CoreManager) target;
-            var list = AllDefines();
-
-            var buffer = new Dictionary<string, bool>(Symbols);
-            foreach (var item in buffer.Keys)
-            {
-                Symbols[item] = !list.Contains(item);
-            }
+            _symbolDefiner.OnEnable();
         }
 
         public override void OnInspectorGUI()
@@ -61,13 +53,8 @@ namespace Core.Editor
                                   where GUILayout.Button($"Define Tag: {value}")
                                   select value)
                 TagHelper.AddTag(value);
-
-            var bufferSymbols = new Dictionary<string, bool>(Symbols);
-            foreach (var symbol in from symbol in bufferSymbols let text = symbol.Value ? $"Define {symbol.Key}" : $"Undefine {symbol.Key}" where GUILayout.Button(text) select symbol)
-            {
-                Symbols[symbol.Key] = !symbol.Value;
-                SetScriptingDefine(symbol);
-            }
+            
+            _symbolDefiner.ShowSymbolsButtons();
         }
 
         private static IEnumerable<FieldInfo> GetConstants(Type type)
@@ -76,30 +63,5 @@ namespace Core.Editor
             return fieldInfos.Where(fi => fi.IsLiteral && !fi.IsInitOnly).ToList();
         }
 
-        private void SetScriptingDefine(KeyValuePair<string, bool> pair)
-        {
-            var allDefines = AllDefines();
-
-            if (pair.Value)
-            {
-                allDefines.Add(pair.Key);
-            }
-            else
-            {
-                allDefines.Remove(pair.Key);
-            }
-
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(
-                                                             EditorUserBuildSettings.selectedBuildTargetGroup,
-                                                             string.Join(";", allDefines.ToArray()));
-            AssetDatabase.Refresh();
-        }
-
-        private static List<string> AllDefines()
-        {
-            var definesString = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
-            var allDefines = definesString.Split(';').ToList();
-            return allDefines;
-        }
     }
 }
