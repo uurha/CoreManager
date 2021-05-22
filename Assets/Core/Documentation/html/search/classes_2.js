@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['eventtypes_106',['EventTypes',['../class_core_1_1_cross_1_1_events_1_1_event_types.html',1,'Core::Cross::Events']]]
-];

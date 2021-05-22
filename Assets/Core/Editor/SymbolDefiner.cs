@@ -33,17 +33,25 @@ namespace Core.Editor
             }
         }
 
+        public void DefineSymbol(string key)
+        {
+            if (!_symbols.TryGetValue(key, out var value)) return;
+            _symbols[key] = !value;
+            SetScriptingDefine(_symbols.FirstOrDefault(x => x.Key.Equals(key)));
+        }
+
         private void SetScriptingDefine(KeyValuePair<string, bool> pair)
         {
             var allDefines = AllDefines();
+            allDefines.RemoveAll(string.IsNullOrWhiteSpace);
 
             if (pair.Value)
             {
-                allDefines.Add(pair.Key);
+                if (!allDefines.Contains(pair.Key)) allDefines.Add(pair.Key);
             }
             else
             {
-                allDefines.Remove(pair.Key);
+                allDefines.RemoveAll(x => x == pair.Key);
             }
 
             PlayerSettings.SetScriptingDefineSymbolsForGroup(
@@ -65,8 +73,8 @@ namespace Core.Editor
         public void OnEnable()
         {
             var list = AllDefines();
-
             var buffer = new Dictionary<string, bool>(_symbols);
+
             foreach (var item in buffer.Keys)
             {
                 _symbols[item] = !list.Contains(item);
