@@ -19,7 +19,7 @@ using UnityEngine;
 namespace Core.CustomAttributes.Headers
 {
     /// <summary>
-    /// Replace for Header("Prefabs")
+    /// Replacement for Header("Prefabs")
     /// </summary>
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
     public class PrefabHeaderAttribute : HeaderAttribute

@@ -22,7 +22,7 @@ using Core.Singletons;
 namespace Core.Cross.SceneData
 {
     /// <summary>
-    /// Singleton for data passing between scenes
+    /// Singleton for passing data between scenes
     /// <seealso cref="Core.Cross.SceneData.Interface.ISceneData"/>
     /// </summary>
     [OnlyOneInScene]

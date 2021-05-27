@@ -59,7 +59,7 @@ namespace Core.FileSystem
         }
 
         /// <summary>
-        /// Saves class to file with name of class.
+        /// Saves class to the file with the name of class.
         /// </summary>
         /// <param name="data"></param>
         /// <param name="onError"></param>
@@ -71,7 +71,7 @@ namespace Core.FileSystem
         }
 
         /// <summary>
-        /// Saves class to file.
+        /// Saves your class to file.
         /// </summary>
         /// <param name="data"></param>
         /// <param name="fileName"></param>

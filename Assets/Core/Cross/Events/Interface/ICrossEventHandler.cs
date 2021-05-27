@@ -34,7 +34,7 @@ namespace Core.Cross.Events.Interface
     public interface ICrossEventHandler
     {
         /// <summary>
-        /// Invoking events what need to be invoked on scene initializing.
+        /// Invoking events that need to be invoked on scene initialization.
         /// </summary>
         public void InvokeEvents();
 

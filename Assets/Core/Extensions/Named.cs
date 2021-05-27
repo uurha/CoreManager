@@ -20,7 +20,7 @@ using UnityEngine;
 namespace Core.Extensions
 {
     /// <summary>
-    /// Class for dictionary replacing in Unity Inspector
+    /// Replacement for dictionary in Unity Inspector
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
@@ -49,7 +49,7 @@ namespace Core.Extensions
     }
 
     /// <summary>
-    /// Class for more complex list when dictionary
+    /// More complex list for dictionary
     /// </summary>
     /// <typeparam name="TName"></typeparam>
     /// <typeparam name="TKey"></typeparam>

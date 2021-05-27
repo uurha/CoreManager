@@ -82,7 +82,7 @@ namespace Core.Editor
         }
 
         /// <summary>
-        /// Used for check already defined symbols OnEnable
+        /// Check for whether the are already defined symbols OnEnable
         /// </summary>
         public void OnEnable()
         {

@@ -30,7 +30,7 @@ namespace Core.Managers
         private static IList<ICrossEventHandler> _handlers;
 
         /// <summary>
-        /// Initialising cross subscriptions for all handlers in scene.
+        /// Initialising cross subscriptions for all handlers in the scene.
         /// </summary>
         public static void InitializeSubscriptions()
         {
@@ -41,7 +41,7 @@ namespace Core.Managers
         }
 
         /// <summary>
-        /// Subscribing event subscriber after scene Awoken to event handlers.
+        /// Subscribing event subscriber after scene has Awoken to event handlers.
         /// </summary>
         /// <param name="subscriber"></param>
         public static void Subscribe(ICrossEventSubscriber subscriber)
@@ -50,7 +50,7 @@ namespace Core.Managers
         }
 
         /// <summary>
-        /// Unsubscribing event subscriber after scene Awoken from event handlers.
+        /// Unsubscribing event subscriber after scene has Awoken from event handlers.
         /// </summary>
         /// <param name="subscriber"></param>
         public static void Unsubscribe(ICrossEventSubscriber subscriber)
@@ -59,7 +59,7 @@ namespace Core.Managers
         }
 
         /// <summary>
-        /// Adding new handler after scene Awoken to list of event handlers.
+        /// Adding new handler after scene has Awoken to list of event handlers.
         /// </summary>
         /// <param name="handler"></param>
         /// <param name="subscriptionsNeeded">If false invokeNeeded will not be called</param>
@@ -75,7 +75,7 @@ namespace Core.Managers
         }
 
         /// <summary>
-        /// Removing event handler after scene Awoken from list
+        /// Removing event handler after scene has Awoken from list
         /// </summary>
         /// <param name="handler"></param>
         public static void RemoveHandler(ICrossEventHandler handler)
