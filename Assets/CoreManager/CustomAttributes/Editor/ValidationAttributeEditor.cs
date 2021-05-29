@@ -22,7 +22,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Core.CustomAttributes.Editor
+namespace CoreManager.CustomAttributes.Editor
 {
     /// <summary>
     /// Custom editor for Unity.Object class.

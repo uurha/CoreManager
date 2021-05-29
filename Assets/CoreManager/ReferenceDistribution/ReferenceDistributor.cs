@@ -24,7 +24,7 @@ namespace CoreManager.ReferenceDistribution
 {
     /// <summary>
     /// Class responsible for reference distribution inside one scene.
-    /// <remarks> Strongly recommended to use <see cref="Core.Cross.Events"/> and <see cref="Core.Cross.Events.Interface"/> instead of direct reference serialization.</remarks>
+    /// <remarks> Strongly recommended to use <see cref="CoreManager.Cross.Events"/> and <see cref="CoreManager.Cross.Events.Interface"/> instead of direct reference serialization.</remarks>
     /// </summary>
     [RequireComponent(typeof(Core.CoreManager))]
     [OneAndOnly]

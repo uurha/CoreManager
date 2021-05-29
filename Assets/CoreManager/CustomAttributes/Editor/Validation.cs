@@ -22,7 +22,7 @@ using CoreManager.Extensions;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Core.CustomAttributes.Editor
+namespace CoreManager.CustomAttributes.Editor
 {
     [Serializable]
     internal class ErrorObjectPair : Named<string, Object>

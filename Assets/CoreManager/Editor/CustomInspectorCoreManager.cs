@@ -17,12 +17,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Core.CustomAttributes.Editor;
 using CoreManager.Core;
+using CoreManager.CustomAttributes.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Core.Editor
+namespace CoreManager.Editor
 {
     /// <summary>
     /// Custom Editor CoreManager class.

@@ -19,7 +19,7 @@ using CoreManager.Core;
 using UnityEditor;
 using UnityEngine;
 
-namespace Core.Editor
+namespace CoreManager.Editor
 {
     /// <summary>
     /// Class for "Scripting Define Symbols" defining from CoreManager Inspector.

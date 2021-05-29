@@ -18,7 +18,7 @@ using CoreManager.Cross.SceneData;
 using UnityEditor;
 using UnityEngine;
 
-namespace Core.Editor
+namespace CoreManager.Editor
 {
     public static class CoreMenuItems
     {

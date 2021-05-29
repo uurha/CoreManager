@@ -20,7 +20,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Core.CustomAttributes.Editor
+namespace CoreManager.CustomAttributes.Editor
 {
     /// <summary>
     /// Class responsible for pre build validation checks

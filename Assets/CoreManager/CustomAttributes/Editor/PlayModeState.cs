@@ -18,7 +18,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Core.CustomAttributes.Editor
+namespace CoreManager.CustomAttributes.Editor
 {
     /// <summary>
     /// Class responsible for pre play mode validation checks
