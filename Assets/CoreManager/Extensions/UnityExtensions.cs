@@ -29,7 +29,7 @@ namespace CoreManager.Extensions
     public static class UnityExtensions
     {
         /// <summary>
-        /// Checks if left item is null and not equals right item
+        /// Checks whether the left item is null and doesn't equal right item
         /// </summary>
         /// <param name="lci">Left compare item</param>
         /// <param name="rci">Right compare item</param>
@@ -40,7 +40,7 @@ namespace CoreManager.Extensions
         }
 
         /// <summary>
-        /// Checks if left item is null and equals right item
+        /// Checks whether the left item is null and equals right item
         /// </summary>
         /// <param name="lci">Left compare item</param>
         /// <param name="rci">Right compare item</param>
@@ -51,7 +51,7 @@ namespace CoreManager.Extensions
         }
 
         /// <summary>
-        /// Clearing list and destroying it items
+        /// Clearing list and destroying its items
         /// </summary>
         /// <param name="list"></param>
         /// <typeparam name="T"></typeparam>
@@ -91,7 +91,7 @@ namespace CoreManager.Extensions
         }
 
         /// <summary>
-        /// Trying to find object on scene what inherited from T
+        /// Trying to find object on scene that was inherited from T
         /// </summary>
         /// <param name="result"></param>
         /// <typeparam name="T"></typeparam>
@@ -104,7 +104,7 @@ namespace CoreManager.Extensions
         }
 
         /// <summary>
-        /// Trying to find objects on scene what inherited from T
+        /// Trying to find objects on scene that were inherited from T
         /// </summary>
         /// <param name="result"></param>
         /// <typeparam name="T"></typeparam>
@@ -116,7 +116,7 @@ namespace CoreManager.Extensions
         }
 
         /// <summary>
-        /// Trying to find object on scene what inherited from T
+        /// Trying to find objects on scene that were inherited from T and return a list of said objects
         /// </summary>
         /// <param name="result"></param>
         /// <typeparam name="T"></typeparam>

@@ -16,24 +16,24 @@
 namespace CoreManager.Interface
 {
     /// <summary>
-    /// Interface for deep clone
+    /// Interface for deep cloning
     /// </summary>
     public interface IDeepClone<out T> : IDeepClone
     {
         /// <summary>
-        /// Clones instance of object
+        /// Clones instance of an object
         /// </summary>
         /// <returns></returns>
         public new T DeepClone();
     }
 
     /// <summary>
-    /// Interface for deep clone
+    /// Interface for deep cloning
     /// </summary>
     public interface IDeepClone
     {
         /// <summary>
-        /// Clones instance of object
+        /// Clones instance of an object
         /// </summary>
         /// <returns></returns>
         public object DeepClone();

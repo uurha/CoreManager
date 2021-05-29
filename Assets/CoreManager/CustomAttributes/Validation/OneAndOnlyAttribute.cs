@@ -22,7 +22,7 @@ using Object = UnityEngine.Object;
 namespace CoreManager.CustomAttributes.Validation
 {
     /// <summary>
-    /// Attribute validating if class only one in scene.
+    /// Attribute validating whether there is only one copy of this class in the scene.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public class OneAndOnlyAttribute : ClassValidationAttribute

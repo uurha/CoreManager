@@ -26,7 +26,7 @@ namespace Core.CustomAttributes.Editor
 {
     /// <summary>
     /// Custom editor for Unity.Object class.
-    /// If you want to create own custom editor inherit this class.
+    /// If you want to create your own custom editor inherit from this class.
     /// <seealso cref="ValidationAttribute"/>
     /// <seealso cref="FieldValidationAttribute"/>
     /// <seealso cref="ClassValidationAttribute"/>

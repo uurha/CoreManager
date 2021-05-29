@@ -17,7 +17,7 @@ namespace CoreManager.Serializable.Interface
 {
     /// <summary>
     /// Interface for unique objects.
-    /// For example, for objects that need to be saved in Json or objects with the same data, but with different identifiers
+    /// For example, you can use it for objects that need to be saved in Json or objects with the same data, but with different identifiers
     /// </summary>
     public interface IUnique
     {

@@ -19,7 +19,7 @@ using UnityEngine;
 namespace CoreManager.CustomAttributes.Headers
 {
     /// <summary>
-    /// Replace for Header("State")
+    /// Replacement for Header("State")
     /// </summary>
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
     public class StateHeaderAttribute : HeaderAttribute

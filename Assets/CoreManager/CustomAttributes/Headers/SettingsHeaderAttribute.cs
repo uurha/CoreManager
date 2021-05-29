@@ -19,7 +19,7 @@ using UnityEngine;
 namespace CoreManager.CustomAttributes.Headers
 {
     /// <summary>
-    /// Replace for Header("Settings")
+    /// Replacement for Header("Settings")
     /// </summary>
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
     public class SettingsHeaderAttribute : HeaderAttribute

@@ -24,7 +24,7 @@ using UnityEngine;
 namespace CoreManager.Core
 {
     /// <summary>
-    /// Manager for initialization of sub manager in scene.
+    /// Manager for initialization of sub manager in the scene.
     /// <seealso cref="ReferenceDistributor"/>
     /// <seealso cref="ICore"/>
     /// </summary>

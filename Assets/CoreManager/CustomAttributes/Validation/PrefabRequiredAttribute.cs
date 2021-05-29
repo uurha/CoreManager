@@ -21,7 +21,7 @@ using Object = UnityEngine.Object;
 namespace CoreManager.CustomAttributes.Validation
 {
     /// <summary>
-    /// Attribute validating if object is prefab or all items in list are prefabs.
+    /// Attribute validating whether the object or all items in list are prefabs.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
     public class PrefabRequiredAttribute : FieldValidationAttribute
