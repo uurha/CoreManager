@@ -42,8 +42,8 @@ namespace CorePlugin.CustomAttributes.Editor
 
         protected virtual void OnEnable()
         {
-            _fields = Validation.GetAllFields(target.GetType());
-            _classAttributes = Validation.GetAllAttributes(target.GetType());
+            _fields = ValidationEditor.GetAllFields(target.GetType());
+            _classAttributes = ValidationEditor.GetAllAttributes(target.GetType());
         }
 
         public override void OnInspectorGUI()
@@ -72,14 +72,14 @@ namespace CorePlugin.CustomAttributes.Editor
         {
             if (attribute.Validate(field, target)) return;
             UnityEditorExtension.HelpBox(attribute.ErrorMessage, MessageType.Error);
-            if (attribute.ShowError && _shouldShowErrors) Validation.ShowError(attribute.ErrorMessage, target);
+            if (attribute.ShowError && _shouldShowErrors) ValidationEditor.ShowError(attribute.ErrorMessage, target);
         }
 
         private void ValidateClassAttribute(ClassValidationAttribute attribute)
         {
             if (attribute.Validate(target)) return;
             UnityEditorExtension.HelpBox(attribute.ErrorMessage, MessageType.Error);
-            if (attribute.ShowError && _shouldShowErrors) Validation.ShowError(attribute.ErrorMessage, target);
+            if (attribute.ShowError && _shouldShowErrors) ValidationEditor.ShowError(attribute.ErrorMessage, target);
         }
 
         private SerializedProperty GetSerializedProperty(FieldInfo field)

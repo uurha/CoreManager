@@ -25,6 +25,7 @@ namespace CorePlugin.CustomAttributes.Editor
     /// <summary>
     /// Class responsible for pre build validation checks
     /// </summary>
+    //TODO: Find better name for internal class
     [InitializeOnLoad]
     internal static class BuildState
     {
@@ -60,7 +61,7 @@ namespace CorePlugin.CustomAttributes.Editor
 
             return objs.Where(x => x.obj != null)
                        .Aggregate(errors, (current, value) =>
-                                              current.Concat(Validation.ErrorObjectPairs(value.obj)
+                                              current.Concat(ValidationEditor.ErrorObjectPairs(value.obj)
                                                                        .Select(x =>
                                                                                {
                                                                                    x.Key += $"\n<b>Prefab path:</b> <i>\"{value.path}\"</i>";
@@ -81,7 +82,7 @@ namespace CorePlugin.CustomAttributes.Editor
 
                     errors = scene.GetRootGameObjects()
                                   .Aggregate(errors, (current, gameObject) =>
-                                                         current.Concat(Validation.ErrorObjectPairs(gameObject)
+                                                         current.Concat(ValidationEditor.ErrorObjectPairs(gameObject)
                                                                                   .Select(x =>
                                                                                           {
                                                                                               x.Key += $"\n<b>Scene path</b>: <i>\"{s.path}\"</i>";
@@ -90,7 +91,7 @@ namespace CorePlugin.CustomAttributes.Editor
                 }
             else
                 errors = SceneManager.GetActiveScene().GetRootGameObjects()
-                                     .Aggregate(errors, (current, rootGameObject) => current.Concat(Validation.ErrorObjectPairs(rootGameObject)));
+                                     .Aggregate(errors, (current, rootGameObject) => current.Concat(ValidationEditor.ErrorObjectPairs(rootGameObject)));
             EditorSceneManager.OpenScene(openScene);
             return errors;
         }

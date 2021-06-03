@@ -34,7 +34,7 @@ namespace CorePlugin.CustomAttributes.Editor
         }
     }
 
-    internal static class Validation
+    internal static class ValidationEditor
     {
         public static IEnumerable<FieldInfo> GetAllFields(Type t)
         {

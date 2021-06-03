@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using CorePlugin.Cross.SceneData.Interface;
 using CorePlugin.CustomAttributes.Validation;
 using CorePlugin.Singletons;
+using UnityEngine;
 
 namespace CorePlugin.Cross.SceneData
 {

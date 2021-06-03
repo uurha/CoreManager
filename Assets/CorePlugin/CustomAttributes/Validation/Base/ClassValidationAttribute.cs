@@ -20,6 +20,7 @@ namespace CorePlugin.CustomAttributes.Validation.Base
     /// <summary>
     /// Base attribute for class validation.
     /// </summary>
+    //TODO: Create Custom [RequireComponent] with defining public properties
     public abstract class ClassValidationAttribute : ValidationAttribute
     {
         protected ClassValidationAttribute(bool showError = false) : base(showError)

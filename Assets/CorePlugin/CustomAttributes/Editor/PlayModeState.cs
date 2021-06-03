@@ -23,6 +23,7 @@ namespace CorePlugin.CustomAttributes.Editor
     /// <summary>
     /// Class responsible for pre play mode validation checks
     /// </summary>
+    //TODO: Find better name for internal class
     [InitializeOnLoad]
     internal static class PlayModeState
     {
@@ -35,7 +36,7 @@ namespace CorePlugin.CustomAttributes.Editor
         private static void LogPlayModeState(PlayModeStateChange state)
         {
             if (state != PlayModeStateChange.ExitingEditMode) return;
-            var pairs = Validation.ErrorObjectPairs();
+            var pairs = ValidationEditor.ErrorObjectPairs(); //TODO: validate sub prefabs on opened scene
             var errorObjectPairs = pairs as ErrorObjectPair[] ?? pairs.ToArray();
             if (IsPlayModeAvailable(errorObjectPairs)) return;
             EditorApplication.Beep();

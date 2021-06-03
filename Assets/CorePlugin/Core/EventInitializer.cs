@@ -27,7 +27,7 @@ namespace CorePlugin.Core
     /// </summary>
     public static class EventInitializer
     {
-        private static IList<IEventHandler> _handlers;
+        private static IList<IEventHandler> _handlers; //TODO: Better handlers storage
 
         /// <summary>
         /// Initialising cross subscriptions for all handlers in the scene.
