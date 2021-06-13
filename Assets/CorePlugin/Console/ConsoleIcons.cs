@@ -17,7 +17,7 @@ using UnityEngine;
 
 namespace CorePlugin.Console
 {
-    internal sealed class LogIcons : ScriptableObject
+    internal sealed class ConsoleIcons : ScriptableObject
     {
         [SerializeField] private Sprite infoActive;
         [SerializeField] private Sprite infoInactive;

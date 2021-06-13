@@ -43,14 +43,14 @@ namespace CorePlugin.Console
         [NotNull] [SerializeField] private ScrollRect logsScrollRect;
         [NotNull] [SerializeField] private ScrollRect stackTraceScrollRect;
         [NotNull] [SerializeField] private VerticalLayoutGroup layoutGroup;
-        [NotNull] [SerializeField] private List<LogToggle> logButtons;
+        [NotNull] [SerializeField] private List<ConsoleLogToggle> logButtons;
 
         [PrefabHeader]
-        [PrefabRequired] [SerializeField] private LogMessage consoleMessagePrefab;
+        [PrefabRequired] [SerializeField] private ConsoleMessage consoleMessagePrefab;
 
         private Action<HashSet<LogType>, int> onLogCountChanged;
 
-        private readonly Dictionary<LogType, List<LogMessage>> _logs = new Dictionary<LogType, List<LogMessage>>();
+        private readonly Dictionary<LogType, List<ConsoleMessage>> _logs = new Dictionary<LogType, List<ConsoleMessage>>();
 
         private readonly HashSet<LogType> _displayedLogTypes = new HashSet<LogType>
                                                                {
@@ -95,7 +95,7 @@ namespace CorePlugin.Console
             stackTraceScrollRect.content.sizeDelta = new Vector2(sizeDelta.x,  stackTraceTextField.GetPreferredValues(stackTrace).y);
         }
 
-        private void DisplayByLogType(LogMessage message)
+        private void DisplayByLogType(ConsoleMessage message)
         {
             message.SetActive(_displayedLogTypes.Contains(message.Type));
         }
@@ -147,7 +147,7 @@ namespace CorePlugin.Console
             {
                 foreach (var message in _logs.Values.SelectMany(messages => messages))
                 {
-                    message.SetActive(true);
+                    message.SetActive(true).ClearHighlight();
                 }
                 return;
             }
@@ -155,7 +155,16 @@ namespace CorePlugin.Console
             var regex = new Regex(searchText, RegexOptions.IgnoreCase);
             foreach (var message in _logs.Values.SelectMany(messages => messages))
             {
-                message.SetActive(regex.IsMatch(message.LogText));
+                var isMatch = regex.IsMatch(message.LogText);
+                
+                if(isMatch)
+                {
+                    message.SetActive(true).HighlightText(searchText);
+                }
+                else
+                {
+                    message.SetActive(false);
+                }
             }
         }
 
@@ -171,7 +180,7 @@ namespace CorePlugin.Console
             }
             else
             {
-                _logs.Add(type, new List<LogMessage> {instance});
+                _logs.Add(type, new List<ConsoleMessage> {instance});
             }
             onLogCountChanged?.Invoke(LogTypes(type), _logs[type].Count);
             DisplayByLogType(instance);

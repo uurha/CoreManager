@@ -15,6 +15,7 @@
 
 using System;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using CorePlugin.Extensions;
 using TMPro;
 using UnityEngine;
@@ -25,9 +26,8 @@ namespace CorePlugin.Console
     /// <summary>
     /// Log message for <see cref="CorePlugin.Console.RuntimeConsole"/>
     /// </summary>
-    //TODO: Make found char highlighted
     [RequireComponent(typeof(CanvasGroup), typeof(LayoutElement))]
-    public class LogMessage : MonoBehaviour
+    public class ConsoleMessage : MonoBehaviour
     {
         [SerializeField] private TMP_Text textField;
         [SerializeField] private Image icon;
@@ -46,14 +46,39 @@ namespace CorePlugin.Console
 
         public string StackTrace => _stackTrace;
 
-        /// <summary>
-        /// Subscribes action to message button
-        /// </summary>
-        /// <param name="onClickAction"></param>
-        /// <returns></returns>
-        public LogMessage SubscribeOnButtonClick(Action<string> onClickAction)
+        private string MarkEnd()
         {
-            button.onClick.AddListener(() => onClickAction?.Invoke(CombinedStackTrace(LogText, StackTrace, _currentSettings)));
+            return $"</mark>";
+        }
+
+        private string MarkStart()
+        {
+            var htmlStringRGBA = ColorUtility.ToHtmlStringRGBA(_currentSettings.HighlightColor);
+            var markStart = string.Format("<mark=#{0}>", htmlStringRGBA);
+            return markStart;
+        }
+        
+        /// <summary>
+        /// Clear highlight marks
+        /// </summary>
+        public void ClearHighlight()
+        {
+            textField.text = textField.text.Replace(MarkStart(), "").Replace(MarkEnd(), "");
+        }
+        
+        /// <summary>
+        /// Sets highlight marks
+        /// </summary>
+        public ConsoleMessage HighlightText(string text)
+        {
+            var markStart = MarkStart();
+            var markEnd = MarkEnd();
+            textField.text = textField.text.Replace(markStart, "").Replace(markEnd, "");
+            
+            var buffer = textField.text;
+            buffer = Regex.Replace(buffer, text, (match => $"{markStart}{match.Value}{markEnd}"), RegexOptions.IgnoreCase);
+
+            textField.text = buffer;
             return this;
         }
 
@@ -61,10 +86,11 @@ namespace CorePlugin.Console
         /// Setting active message in console
         /// </summary>
         /// <param name="state"></param>
-        public void SetActive(bool state)
+        public ConsoleMessage SetActive(bool state)
         {
             UIStateTools.ChangeGroupState(_canvasGroup, state);
             _layoutElement.ignoreLayout = !state;
+            return this;
         }
 
         /// <summary>
@@ -76,7 +102,7 @@ namespace CorePlugin.Console
         /// <param name="settings"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public LogMessage Initialize(string logText, string stackTrace, LogType logType, ConsoleTextSettings settings)
+        public ConsoleMessage Initialize(string logText, string stackTrace, LogType logType, ConsoleTextSettings settings)
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _layoutElement = GetComponent<LayoutElement>();
@@ -84,10 +110,10 @@ namespace CorePlugin.Console
             _logText = logText;
 
             _stackTrace = stackTrace;
-            _currentSettings = settings;
+            _currentSettings = new ConsoleTextSettings(settings);
 
             icon.preserveAspect = true;
-            icon.sprite = LoadLogIcon.GetLogIconSprite(_logType, true);
+            icon.sprite = LoadConsoleIcon.GetLogIconSprite(_logType, true);
 
             var time = DateTime.Now.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern);
             
@@ -106,7 +132,18 @@ namespace CorePlugin.Console
             return this;
         }
 
-        private static string CombinedStackTrace(string logText, string stackTrace, ConsoleTextSettings settings)
+        /// <summary>
+        /// Subscribes action to message button
+        /// </summary>
+        /// <param name="onClickAction"></param>
+        /// <returns></returns>
+        public ConsoleMessage SubscribeOnButtonClick(Action<string> onClickAction)
+        {
+            button.onClick.AddListener(() => onClickAction?.Invoke(CombinedStackTrace(LogText, StackTrace, _currentSettings)));
+            return this;
+        }
+
+        private string CombinedStackTrace(string logText, string stackTrace, ConsoleTextSettings settings)
         {
             return $"<b><size={settings.LogTextSize}>{logText}</size></b>" +
                    $"\n\n<size={settings.StackTraceTextSize}>{stackTrace}</size>";

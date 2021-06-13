@@ -23,13 +23,13 @@ namespace CorePlugin.Console
     /// Runtime log icon loader
     /// </summary>
     [InitializeOnLoad]
-    internal static class LoadLogIcon
+    internal static class LoadConsoleIcon
     {
-        private static readonly LogIcons Icons;
+        private static readonly ConsoleIcons Icons;
 
-        static LoadLogIcon()
+        static LoadConsoleIcon()
         {
-            Icons = Resources.Load<LogIcons>("LogIcons");
+            Icons = Resources.Load<ConsoleIcons>("LogIcons");
         }
         
         /// <summary>

@@ -27,34 +27,40 @@ namespace CorePlugin.Console
     /// Log toggle for <see cref="CorePlugin.Console.RuntimeConsole"/>
     /// </summary>
     [RequireComponent(typeof(Toggle))]
-    public class LogToggle : MonoBehaviour
+    public class ConsoleLogToggle : MonoBehaviour
     {
-        [SettingsHeader]
-        [SerializeField] private LogType designatedType;
+    [SettingsHeader]
+    [SerializeField]
+    private LogType designatedType;
 
-        [ReferencesHeader]
-        [NotNull] [SerializeField] private TMP_Text countText;
-        [NotNull] [SerializeField] private Image icon;
+    [ReferencesHeader]
+    [NotNull]
+    [SerializeField]
+    private TMP_Text countText;
 
-        private Toggle _toggle;
+    [NotNull]
+    [SerializeField]
+    private Image icon;
 
-        private void SetActiveIcon(bool state)
-        {
-            icon.sprite = LoadLogIcon.GetLogIconSprite(designatedType, state);
-        }
-        
-        public LogToggle Initialize(Action<LogType, bool> action)
-        {
-            _toggle = GetComponent<Toggle>();
-            _toggle.onValueChanged.AddListener((state) => action?.Invoke(designatedType, state));
-            _toggle.onValueChanged.AddListener(SetActiveIcon);
-            return this;
-        }
+    private Toggle _toggle;
 
-        public void OnLogCountChanged(HashSet<LogType> types, int count)
-        {
-            if (types.Contains(designatedType)) countText.text = count <= 999 ? $"{count}" : "999+";
-        }
+    private void SetActiveIcon(bool state)
+    {
+        icon.sprite = LoadConsoleIcon.GetLogIconSprite(designatedType, state);
+    }
+
+    public ConsoleLogToggle Initialize(Action<LogType, bool> action)
+    {
+        _toggle = GetComponent<Toggle>();
+        _toggle.onValueChanged.AddListener((state) => action?.Invoke(designatedType, state));
+        _toggle.onValueChanged.AddListener(SetActiveIcon);
+        return this;
+    }
+
+    public void OnLogCountChanged(HashSet<LogType> types, int count)
+    {
+        if (types.Contains(designatedType)) countText.text = count <= 999 ? $"{count}" : "999+";
+    }
     }
 
 }
