@@ -26,7 +26,7 @@ namespace CorePlugin.CustomAttributes.Editor.Drawers
         {
             position.yMin += EditorGUIUtility.singleLineHeight * 0.5f;
             position = EditorGUI.IndentedRect(position);
-            GUI.Label(position, (attribute as HeaderAttribute).header, EditorStyles.boldLabel);
+            GUI.Label(position, (attribute as HeaderAttribute)?.header, EditorStyles.boldLabel);
         }
 
         public override float GetHeight()

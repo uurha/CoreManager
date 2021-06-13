@@ -23,7 +23,11 @@ namespace CorePlugin.CustomAttributes.Validation
     [AttributeUsage(AttributeTargets.Field)]
     public class SceneObjectRequiredAttribute : FieldValidationAttribute
     {
-        public SceneObjectRequiredAttribute(bool showError = false) : base(showError)
+        public SceneObjectRequiredAttribute(bool showError) : base(showError)
+        {
+        }
+        
+        public SceneObjectRequiredAttribute() : base(false)
         {
         }
 

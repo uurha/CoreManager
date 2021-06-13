@@ -24,7 +24,11 @@ namespace CorePlugin.CustomAttributes.Validation
     [AttributeUsage(AttributeTargets.Field)]
     public class NotNullAttribute : FieldValidationAttribute
     {
-        public NotNullAttribute(bool showError = false) : base(showError)
+        public NotNullAttribute(bool showError) : base(showError)
+        {
+        }
+        
+        public NotNullAttribute() : base(false)
         {
         }
 

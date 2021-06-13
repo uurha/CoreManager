@@ -27,7 +27,7 @@ namespace CorePlugin.CustomAttributes.Validation.Base
     [AttributeUsage(AttributeTargets.Field)]
     public abstract class FieldValidationAttribute : ValidationAttribute
     {
-        protected FieldValidationAttribute(bool showError = false) : base(showError)
+        protected FieldValidationAttribute(bool showError) : base(showError)
         {
         }
 

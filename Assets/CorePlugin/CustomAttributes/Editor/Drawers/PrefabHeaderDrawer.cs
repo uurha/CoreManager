@@ -19,14 +19,14 @@ using UnityEngine;
 
 namespace CorePlugin.CustomAttributes.Editor.Drawers
 {
-    [CustomPropertyDrawer(typeof(ReferencesHeaderAttribute))]
-    internal sealed class PrefabHeaderAttribute : DecoratorDrawer
+    [CustomPropertyDrawer(typeof(PrefabHeaderAttribute))]
+    internal sealed class PrefabHeaderDrawer : DecoratorDrawer
     {
         public override void OnGUI(Rect position)
         {
             position.yMin += EditorGUIUtility.singleLineHeight * 0.5f;
             position = EditorGUI.IndentedRect(position);
-            GUI.Label(position, (attribute as HeaderAttribute).header, EditorStyles.boldLabel);
+            GUI.Label(position, (attribute as HeaderAttribute)?.header, EditorStyles.boldLabel);
         }
 
         public override float GetHeight()

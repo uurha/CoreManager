@@ -24,7 +24,7 @@ namespace CorePlugin.CustomAttributes.Validation.Base
     {
         private protected string _error;
 
-        protected ValidationAttribute(bool showError = false)
+        protected ValidationAttribute(bool showError)
         {
             ShowError = showError;
         }

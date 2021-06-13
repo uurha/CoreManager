@@ -27,8 +27,13 @@ namespace CorePlugin.CustomAttributes.Validation
     public class HasComponentAttribute : FieldValidationAttribute
     {
         private readonly Type _requiredType;
-
-        public HasComponentAttribute(Type requiredType, bool showError = false) : base(showError)
+        
+        public HasComponentAttribute(Type requiredType, bool showError) : base(showError)
+        {
+            _requiredType = requiredType ?? throw new ArgumentNullException(nameof(requiredType));
+        }
+        
+        public HasComponentAttribute(Type requiredType) : base(false)
         {
             _requiredType = requiredType ?? throw new ArgumentNullException(nameof(requiredType));
         }

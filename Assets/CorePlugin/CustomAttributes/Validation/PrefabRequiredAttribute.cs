@@ -26,7 +26,11 @@ namespace CorePlugin.CustomAttributes.Validation
     [AttributeUsage(AttributeTargets.Field)]
     public class PrefabRequiredAttribute : FieldValidationAttribute
     {
-        public PrefabRequiredAttribute(bool showError = false) : base(showError)
+        public PrefabRequiredAttribute(bool showError) : base(showError)
+        {
+        }
+        
+        public PrefabRequiredAttribute() : base(false)
         {
         }
 

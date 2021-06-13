@@ -29,7 +29,11 @@ namespace CorePlugin.CustomAttributes.Validation
     {
         private Type _type;
 
-        public OneAndOnlyAttribute(bool showError = false) : base(showError)
+        public OneAndOnlyAttribute(bool showError) : base(showError)
+        {
+        }
+        
+        public OneAndOnlyAttribute() : base(false)
         {
         }
 

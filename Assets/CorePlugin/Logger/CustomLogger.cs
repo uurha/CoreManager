@@ -30,7 +30,6 @@ namespace CorePlugin.Logger
     /// </remarks>
     /// <seealso cref="CorePlugin.Core.CoreManager"/>
     /// </summary>
-    //TODO: Create build console for available platforms
     //TODO: Strip logger from RELEASE builds
     public static class CustomLogger
     {
