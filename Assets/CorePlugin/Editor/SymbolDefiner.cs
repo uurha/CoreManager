@@ -27,8 +27,9 @@ namespace CorePlugin.Editor
     /// </summary>
     public class SymbolDefiner
     {
-        private readonly Dictionary<string, bool> _symbols = new Dictionary<string, bool> {{EnableReleaseLogs, false}};
+        private readonly Dictionary<string, bool> _symbols = new Dictionary<string, bool> {{EnableReleaseLogs, false}, {EnableReleaseConsole, false}};
         private const string EnableReleaseLogs = "ENABLE_RELEASE_LOGS";
+        private const string EnableReleaseConsole = "ENABLE_RELEASE_CONSOLE";
 
         /// <summary>
         /// Shows buttons in Inspector.

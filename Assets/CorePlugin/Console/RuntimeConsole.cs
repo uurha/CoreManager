@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using CorePlugin.CustomAttributes.Headers;
 using CorePlugin.CustomAttributes.Validation;
+using CorePlugin.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,6 +33,7 @@ namespace CorePlugin.Console
     {
         [SettingsHeader]
         [SerializeField] private bool reverseOrder;
+        [SerializeField] private bool disableAutoScroll;
         [SerializeField] private ConsoleTextSettings settings;
 
         [ReferencesHeader]
@@ -41,7 +43,6 @@ namespace CorePlugin.Console
         [NotNull] [SerializeField] private Button clearLogsButton;
         [NotNull] [SerializeField] private Toggle reverseSortingToggle;
         [NotNull] [SerializeField] private ScrollRect logsScrollRect;
-        [NotNull] [SerializeField] private ScrollRect stackTraceScrollRect;
         [NotNull] [SerializeField] private VerticalLayoutGroup layoutGroup;
         [NotNull] [SerializeField] private List<ConsoleLogToggle> logButtons;
 
@@ -63,6 +64,23 @@ namespace CorePlugin.Console
 
         private void Awake()
         {
+#if DEBUG || ENABLE_RELEASE_CONSOLE
+            Initialize();
+#else
+            Destroy(gameObject);
+#endif
+        }
+
+        private void Initialize()
+        {
+            if (FindObjectsOfType<RuntimeConsole>().Length > 1)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            DontDestroyOnLoad(gameObject);
+
             layoutGroup.reverseArrangement = reverseOrder;
             reverseSortingToggle.isOn = reverseOrder;
             Application.logMessageReceivedThreaded += MessageReceivedThreaded;
@@ -71,16 +89,11 @@ namespace CorePlugin.Console
             {
                 onLogCountChanged += init.OnLogCountChanged;
             }
+
             searchInputField.onValueChanged.AddListener(SearchLogs);
             clearSearchButton.onClick.AddListener(ClearSearch);
             clearLogsButton.onClick.AddListener(ClearLogs);
             reverseSortingToggle.onValueChanged.AddListener(ToggleSorting);
-        }
-
-        private void ToggleSorting(bool state)
-        {
-            reverseOrder = state;
-            layoutGroup.reverseArrangement = state;
         }
 
         private void OnDestroy()
@@ -91,13 +104,22 @@ namespace CorePlugin.Console
         private void DisplayStackTrace(string stackTrace)
         {
             stackTraceTextField.text = stackTrace;
-            var sizeDelta = stackTraceScrollRect.content.sizeDelta;
-            stackTraceScrollRect.content.sizeDelta = new Vector2(sizeDelta.x,  stackTraceTextField.GetPreferredValues(stackTrace).y);
         }
 
         private void DisplayByLogType(ConsoleMessage message)
         {
             message.SetActive(_displayedLogTypes.Contains(message.Type));
+        }
+
+        private void ToggleSorting(bool state)
+        {
+            var needScroll = AutoScrollThreshold();
+            reverseOrder = state;
+            layoutGroup.reverseArrangement = reverseOrder; 
+            if(!disableAutoScroll && needScroll)
+            {
+                logsScrollRect.SnapToLatest(reverseOrder);
+            }
         }
 
         private void OnStateChanged(LogType designatedType, bool state)
@@ -116,7 +138,7 @@ namespace CorePlugin.Console
             {
                 _displayedLogTypes.ExceptWith(logTypes);
             }
-
+            
             foreach (var logType in _logs.Keys)
             {
                 foreach (var message in _logs[logType])
@@ -170,6 +192,8 @@ namespace CorePlugin.Console
 
         private void MessageReceivedThreaded(string condition, string stacktrace, LogType type)
         {
+            var needScroll = AutoScrollThreshold();
+            
             var instance = Instantiate(consoleMessagePrefab, logsScrollRect.content)
                           .Initialize(condition, stacktrace, type, settings).SubscribeOnButtonClick(DisplayStackTrace);
 
@@ -184,6 +208,16 @@ namespace CorePlugin.Console
             }
             onLogCountChanged?.Invoke(LogTypes(type), _logs[type].Count);
             DisplayByLogType(instance);
+            
+            if(!disableAutoScroll && needScroll)
+            {
+                logsScrollRect.SnapToLatest(reverseOrder);
+            }
+        }
+
+        private bool AutoScrollThreshold()
+        {
+            return reverseOrder ? logsScrollRect.verticalNormalizedPosition >= 0.8f : logsScrollRect.verticalNormalizedPosition <= 0.2f;
         }
 
         private HashSet<LogType> LogTypes(LogType designatedType)

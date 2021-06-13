@@ -14,7 +14,6 @@
 #endregion
 
 using System;
-using CorePlugin.Core;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -58,6 +57,13 @@ namespace CorePlugin.Logger
         {
             #if DEBUG || ENABLE_RELEASE_LOGS
             Debug.LogError(message, context);
+            #endif
+        }
+        
+        public static void LogError(Exception exception, Object context)
+        {
+            #if DEBUG || ENABLE_RELEASE_LOGS
+            Debug.LogError(exception, context);
             #endif
         }
         

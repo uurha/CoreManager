@@ -16,6 +16,7 @@
 using System;
 using System.IO;
 using System.Threading;
+using CorePlugin.Logger;
 using CorePlugin.Serializable;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -98,7 +99,7 @@ namespace CorePlugin.FileSystem
             catch (Exception e)
             {
                 onError?.Invoke(e);
-                Debug.LogError(e, context);
+                CustomLogger.LogError(e, context);
                 throw;
             }
             finally
@@ -153,7 +154,7 @@ namespace CorePlugin.FileSystem
             catch (Exception e)
             {
                 onError?.Invoke(e);
-                Debug.LogError(e, context);
+                CustomLogger.LogError(e, context);
                 throw;
             }
             finally

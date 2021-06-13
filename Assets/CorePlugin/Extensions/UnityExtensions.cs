@@ -14,10 +14,13 @@
 #endregion
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CorePlugin.Logger;
 using CorePlugin.Serializable.Interface;
 using UnityEngine;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace CorePlugin.Extensions
@@ -37,6 +40,12 @@ namespace CorePlugin.Extensions
         public static bool IsNotNullAndNotEqual(this IUnique lci, IUnique rci)
         {
             return lci?.Equals(rci) == false;
+        }
+        
+        public static void SnapToLatest(this ScrollRect scrollRect, bool reverseOrder)
+        {
+            Canvas.ForceUpdateCanvases();
+            scrollRect.verticalNormalizedPosition = reverseOrder ? 1f : 0f;
         }
 
         /// <summary>

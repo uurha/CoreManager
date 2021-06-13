@@ -14,6 +14,7 @@
 #endregion
 
 using CorePlugin.Extensions;
+using CorePlugin.Logger;
 using UnityEngine;
 
 namespace CorePlugin.Singletons
@@ -40,7 +41,7 @@ namespace CorePlugin.Singletons
 
         protected virtual void OnDestroy()
         {
-            Debug.Log("OnDestroy: " + typeof(T));
+            CustomLogger.Log("OnDestroy: " + typeof(T));
             if (_instance == this) _instance = null;
         }
     }

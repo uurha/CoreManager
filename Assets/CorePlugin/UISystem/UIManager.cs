@@ -17,6 +17,7 @@ using System.Linq;
 using CorePlugin.Core;
 using CorePlugin.CustomAttributes.Headers;
 using CorePlugin.CustomAttributes.Validation;
+using CorePlugin.Logger;
 using CorePlugin.UISystem.UI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -42,7 +43,7 @@ namespace CorePlugin.UISystem
             foreach (var o in elements.Select(m => Instantiate(m, uiPageHolder)))
             {
                 #if DEBUG
-                Debug.Log($"Create element: {o.name}");
+                CustomLogger.Log($"Create element: {o.name}");
                 #endif
                 if (!o.TryGetComponent(out UIPage page)) continue;
                 var pageButton = Instantiate(page.PageButtonPrefab, pageButtonHolder);
