@@ -47,6 +47,15 @@ namespace CorePlugin.Extensions
             Canvas.ForceUpdateCanvases();
             scrollRect.verticalNormalizedPosition = reverseOrder ? 1f : 0f;
         }
+        
+        /// <summary>
+        /// Puts the string into the Clipboard.
+        /// </summary>
+        public static void CopyToClipboard(this string str)
+        { 
+            GUIUtility.systemCopyBuffer = str;
+        }
+
 
         /// <summary>
         /// Checks whether the left item is null and equals right item
