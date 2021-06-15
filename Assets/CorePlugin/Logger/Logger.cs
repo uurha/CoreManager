@@ -52,6 +52,20 @@ namespace CorePlugin.Logger
             Debug.LogError(message);
             #endif
         }
+        
+        public static void LogWarning(string message)
+        {
+            #if DEBUG || ENABLE_RELEASE_LOGS
+            Debug.LogWarning(message);
+            #endif
+        }
+        
+        public static void LogWarning(string message, Object context)
+        {
+            #if DEBUG || ENABLE_RELEASE_LOGS
+            Debug.LogWarning(message, context);
+            #endif
+        }
 
         public static void LogError(string message, Object context)
         {

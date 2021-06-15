@@ -29,27 +29,32 @@ namespace CorePlugin.Console
     /// <summary>
     /// Runtime console class
     /// </summary>
+    [RequireComponent(typeof(CanvasGroup))]
     public class RuntimeConsole : MonoBehaviour
     {
         [SettingsHeader]
         [SerializeField] private bool reverseOrder;
         [SerializeField] private bool disableAutoScroll;
         [SerializeField] private ConsoleTextSettings settings;
+        [SerializeField] private Range<float> autoScrollSensitivity = new Range<float>(0.05f, 0.95f);
 
         [ReferencesHeader]
         [NotNull] [SerializeField] private TMP_InputField searchInputField;
-        [NotNull] [SerializeField] private Button clearSearchButton;
         [NotNull] [SerializeField] private TMP_Text stackTraceTextField;
+        [NotNull] [SerializeField] private Button clearSearchButton;
         [NotNull] [SerializeField] private Button clearLogsButton;
+        [NotNull] [SerializeField] private Button minimizedButton;
         [NotNull] [SerializeField] private Toggle reverseSortingToggle;
         [NotNull] [SerializeField] private ScrollRect logsScrollRect;
         [NotNull] [SerializeField] private VerticalLayoutGroup layoutGroup;
-        [NotNull] [SerializeField] private List<ConsoleLogToggle> logButtons;
+        [NotNull] [SerializeField] private List<CountDisplayer> logButtons;
 
         [PrefabHeader]
         [PrefabRequired] [SerializeField] private ConsoleMessage consoleMessagePrefab;
 
-        private Action<HashSet<LogType>, int> onLogCountChanged;
+        private Action<HashSet<LogType>, int> onLogCountUpdated;
+        private Action onConsoleMinized;
+        private CanvasGroup _consoleCanvasGroup;
 
         private readonly Dictionary<LogType, List<ConsoleMessage>> _logs = new Dictionary<LogType, List<ConsoleMessage>>();
 
@@ -62,38 +67,39 @@ namespace CorePlugin.Console
                                                                    LogType.Exception,
                                                                };
 
-        private void Awake()
+        public event Action<HashSet<LogType>, int> OnLogCountUpdated
         {
-#if DEBUG || ENABLE_RELEASE_CONSOLE
-            Initialize();
-#else
-            Destroy(gameObject);
-#endif
+            add => onLogCountUpdated += value;
+            remove => onLogCountUpdated -= value;
         }
 
-        private void Initialize()
+        public RuntimeConsole Initialize(Action onMinimized)
         {
-            if (FindObjectsOfType<RuntimeConsole>().Length > 1)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            DontDestroyOnLoad(gameObject);
-
+            _consoleCanvasGroup = GetComponent<CanvasGroup>();
             layoutGroup.reverseArrangement = reverseOrder;
             reverseSortingToggle.isOn = reverseOrder;
             Application.logMessageReceivedThreaded += MessageReceivedThreaded;
 
-            foreach (var init in logButtons.Select(logButton => logButton.Initialize(OnStateChanged)))
+            foreach (var logButton in logButtons)
             {
-                onLogCountChanged += init.OnLogCountChanged;
+                OnLogCountUpdated += logButton.Initialize().SetInteractionAction(OnStateChanged).OnLogCountChanged;
             }
-
+            
+            onConsoleMinized += onMinimized;
+            
             searchInputField.onValueChanged.AddListener(SearchLogs);
             clearSearchButton.onClick.AddListener(ClearSearch);
             clearLogsButton.onClick.AddListener(ClearLogs);
             reverseSortingToggle.onValueChanged.AddListener(ToggleSorting);
+            minimizedButton.onClick.AddListener(Minimize);
+            ClearLogs();
+            return this;
+        }
+
+        private void Minimize()
+        {
+            SetActive(false);
+            onConsoleMinized?.Invoke();
         }
 
         private void OnDestroy()
@@ -125,10 +131,10 @@ namespace CorePlugin.Console
         private void OnStateChanged(LogType designatedType, bool state)
         {
             var states = LogTypes(designatedType);
-            SetActive(states, state);
+            SetActiveLogs(states, state);
         }
 
-        private void SetActive(IEnumerable<LogType> logTypes, bool state)
+        private void SetActiveLogs(IEnumerable<LogType> logTypes, bool state)
         {
             if (state)
             {
@@ -147,6 +153,11 @@ namespace CorePlugin.Console
                 }
             }
         }
+        
+        public void SetActive(bool state)
+        {
+            UIStateTools.ChangeGroupState(_consoleCanvasGroup, state);
+        }
 
         private void ClearLogs()
         {
@@ -155,7 +166,7 @@ namespace CorePlugin.Console
                 Destroy(message.gameObject);
             }
             _logs.Clear();
-            onLogCountChanged?.Invoke(new HashSet<LogType> {LogType.Log, LogType.Warning, LogType.Error}, 0);
+            onLogCountUpdated?.Invoke(LogTypes(new HashSet<LogType> {LogType.Log, LogType.Warning, LogType.Error}), 0);
         }
 
         private void ClearSearch()
@@ -206,7 +217,8 @@ namespace CorePlugin.Console
             {
                 _logs.Add(type, new List<ConsoleMessage> {instance});
             }
-            onLogCountChanged?.Invoke(LogTypes(type), _logs[type].Count);
+            
+            onLogCountUpdated?.Invoke(LogTypes(type), _logs[type].Count);
             DisplayByLogType(instance);
             
             if(!disableAutoScroll && needScroll)
@@ -217,7 +229,7 @@ namespace CorePlugin.Console
 
         private bool AutoScrollThreshold()
         {
-            return reverseOrder ? logsScrollRect.verticalNormalizedPosition >= 0.8f : logsScrollRect.verticalNormalizedPosition <= 0.2f;
+            return reverseOrder ? logsScrollRect.verticalNormalizedPosition >= autoScrollSensitivity.Max : logsScrollRect.verticalNormalizedPosition <= autoScrollSensitivity.Min;
         }
 
         private HashSet<LogType> LogTypes(LogType designatedType)
@@ -233,6 +245,12 @@ namespace CorePlugin.Console
             };
             return states;
         }
-    }
+        
+        private HashSet<LogType> LogTypes(HashSet<LogType> designatedTypes)
+        {
+            var states = Enumerable.Empty<LogType>();
 
+            return new HashSet<LogType>(designatedTypes.Aggregate(states, (current, designatedType) => current.Concat(LogTypes(designatedType))));
+        }
+    }
 }

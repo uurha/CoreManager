@@ -85,9 +85,9 @@ GameObject:
   m_Component:
   - component: {fileID: 56071955643255741}
   - component: {fileID: 4913141845434884155}
-  - component: {fileID: 3821091830249056320}
   - component: {fileID: 5713426218211286541}
   - component: {fileID: 7389932910684669461}
+  - component: {fileID: 8916230010882378}
   m_Layer: 0
   m_Name: LogToggle
   m_TagString: Untagged
@@ -164,21 +164,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
---- !u!114 &3821091830249056320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6608276048732820311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab358096cfd4fa29995f1d719f663f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  designatedType: 3
-  countText: {fileID: 4343270269759678356}
-  icon: {fileID: 4205952012378743608}
 --- !u!222 &5713426218211286541
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -217,6 +202,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8916230010882378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608276048732820311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14b6c59f90304b0095e1e610fa11a87f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  designatedType: 0
+  countText: {fileID: 4343270269759678356}
+  icon: {fileID: 4205952012378743608}
 --- !u!1 &7230456189408046640
 GameObject:
   m_ObjectHideFlags: 0

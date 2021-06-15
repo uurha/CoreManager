@@ -26,41 +26,22 @@ namespace CorePlugin.Console
     /// <summary>
     /// Log toggle for <see cref="CorePlugin.Console.RuntimeConsole"/>
     /// </summary>
-    [RequireComponent(typeof(Toggle))]
-    public class ConsoleLogToggle : MonoBehaviour
+    public abstract class CountDisplayer : MonoBehaviour
     {
-    [SettingsHeader]
-    [SerializeField]
-    private LogType designatedType;
+        [SettingsHeader] 
+        [SerializeField] private protected LogType designatedType;
+        
+        [ReferencesHeader]
+        [NotNull] [SerializeField] private protected TMP_Text countText;
+        [NotNull] [SerializeField] private protected Image icon;
 
-    [ReferencesHeader]
-    [NotNull]
-    [SerializeField]
-    private TMP_Text countText;
+        public abstract CountDisplayer Initialize();
 
-    [NotNull]
-    [SerializeField]
-    private Image icon;
+        public abstract CountDisplayer SetInteractionAction(Action<LogType, bool> onInteractWithDisplayer);
 
-    private Toggle _toggle;
-
-    private void SetActiveIcon(bool state)
-    {
-        icon.sprite = LoadConsoleIcon.GetLogIconSprite(designatedType, state);
+        public virtual void OnLogCountChanged(HashSet<LogType> types, int count)
+        {
+            if (types.Contains(designatedType)) countText.text = count <= 999 ? $"{count}" : "999+";
+        }
     }
-
-    public ConsoleLogToggle Initialize(Action<LogType, bool> action)
-    {
-        _toggle = GetComponent<Toggle>();
-        _toggle.onValueChanged.AddListener((state) => action?.Invoke(designatedType, state));
-        _toggle.onValueChanged.AddListener(SetActiveIcon);
-        return this;
-    }
-
-    public void OnLogCountChanged(HashSet<LogType> types, int count)
-    {
-        if (types.Contains(designatedType)) countText.text = count <= 999 ? $"{count}" : "999+";
-    }
-    }
-
 }
