@@ -27,7 +27,7 @@ using UnityEngine.UI;
 namespace CorePlugin.Console
 {
     /// <summary>
-    /// Runtime console class
+    /// Main class for RuntimeConsole
     /// </summary>
     [RequireComponent(typeof(CanvasGroup))]
     public class RuntimeConsole : MonoBehaviour
@@ -53,8 +53,10 @@ namespace CorePlugin.Console
         [PrefabRequired] [SerializeField] private ConsoleMessage consoleMessagePrefab;
 
         private Action<HashSet<LogType>, int> onLogCountUpdated;
-        private Action onConsoleMinized;
+        private Action onConsoleMinimized;
         private CanvasGroup _consoleCanvasGroup;
+        private string _recentSearchText;
+        
 
         private readonly Dictionary<LogType, List<ConsoleMessage>> _logs = new Dictionary<LogType, List<ConsoleMessage>>();
 
@@ -82,11 +84,12 @@ namespace CorePlugin.Console
 
             foreach (var logButton in logButtons)
             {
-                OnLogCountUpdated += logButton.Initialize().SetInteractionAction(OnStateChanged).OnLogCountChanged;
+                onLogCountUpdated += logButton.Initialize().SetInteractionAction(OnStateChanged).OnLogCountChanged;
             }
             
-            onConsoleMinized += onMinimized;
+            onConsoleMinimized += onMinimized;
             
+            searchInputField.onValueChanged.AddListener(text =>_recentSearchText = text);
             searchInputField.onValueChanged.AddListener(SearchLogs);
             clearSearchButton.onClick.AddListener(ClearSearch);
             clearLogsButton.onClick.AddListener(ClearLogs);
@@ -99,7 +102,7 @@ namespace CorePlugin.Console
         private void Minimize()
         {
             SetActive(false);
-            onConsoleMinized?.Invoke();
+            onConsoleMinimized?.Invoke();
         }
 
         private void OnDestroy()
@@ -144,7 +147,7 @@ namespace CorePlugin.Console
             {
                 _displayedLogTypes.ExceptWith(logTypes);
             }
-            
+
             foreach (var logType in _logs.Keys)
             {
                 foreach (var message in _logs[logType])
@@ -203,10 +206,15 @@ namespace CorePlugin.Console
 
         private void MessageReceivedThreaded(string condition, string stacktrace, LogType type)
         {
+            UnityMainThreadDispatcher.Instance.Enqueue(()=> CreateMessage(condition, stacktrace, type));
+        }
+
+        private void CreateMessage(string condition, string stacktrace, LogType type)
+        {
             var needScroll = AutoScrollThreshold();
-            
+
             var instance = Instantiate(consoleMessagePrefab, logsScrollRect.content)
-                          .Initialize(condition, stacktrace, type, settings).SubscribeOnButtonClick(DisplayStackTrace);
+                .Initialize(condition, stacktrace, type, settings).SubscribeOnButtonClick(DisplayStackTrace);
 
             if (_logs.TryGetValue(type, out var logs))
             {
@@ -217,11 +225,16 @@ namespace CorePlugin.Console
             {
                 _logs.Add(type, new List<ConsoleMessage> {instance});
             }
-            
+
             onLogCountUpdated?.Invoke(LogTypes(type), _logs[type].Count);
             DisplayByLogType(instance);
-            
-            if(!disableAutoScroll && needScroll)
+
+            if (!string.IsNullOrEmpty(_recentSearchText) && !string.IsNullOrWhiteSpace(_recentSearchText))
+            {
+                SearchLogs(_recentSearchText);
+            }
+
+            if (!disableAutoScroll && needScroll)
             {
                 logsScrollRect.SnapToLatest(reverseOrder);
             }

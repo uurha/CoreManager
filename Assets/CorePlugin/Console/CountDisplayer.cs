@@ -24,7 +24,7 @@ using UnityEngine.UI;
 namespace CorePlugin.Console
 {
     /// <summary>
-    /// Log toggle for <see cref="CorePlugin.Console.RuntimeConsole"/>
+    /// Log count displayer for <see cref="CorePlugin.Console.RuntimeConsole"/>
     /// </summary>
     public abstract class CountDisplayer : MonoBehaviour
     {
@@ -37,8 +37,18 @@ namespace CorePlugin.Console
 
         public abstract CountDisplayer Initialize();
 
+        /// <summary>
+        /// Setting action when interaction with CountDisplayer happens
+        /// </summary>
+        /// <param name="onInteractWithDisplayer"></param>
+        /// <returns></returns>
         public abstract CountDisplayer SetInteractionAction(Action<LogType, bool> onInteractWithDisplayer);
 
+        /// <summary>
+        /// Displaying new count
+        /// </summary>
+        /// <param name="types"></param>
+        /// <param name="count"></param>
         public virtual void OnLogCountChanged(HashSet<LogType> types, int count)
         {
             if (types.Contains(designatedType)) countText.text = count <= 999 ? $"{count}" : "999+";

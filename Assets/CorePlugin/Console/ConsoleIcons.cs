@@ -17,6 +17,9 @@ using UnityEngine;
 
 namespace CorePlugin.Console
 {
+    /// <summary>
+    /// List of icons for <seealso cref="CorePlugin.Console.RuntimeConsole"/>
+    /// </summary>
     internal sealed class ConsoleIcons : ScriptableObject
     {
         [SerializeField] private Sprite infoActive;

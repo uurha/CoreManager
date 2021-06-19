@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using CorePlugin.Logger;
 using UnityEngine;

@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace CorePlugin.Console
 {
+    /// <summary>
+    /// Log count displayer for <see cref="CorePlugin.Console.RuntimeConsole"/>
+    /// </summary>
     public class MinimizeCountDisplayer : CountDisplayer
     {
         public override CountDisplayer Initialize()
