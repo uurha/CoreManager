@@ -15,6 +15,7 @@
 
 using System.IO;
 using CorePlugin.Cross.SceneData;
+using CorePlugin.SceneManagement;
 using UnityEditor;
 using UnityEngine;
 
@@ -32,6 +33,13 @@ namespace CorePlugin.Editor
         private static void CreateCrossSceneDataHandler()
         {
             CreatePrefab<SceneDataHandler>();
+        }
+        
+        [MenuItem("Core/Highlight Scene Settings", false, 10)]
+        private static void Highlight()
+        {
+            var settings = Resources.Load<SceneLoaderSettings>(nameof(SceneLoaderSettings));
+            Selection.SetActiveObjectWithContext(settings, settings);
         }
 
         private static string PrefabPath<T>()
@@ -56,6 +64,7 @@ namespace CorePlugin.Editor
                 if (!(PrefabUtility.InstantiatePrefab(componentOrGameObject) is T prefab)) return;
                 prefab.name = componentOrGameObject.name;
                 prefab.transform.SetAsLastSibling();
+                Resources.UnloadAsset(componentOrGameObject);
             }
             else
             {

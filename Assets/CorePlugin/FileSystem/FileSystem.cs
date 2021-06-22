@@ -99,7 +99,7 @@ namespace CorePlugin.FileSystem
             catch (Exception e)
             {
                 onError?.Invoke(e);
-                CustomLogger.LogError(e, context);
+                DebugLogger.LogError(e, context);
                 throw;
             }
             finally
@@ -154,7 +154,7 @@ namespace CorePlugin.FileSystem
             catch (Exception e)
             {
                 onError?.Invoke(e);
-                CustomLogger.LogError(e, context);
+                DebugLogger.LogError(e, context);
                 throw;
             }
             finally

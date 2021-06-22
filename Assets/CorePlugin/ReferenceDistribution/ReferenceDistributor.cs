@@ -15,7 +15,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using CorePlugin.CustomAttributes.Validation;
+using CorePlugin.Attributes.Validation;
 using CorePlugin.Extensions;
 using CorePlugin.ReferenceDistribution.Interface;
 using UnityEngine;

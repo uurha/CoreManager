@@ -14,6 +14,7 @@
 #endregion
 
 using System;
+using CorePlugin.Console.ConsoleElements;
 using UnityEditor;
 using UnityEngine;
 

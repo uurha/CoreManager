@@ -16,8 +16,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CorePlugin.Attributes.Validation;
 using CorePlugin.Cross.Events.Interface;
-using CorePlugin.CustomAttributes.Validation;
 using CorePlugin.Samples.Scripts.EventTypes;
 using CorePlugin.Samples.Scripts.Model;
 using TMPro;

@@ -13,7 +13,7 @@
 
 #endregion
 
-using CorePlugin.CustomAttributes.Validation;
+using CorePlugin.Attributes.Validation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;

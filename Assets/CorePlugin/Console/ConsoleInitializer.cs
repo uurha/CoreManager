@@ -16,8 +16,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CorePlugin.CustomAttributes.Headers;
-using CorePlugin.CustomAttributes.Validation;
+using CorePlugin.Attributes.Headers;
+using CorePlugin.Attributes.Validation;
+using CorePlugin.Console.ConsoleElements;
 using UnityEngine;
 
 namespace CorePlugin.Console
@@ -25,6 +26,7 @@ namespace CorePlugin.Console
     /// <summary>
     /// Initialize minimized and maximized console
     /// </summary>
+    [OneAndOnly]
     public class ConsoleInitializer : MonoBehaviour
     {
         [SettingsHeader]

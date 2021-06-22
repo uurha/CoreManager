@@ -15,8 +15,8 @@
 
 using System;
 using System.Collections.Generic;
+using CorePlugin.Attributes.Validation;
 using CorePlugin.Cross.SceneData.Interface;
-using CorePlugin.CustomAttributes.Validation;
 using CorePlugin.Singletons;
 
 namespace CorePlugin.Cross.SceneData

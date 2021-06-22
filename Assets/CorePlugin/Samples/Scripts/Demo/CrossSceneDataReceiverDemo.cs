@@ -13,8 +13,8 @@
 
 #endregion
 
+using CorePlugin.Attributes.Validation;
 using CorePlugin.Cross.SceneData;
-using CorePlugin.CustomAttributes.Validation;
 using CorePlugin.Samples.Scripts.Model;
 using TMPro;
 using UnityEngine;

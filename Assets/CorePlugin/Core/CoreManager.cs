@@ -15,9 +15,9 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using CorePlugin.Attributes.Headers;
+using CorePlugin.Attributes.Validation;
 using CorePlugin.Core.Interface;
-using CorePlugin.CustomAttributes.Headers;
-using CorePlugin.CustomAttributes.Validation;
 using CorePlugin.Logger;
 using CorePlugin.ReferenceDistribution;
 using UnityEngine;
@@ -61,7 +61,7 @@ namespace CorePlugin.Core
             foreach (var o in managers.Select(m => Instantiate(m, transform)))
             {
                 #if DEBUG
-                CustomLogger.Log($"Create manager: {o.name}");
+                DebugLogger.Log($"Create manager: {o.name}");
                 #endif
                 if (!o.TryGetComponent(out ICore manager)) continue;
                 manager.InitializeElements();

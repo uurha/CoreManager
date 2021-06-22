@@ -26,13 +26,13 @@ namespace CorePlugin.Samples.Scripts.Demo
                 switch (random)
                 {
                     case 0:
-                        CustomLogger.Log("Simple Log");
+                        DebugLogger.Log("Simple Log");
                         break;
                     case 1:
-                        CustomLogger.LogError("Simple Log Error");
+                        DebugLogger.LogError("Simple Log Error");
                         break;
                     case 2:
-                        CustomLogger.LogWarning("Simple Log Warning");
+                        DebugLogger.LogWarning("Simple Log Warning");
                         break;
                 }
             }

@@ -13,9 +13,9 @@
 
 #endregion
 
+using CorePlugin.Attributes.Headers;
+using CorePlugin.Attributes.Validation;
 using CorePlugin.Cross.SceneData;
-using CorePlugin.CustomAttributes.Headers;
-using CorePlugin.CustomAttributes.Validation;
 using CorePlugin.Samples.Scripts.Model;
 using UnityEngine;
 

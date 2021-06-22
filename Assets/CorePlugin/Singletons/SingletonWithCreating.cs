@@ -19,13 +19,13 @@ namespace CorePlugin.Singletons
             get
             {
                 if (IsInitialised) return _instance;
-                return _instance = new GameObject(nameof(T)).AddComponent<T>();
+                return _instance = new GameObject(typeof(T).Name).AddComponent<T>();
             }
         }
 
         protected virtual void OnDestroy()
         {
-            CustomLogger.Log("OnDestroy: " + typeof(T));
+            DebugLogger.Log("OnDestroy: " + typeof(T));
             if (_instance == this) _instance = null;
         }
     }

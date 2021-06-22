@@ -55,6 +55,7 @@ namespace CorePlugin.Extensions
             return list;
         }
         
+        
         /// <summary>
         /// Scrolls ScrollRect to last item
         /// </summary>
@@ -73,7 +74,6 @@ namespace CorePlugin.Extensions
         { 
             GUIUtility.systemCopyBuffer = str;
         }
-
 
         /// <summary>
         /// Checks whether the left item is null and equals right item

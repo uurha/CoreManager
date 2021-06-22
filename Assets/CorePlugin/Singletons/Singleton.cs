@@ -41,7 +41,7 @@ namespace CorePlugin.Singletons
 
         protected virtual void OnDestroy()
         {
-            CustomLogger.Log("OnDestroy: " + typeof(T));
+            DebugLogger.Log("OnDestroy: " + typeof(T));
             if (_instance == this) _instance = null;
         }
     }

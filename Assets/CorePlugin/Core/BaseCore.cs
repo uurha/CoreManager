@@ -15,9 +15,9 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using CorePlugin.Attributes.Headers;
+using CorePlugin.Attributes.Validation;
 using CorePlugin.Core.Interface;
-using CorePlugin.CustomAttributes.Headers;
-using CorePlugin.CustomAttributes.Validation;
 using CorePlugin.Logger;
 using UnityEngine;
 
@@ -36,7 +36,7 @@ namespace CorePlugin.Core
             foreach (var o in elements.Select(m => Instantiate(m, transform)))
             {
                 #if DEBUG
-                CustomLogger.Log($"Create element: {o.name}");
+                DebugLogger.Log($"Create element: {o.name}");
                 #endif
             }
         }

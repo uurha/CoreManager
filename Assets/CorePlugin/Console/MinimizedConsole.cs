@@ -15,8 +15,9 @@
 
 using System;
 using System.Collections.Generic;
-using CorePlugin.CustomAttributes.Headers;
-using CorePlugin.CustomAttributes.Validation;
+using CorePlugin.Attributes.Headers;
+using CorePlugin.Attributes.Validation;
+using CorePlugin.Console.ConsoleElements;
 using CorePlugin.Extensions;
 using UnityEngine;
 using UnityEngine.EventSystems;

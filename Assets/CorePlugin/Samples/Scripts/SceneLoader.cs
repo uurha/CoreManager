@@ -59,7 +59,7 @@ namespace CorePlugin.Samples.Scripts
         {
             if (_data == null) return;
             SceneDataHandler.Instance.AddData(_data);
-            SceneManager.LoadScene(scene, LoadSceneMode.Single);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(scene, LoadSceneMode.Single);
         }
     }
 }

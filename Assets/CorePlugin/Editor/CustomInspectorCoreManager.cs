@@ -17,8 +17,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using CorePlugin.Attributes.Editor;
 using CorePlugin.Core;
-using CorePlugin.CustomAttributes.Editor;
 using UnityEditor;
 using UnityEngine;
 
