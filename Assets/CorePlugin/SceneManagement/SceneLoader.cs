@@ -42,18 +42,23 @@ namespace CorePlugin.SceneManagement
         {  
             var currentScene = SceneManager.GetActiveScene();
 
-            var intermediateOperation = UnityMainThreadDispatcher.StartCoroutine(SceneLoaderSettings.IntermediateScene.SceneLoadOperation(options.SceneLoadMode, (sceneOperation) => sceneOperation.allowSceneActivation = true));
+            var intermediateCoroutine = UnityMainThreadDispatcher.StartCoroutine(SceneLoaderSettings.IntermediateScene.SceneLoadOperation(options.SceneLoadMode, (sceneAsyncOperation) => sceneAsyncOperation.allowSceneActivation = true));
             
             AsyncOperation nextSceneOperation = null;
 
-            var sceneOperation = UnityMainThreadDispatcher.StartCoroutine(asset.SceneLoadOperation(options.SceneLoadMode, (sceneOperation) => nextSceneOperation = sceneOperation));
+            var sceneOperationCoroutine = UnityMainThreadDispatcher.StartCoroutine(asset.SceneLoadOperation(options.SceneLoadMode, (sceneAsyncOperation) => nextSceneOperation = sceneAsyncOperation));
             
             yield return new WaitForSeconds(SceneLoaderSettings.TimeInIntermediateScene);
-            yield return intermediateOperation;
-            yield return sceneOperation;
+            yield return intermediateCoroutine;
+            yield return sceneOperationCoroutine;
+            
+            nextSceneOperation.allowSceneActivation = true;
 
+            if(options.SceneLoadMode == LoadSceneMode.Single) yield break;
+            
+            yield return new WaitUntil(() => nextSceneOperation.isDone);
+            
             yield return currentScene.SceneUnloadOperation(options.SceneUnloadMode, operation => { 
-                nextSceneOperation.allowSceneActivation = true;
                 operation.allowSceneActivation = true;
             });
         }
@@ -65,48 +70,15 @@ namespace CorePlugin.SceneManagement
             AsyncOperation nextSceneOperation = null;
             yield return asset.SceneLoadOperation(options.SceneLoadMode, (sceneOperation) => nextSceneOperation = sceneOperation);
 
+            nextSceneOperation.allowSceneActivation = true;
+
+            if(options.SceneLoadMode == LoadSceneMode.Single) yield break;
+            
+            yield return new WaitUntil(() => nextSceneOperation.isDone);
+            
             yield return currentScene.SceneUnloadOperation(options.SceneUnloadMode, operation => { 
-                nextSceneOperation.allowSceneActivation = true;
                 operation.allowSceneActivation = true;
             });
         }
-
     }
-
-    internal static class SceneLoaderExtensions
-    {
-        public static IEnumerator SceneUnloadOperation(this Scene scene, UnloadSceneOptions mode, Action<AsyncOperation> onSceneReadyToSwitch, Action<float> onProgressChanged = null)
-        {
-            var sceneOperation = SceneManager.UnloadSceneAsync(scene, mode);
-            sceneOperation.allowSceneActivation = false;
-            yield return new WaitUntil(() => Until(onProgressChanged, sceneOperation));
-            onSceneReadyToSwitch?.Invoke(sceneOperation);
-        }
-        
-        public static bool Until(Action<float> onProgressChanged, AsyncOperation sceneOperation)
-        {
-            onProgressChanged?.Invoke(sceneOperation.progress);
-            return sceneOperation.progress >= 0.9f;
-        }
-
-        public static IEnumerator SceneLoadOperation(this SceneLoaderAsset sceneAsset, LoadSceneMode mode, Action<AsyncOperation> onSceneReadyToSwitch, Action<float> onProgressChanged = null)
-        {
-            var sceneOperation = SceneManager.LoadSceneAsync(sceneAsset.Name, mode);
-            sceneOperation.allowSceneActivation = false;
-            
-            yield return new WaitUntil(() => Until(onProgressChanged, sceneOperation));
-            
-            onSceneReadyToSwitch?.Invoke(sceneOperation);
-        }
-        
-        public static IEnumerator SceneUnloadOperation(this string name, UnloadSceneOptions mode, Action<AsyncOperation> onSceneReadyToSwitch, Action<float> onProgressChanged = null)
-        {
-            var sceneOperation = SceneManager.UnloadSceneAsync(name, mode);
-            sceneOperation.allowSceneActivation = false;
-            
-            yield return new WaitUntil(() => Until(onProgressChanged, sceneOperation));
-            
-            onSceneReadyToSwitch?.Invoke(sceneOperation);
-        }
-    } 
 }

@@ -31,6 +31,7 @@ namespace CorePlugin.Console
     {
         [SettingsHeader]
         [SerializeField] private bool initializeMinimized;
+        [NotNull] [SerializeField] private ConsoleIcons icons;
         
         [ReferencesHeader]
         [NotNull] [SerializeField] private RuntimeConsole maximizedConsole;
@@ -54,14 +55,12 @@ namespace CorePlugin.Console
             }
 
             DontDestroyOnLoad(gameObject);
-            
-            var onCountChanged = 
-                minimizedConsole.CountDisplayers.Aggregate<CountDisplayer, Action<HashSet<LogType>, int>>(null, (current, countDisplayer) 
-                => current + countDisplayer.Initialize().OnLogCountChanged);
 
-            maximizedConsole.OnLogCountUpdated += onCountChanged;
-            minimizedConsole.Initialize(OnConsoleMaximized).SetActive(initializeMinimized);
-            maximizedConsole.Initialize(OnConsoleMinimized).SetActive(!initializeMinimized);
+            
+            minimizedConsole.Initialize(OnConsoleMaximized, icons).SetActive(initializeMinimized);
+            
+            maximizedConsole.OnLogCountUpdated += minimizedConsole.CountDisplayers.Aggregate<CountDisplayer, Action<HashSet<LogType>, int>>(null, (current, displayer) => current + displayer.OnLogCountChanged);;
+            maximizedConsole.Initialize(OnConsoleMinimized, icons).SetActive(!initializeMinimized);
         }
 
         private void OnConsoleMinimized()

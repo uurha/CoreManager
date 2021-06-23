@@ -26,14 +26,15 @@ namespace CorePlugin.Console.ConsoleElements
     public class ToggleCountDisplayer : CountDisplayer
     {
         private Toggle _toggle;
-
+        
         private void SetActiveIcon(bool state) 
         { 
-            icon.sprite = LoadConsoleIcon.GetLogIconSprite(designatedType, state);
+            icon.sprite = _icons.GetLogIconSprite(designatedType, state);
         }
 
-        public override CountDisplayer Initialize()
+        public override CountDisplayer Initialize(ConsoleIcons icons)
         {
+            base.Initialize(icons);
             _toggle = GetComponent<Toggle>();
             return this;
         }

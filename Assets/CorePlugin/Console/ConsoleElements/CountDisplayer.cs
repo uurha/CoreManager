@@ -34,8 +34,15 @@ namespace CorePlugin.Console.ConsoleElements
         [ReferencesHeader]
         [NotNull] [SerializeField] private protected TMP_Text countText;
         [NotNull] [SerializeField] private protected Image icon;
+        
+        protected ConsoleIcons _icons;
 
-        public abstract CountDisplayer Initialize();
+        public virtual CountDisplayer Initialize(ConsoleIcons icons)
+        {
+            _icons = icons;
+            icon.sprite = icons.GetLogIconSprite(designatedType, true);
+            return this;
+        }
 
         /// <summary>
         /// Setting action when interaction with CountDisplayer happens

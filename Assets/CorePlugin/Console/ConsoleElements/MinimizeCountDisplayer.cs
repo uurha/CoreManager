@@ -8,9 +8,10 @@ namespace CorePlugin.Console.ConsoleElements
     /// </summary>
     public class MinimizeCountDisplayer : CountDisplayer
     {
-        public override CountDisplayer Initialize()
+        public override CountDisplayer Initialize(ConsoleIcons icons)
         {
-            icon.sprite = LoadConsoleIcon.GetLogIconSprite(designatedType, true);
+            _icons = icons;
+            icon.sprite = icons.GetLogIconSprite(designatedType, true);
             return this;
         }
 

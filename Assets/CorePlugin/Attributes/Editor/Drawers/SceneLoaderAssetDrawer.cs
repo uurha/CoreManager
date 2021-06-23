@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using CorePlugin.Extensions;
 using CorePlugin.SceneManagement;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace CorePlugin.Attributes.Editor.Drawers
 {
@@ -17,11 +19,11 @@ namespace CorePlugin.Attributes.Editor.Drawers
             // Using BeginProperty / EndProperty on the parent property means that
             // prefab override logic works on the entire property.
             EditorGUI.BeginProperty(position, label, property);
-            var targetObject = property.serializedObject.targetObject;
+            var target = property.serializedObject.targetObject;
             
-            var value = fieldInfo.GetValue(targetObject);
+            var value = fieldInfo.GetValue(target);
 
-            DrawItem(position, value, property, targetObject, label);
+            DrawItem(position, value, property, target, label);
             EditorGUI.EndProperty();
         }
 
@@ -51,10 +53,18 @@ namespace CorePlugin.Attributes.Editor.Drawers
             SceneAsset oldScene = null;
             if (sceneManagerAsset.InstanceID != 0)
             {
-                oldScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(AssetDatabase.GetAssetPath(sceneManagerAsset.InstanceID));
+                var path = AssetDatabase.GetAssetPath(sceneManagerAsset.InstanceID);
+                oldScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(path);
+                
+                if (!string.Equals(path, sceneManagerAsset.FullPath, StringComparison.Ordinal))
+                {
+                    CheckSceneLoaderAsset(oldScene, targetObject, bufferList, index);
+                    var t = property.serializedObject.hasModifiedProperties;
+                    EditorUtility.SetDirty(targetObject);
+                    return;
+                }
             }
 
-            CheckBuildScene(sceneManagerAsset.FullPath, oldScene);
             EditorGUI.BeginChangeCheck();
 
             position = new Rect(position.x, position.y + 1f, position.width, EditorGUIUtility.singleLineHeight);
@@ -62,6 +72,12 @@ namespace CorePlugin.Attributes.Editor.Drawers
             var newScene = EditorGUI.ObjectField(position, label, oldScene, typeof(SceneAsset), false) as SceneAsset;
 
             if (!EditorGUI.EndChangeCheck()) return;
+            CheckSceneLoaderAsset(newScene, targetObject, bufferList, index);
+            EditorUtility.SetDirty(targetObject);
+        }
+
+        private void CheckSceneLoaderAsset(SceneAsset newScene, Object target, IList<SceneLoaderAsset> bufferList, int index)
+        {
             var newPath = AssetDatabase.GetAssetPath(newScene);
             SceneLoaderAsset newManagerAsset = null;
             if (newScene is { })
@@ -71,17 +87,17 @@ namespace CorePlugin.Attributes.Editor.Drawers
 
             if (bufferList == null)
             {
-                fieldInfo.SetValue(targetObject, newManagerAsset);
+                fieldInfo.SetValue(target, newManagerAsset);
             }
             else
             {
                 bufferList[index] = newManagerAsset;
-                fieldInfo.SetValue(targetObject, bufferList);
+                fieldInfo.SetValue(target, bufferList);
             }
-
+            
             CheckBuildScene(newPath, newScene);
         }
-    
+
         private static void CheckBuildScene(string path, SceneAsset sceneToCheck)
         {
             if(sceneToCheck == null) return;

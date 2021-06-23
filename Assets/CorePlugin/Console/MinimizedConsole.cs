@@ -42,7 +42,7 @@ namespace CorePlugin.Console
         
         public List<CountDisplayer> CountDisplayers => countDisplayers;
 
-        public MinimizedConsole Initialize(Action onMaximized)
+        public MinimizedConsole Initialize(Action onMaximized, ConsoleIcons icons)
         {
             _consoleCanvasGroup = GetComponent<CanvasGroup>();
             onConsoleMaximized += onMaximized;

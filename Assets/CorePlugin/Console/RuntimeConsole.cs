@@ -77,7 +77,7 @@ namespace CorePlugin.Console
             remove => onLogCountUpdated -= value;
         }
 
-        public RuntimeConsole Initialize(Action onMinimized)
+        public RuntimeConsole Initialize(Action onMinimized, ConsoleIcons icons)
         {
             _consoleCanvasGroup = GetComponent<CanvasGroup>();
             layoutGroup.reverseArrangement = reverseOrder;
@@ -86,7 +86,7 @@ namespace CorePlugin.Console
 
             foreach (var logButton in logButtons)
             {
-                onLogCountUpdated += logButton.Initialize().SetInteractionAction(OnStateChanged).OnLogCountChanged;
+                onLogCountUpdated += logButton.Initialize(icons).SetInteractionAction(OnStateChanged).OnLogCountChanged;
             }
             
             onConsoleMinimized += onMinimized;

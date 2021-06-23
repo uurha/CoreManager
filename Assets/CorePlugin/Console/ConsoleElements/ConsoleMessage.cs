@@ -54,7 +54,7 @@ namespace CorePlugin.Console.ConsoleElements
         private string MarkStart()
         {
             var htmlStringRGBA = ColorUtility.ToHtmlStringRGBA(_currentSettings.HighlightColor);
-            var markStart = string.Format("<mark=#{0}>", htmlStringRGBA);
+            var markStart = $"<mark=#{htmlStringRGBA}>";
             return markStart;
         }
         
@@ -113,8 +113,7 @@ namespace CorePlugin.Console.ConsoleElements
             _currentSettings = new ConsoleTextSettings(settings);
 
             icon.preserveAspect = true;
-            icon.sprite = LoadConsoleIcon.GetLogIconSprite(_logType, true);
-
+            
             var time = DateTime.Now.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern);
             
             textField.text =$"[{time}] {LogText}";
@@ -129,6 +128,12 @@ namespace CorePlugin.Console.ConsoleElements
                                   LogType.Exception => Color.red,
                                   _ => throw new ArgumentOutOfRangeException()
                               };
+            return this;
+        }
+
+        public ConsoleMessage SetIcon(ConsoleIcons icons)
+        {
+            icon.sprite = icons.GetLogIconSprite(_logType, true);
             return this;
         }
 
