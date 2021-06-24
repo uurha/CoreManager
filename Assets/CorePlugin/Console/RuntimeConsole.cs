@@ -20,8 +20,8 @@ using System.Text.RegularExpressions;
 using CorePlugin.Attributes.Headers;
 using CorePlugin.Attributes.Validation;
 using CorePlugin.Console.ConsoleElements;
+using CorePlugin.Dispatchers;
 using CorePlugin.Extensions;
-using CorePlugin.MainThreadDispatcher;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -208,7 +208,7 @@ namespace CorePlugin.Console
 
         private void MessageReceivedThreaded(string condition, string stacktrace, LogType type)
         {
-            UnityMainThreadDispatcher.Instance.Enqueue(()=> CreateMessage(condition, stacktrace, type));
+            UnityMainThreadDispatcher.Enqueue(()=> CreateMessage(condition, stacktrace, type));
         }
 
         private void CreateMessage(string condition, string stacktrace, LogType type)

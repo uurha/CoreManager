@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using CorePlugin.MainThreadDispatcher;
+using CorePlugin.Dispatchers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,12 +17,10 @@ namespace CorePlugin.SceneManagement
         }
         
         private static readonly SceneLoaderSettings SceneLoaderSettings;
-        private static readonly UnityMainThreadDispatcher UnityMainThreadDispatcher;
 
         static SceneLoader()
         {
             SceneLoaderSettings = Resources.Load<SceneLoaderSettings>(nameof(SceneLoaderSettings));
-            UnityMainThreadDispatcher = UnityMainThreadDispatcher.Instance;
         }
 
         public static void LoadSceneAsync(SceneLoaderAsset asset, LoadSceneOptions loadSceneOptions)
@@ -30,10 +28,10 @@ namespace CorePlugin.SceneManagement
             switch (loadSceneOptions.UseIntermediate)
             {
                 case true:
-                    UnityMainThreadDispatcher.StartCoroutine(LoadSceneWithIntermediate(asset, loadSceneOptions));
+                    StaticCoroutineDispatcher.StartStaticCoroutine(LoadSceneWithIntermediate(asset, loadSceneOptions));
                     break;
                 case false:
-                    UnityMainThreadDispatcher.StartCoroutine(LoadScene(asset, loadSceneOptions));
+                    StaticCoroutineDispatcher.StartStaticCoroutine(LoadScene(asset, loadSceneOptions));
                     break;
             }
         }
@@ -42,11 +40,11 @@ namespace CorePlugin.SceneManagement
         {  
             var currentScene = SceneManager.GetActiveScene();
 
-            var intermediateCoroutine = UnityMainThreadDispatcher.StartCoroutine(SceneLoaderSettings.IntermediateScene.SceneLoadOperation(options.SceneLoadMode, (sceneAsyncOperation) => sceneAsyncOperation.allowSceneActivation = true));
+            var intermediateCoroutine = StaticCoroutineDispatcher.StartStaticCoroutine(SceneLoaderSettings.IntermediateScene.SceneLoadOperation(options.SceneLoadMode, (sceneAsyncOperation) => sceneAsyncOperation.allowSceneActivation = true));
             
             AsyncOperation nextSceneOperation = null;
 
-            var sceneOperationCoroutine = UnityMainThreadDispatcher.StartCoroutine(asset.SceneLoadOperation(options.SceneLoadMode, (sceneAsyncOperation) => nextSceneOperation = sceneAsyncOperation));
+            var sceneOperationCoroutine = StaticCoroutineDispatcher.StartStaticCoroutine(asset.SceneLoadOperation(options.SceneLoadMode, (sceneAsyncOperation) => nextSceneOperation = sceneAsyncOperation));
             
             yield return new WaitForSeconds(SceneLoaderSettings.TimeInIntermediateScene);
             yield return intermediateCoroutine;

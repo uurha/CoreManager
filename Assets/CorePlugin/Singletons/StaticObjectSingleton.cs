@@ -8,19 +8,16 @@ namespace CorePlugin.Singletons
     /// Strongly recommended to use singletons as little as possible.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class SingletonWithCreating<T> : MonoBehaviour where T : MonoBehaviour
+    public class StaticObjectSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         private protected static T _instance;
 
         public static bool IsInitialised => _instance != null;
 
-        public static T Instance
+        private protected static T GetInstance()
         {
-            get
-            {
-                if (IsInitialised) return _instance;
-                return _instance = new GameObject(typeof(T).Name).AddComponent<T>();
-            }
+            if (IsInitialised) return _instance;
+            return _instance = new GameObject(typeof(T).Name).AddComponent<T>();
         }
 
         protected virtual void OnDestroy()

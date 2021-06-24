@@ -20,34 +20,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using CorePlugin.Singletons;
 
-namespace CorePlugin.MainThreadDispatcher
+namespace CorePlugin.Dispatchers
 {
-    public class UnityMainThreadDispatcher : SingletonWithCreating<UnityMainThreadDispatcher>
+    public class UnityMainThreadDispatcher : StaticObjectSingleton<UnityMainThreadDispatcher>
     {
         private static readonly Queue<Action> ExecutionQueue = new Queue<Action>();
         private static readonly SemaphoreSlim ExecutionQueueLock = new SemaphoreSlim(1, 1);
-
-        private void Update()
-        {
-            ExecutionQueueLock.Wait();
-            try
-            {
-                while (ExecutionQueue.Count > 0)
-                {
-                    ExecutionQueue.Dequeue().Invoke();
-                }
-            }
-            finally
-            {
-                ExecutionQueueLock.Release();
-            }
-        }
 
         /// <summary>
         /// Locks the queue and adds the IEnumerator to the queue
         /// </summary>
         /// <param name="action">IEnumerator function that will be executed from the main thread.</param>
-        public void Enqueue(IEnumerator action)
+        public void EnqueueInternal(IEnumerator action)
         {
             ExecutionQueueLock.Wait();
             try
@@ -64,10 +48,19 @@ namespace CorePlugin.MainThreadDispatcher
         }
 
         /// <summary>
+        /// Locks the queue and adds the IEnumerator to the queue
+        /// </summary>
+        /// <param name="action">IEnumerator function that will be executed from the main thread.</param>
+        public static void Enqueue(IEnumerator action)
+        {
+            GetInstance().EnqueueInternal(action);
+        }
+
+        /// <summary>
         /// Locks the queue and adds the Action to the queue
         /// </summary>
         /// <param name="action">function that will be executed from the main thread.</param>
-        public void Enqueue(Action action)
+        public static void Enqueue(Action action)
         {
             Enqueue(ActionWrapper(action));
         }
@@ -77,7 +70,7 @@ namespace CorePlugin.MainThreadDispatcher
         /// </summary>
         /// <param name="action">function that will be executed from the main thread.</param>
         /// <returns>A Task that can be awaited until the action completes</returns>
-        public Task EnqueueAsync(Action action)
+        public static Task EnqueueAsync(Action action)
         {
             var tcs = new TaskCompletionSource<bool>();
 
@@ -115,6 +108,22 @@ namespace CorePlugin.MainThreadDispatcher
             else
             {
                 Destroy(gameObject);
+            }
+        }
+
+        private void Update()
+        {
+            ExecutionQueueLock.Wait();
+            try
+            {
+                while (ExecutionQueue.Count > 0)
+                {
+                    ExecutionQueue.Dequeue().Invoke();
+                }
+            }
+            finally
+            {
+                ExecutionQueueLock.Release();
             }
         }
     }
