@@ -22,7 +22,7 @@ using CorePlugin.Singletons;
 
 namespace CorePlugin.Dispatchers
 {
-    public class UnityMainThreadDispatcher : StaticObjectSingleton<UnityMainThreadDispatcher>
+    public class MainThreadDispatcher : StaticObjectSingleton<MainThreadDispatcher>
     {
         private static readonly Queue<Action> ExecutionQueue = new Queue<Action>();
         private static readonly SemaphoreSlim ExecutionQueueLock = new SemaphoreSlim(1, 1);

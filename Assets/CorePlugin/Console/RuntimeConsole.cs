@@ -77,6 +77,12 @@ namespace CorePlugin.Console
             remove => onLogCountUpdated -= value;
         }
 
+        /// <summary>
+        /// Initializing RuntimeConsole
+        /// </summary>
+        /// <param name="onMinimized">Action what will executed on console minimized</param>
+        /// <param name="icons"></param>
+        /// <returns></returns>
         public RuntimeConsole Initialize(Action onMinimized, ConsoleIcons icons)
         {
             _consoleCanvasGroup = GetComponent<CanvasGroup>();
@@ -99,6 +105,15 @@ namespace CorePlugin.Console
             minimizedButton.onClick.AddListener(Minimize);
             ClearLogs();
             return this;
+        }
+
+        /// <summary>
+        /// Hides or Show console
+        /// </summary>
+        /// <param name="state"></param>
+        public void SetActive(bool state)
+        {
+            UIStateTools.ChangeGroupState(_consoleCanvasGroup, state);
         }
 
         private void Minimize()
@@ -158,11 +173,6 @@ namespace CorePlugin.Console
                 }
             }
         }
-        
-        public void SetActive(bool state)
-        {
-            UIStateTools.ChangeGroupState(_consoleCanvasGroup, state);
-        }
 
         private void ClearLogs()
         {
@@ -208,7 +218,7 @@ namespace CorePlugin.Console
 
         private void MessageReceivedThreaded(string condition, string stacktrace, LogType type)
         {
-            UnityMainThreadDispatcher.Enqueue(()=> CreateMessage(condition, stacktrace, type));
+            MainThreadDispatcher.Enqueue(()=> CreateMessage(condition, stacktrace, type));
         }
 
         private void CreateMessage(string condition, string stacktrace, LogType type)
@@ -260,7 +270,7 @@ namespace CorePlugin.Console
             };
             return states;
         }
-        
+
         private HashSet<LogType> LogTypes(HashSet<LogType> designatedTypes)
         {
             var states = Enumerable.Empty<LogType>();

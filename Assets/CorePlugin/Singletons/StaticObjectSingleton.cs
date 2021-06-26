@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CorePlugin.Singletons
 {
     /// <summary>
-    /// Base for all singletons.
+    /// Base for static objects singletons.
     /// Strongly recommended to use singletons as little as possible.
     /// </summary>
     /// <typeparam name="T"></typeparam>

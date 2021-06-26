@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace CorePlugin.SceneManagement
 {
+    /// <summary>
+    /// Class represents SceneAsset for SceneLoader
+    /// </summary>
     [Serializable]
     public class SceneLoaderAsset
     {

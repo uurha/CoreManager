@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace CorePlugin.SceneManagement
 {
+    /// <summary>
+    /// Scene Loader Settings
+    /// </summary>
     public class SceneLoaderSettings : ScriptableObject
     {
         [SerializeField] private List<SceneLoaderAsset> scenes;

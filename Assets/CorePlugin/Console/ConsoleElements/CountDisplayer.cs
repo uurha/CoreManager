@@ -37,6 +37,11 @@ namespace CorePlugin.Console.ConsoleElements
         
         protected ConsoleIcons _icons;
 
+        /// <summary>
+        /// Initialize CountDisplayer with icons
+        /// </summary>
+        /// <param name="icons"></param>
+        /// <returns></returns>
         public virtual CountDisplayer Initialize(ConsoleIcons icons)
         {
             _icons = icons;

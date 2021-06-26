@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using CorePlugin.Dispatchers;
 using UnityEngine;
@@ -6,16 +5,11 @@ using UnityEngine.SceneManagement;
 
 namespace CorePlugin.SceneManagement
 {
+    /// <summary>
+    /// Scene Loader at run-time
+    /// </summary>
     public static class SceneLoader
     {
-        [Serializable]
-        public class LoadSceneOptions
-        {
-            public LoadSceneMode SceneLoadMode { get; set; } = LoadSceneMode.Additive;
-            public UnloadSceneOptions SceneUnloadMode { get; set; } = UnloadSceneOptions.UnloadAllEmbeddedSceneObjects;
-            public bool UseIntermediate { get; set; } = true;
-        }
-        
         private static readonly SceneLoaderSettings SceneLoaderSettings;
 
         static SceneLoader()
@@ -23,6 +17,11 @@ namespace CorePlugin.SceneManagement
             SceneLoaderSettings = Resources.Load<SceneLoaderSettings>(nameof(SceneLoaderSettings));
         }
 
+        /// <summary>
+        /// Loads async SceneLoaderAsset with LoadSceneOptions
+        /// </summary>
+        /// <param name="asset"></param>
+        /// <param name="loadSceneOptions"></param>
         public static void LoadSceneAsync(SceneLoaderAsset asset, LoadSceneOptions loadSceneOptions)
         {
             switch (loadSceneOptions.UseIntermediate)
@@ -34,6 +33,15 @@ namespace CorePlugin.SceneManagement
                     StaticCoroutineDispatcher.StartStaticCoroutine(LoadScene(asset, loadSceneOptions));
                     break;
             }
+        }
+        
+        /// <summary>
+        /// Loads async SceneLoaderAsset with default options
+        /// </summary>
+        /// <param name="asset"></param>
+        public static void LoadSceneAsync(SceneLoaderAsset asset)
+        {
+            LoadSceneAsync(asset, new LoadSceneOptions());
         }
 
         private static IEnumerator LoadSceneWithIntermediate(SceneLoaderAsset asset, LoadSceneOptions options)

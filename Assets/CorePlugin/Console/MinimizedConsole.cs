@@ -42,10 +42,21 @@ namespace CorePlugin.Console
         
         public List<CountDisplayer> CountDisplayers => countDisplayers;
 
+        /// <summary>
+        /// Initializing MinimizedConsole
+        /// </summary>
+        /// <param name="onMaximized"></param>
+        /// <param name="icons"></param>
+        /// <returns></returns>
         public MinimizedConsole Initialize(Action onMaximized, ConsoleIcons icons)
         {
             _consoleCanvasGroup = GetComponent<CanvasGroup>();
             onConsoleMaximized += onMaximized;
+
+            foreach (var countDisplayer in countDisplayers)
+            {
+                countDisplayer.Initialize(icons);
+            }
             
             return this;
         }
@@ -68,6 +79,10 @@ namespace CorePlugin.Console
             onConsoleMaximized?.Invoke();
         }
 
+        /// <summary>
+        /// Hides or Show console
+        /// </summary>
+        /// <param name="state"></param>
         public void SetActive(bool state)
         {
             UIStateTools.ChangeGroupState(_consoleCanvasGroup, state);
