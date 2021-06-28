@@ -29,7 +29,7 @@ namespace CorePlugin.Editor
     /// <seealso cref="CorePlugin.Core.CoreManager"/>
     /// </summary>
     [CustomEditor(typeof(CoreManager))]
-    public class CustomInspectorCoreManager : ValidationAttributeEditor
+    public class CoreManagerEditor : ValidationAttributeEditor
     {
         private CoreManager _manager;
 

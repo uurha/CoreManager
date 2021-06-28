@@ -60,7 +60,7 @@ namespace CorePlugin.Samples.Scripts
         {
             if (_data == null) return;
             SceneDataHandler.Instance.AddData(_data);
-            SceneLoader.LoadSceneAsync(scene, new LoadSceneOptions{UseIntermediate = false, SceneLoadMode = LoadSceneMode.Single});
+            SceneLoader.LoadSceneAsync(scene, new LoadSceneOptions{UseIntermediate = true, SceneLoadMode = LoadSceneMode.Single});
         }
     }
 }

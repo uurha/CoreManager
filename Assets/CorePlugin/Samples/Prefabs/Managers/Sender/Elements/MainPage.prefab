@@ -272,7 +272,7 @@ MonoBehaviour:
   scene:
     fullPath: Assets/CorePlugin/Samples/Scenes/ReceiverSample.unity
     name: ReceiverSample
-    instanceID: 15306
+    instanceID: 15762
 --- !u!1 &8349899687539088943
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using CorePlugin.Editor;
+using CorePlugin.SceneManagement;
 using UnityEditor;
 using UnityEngine;
 
@@ -36,8 +38,17 @@ namespace CorePlugin.Attributes.Editor
         private static void LogPlayModeState(PlayModeStateChange state)
         {
             if (state != PlayModeStateChange.ExitingEditMode) return;
+
             var pairs = AttributeValidator.ErrorObjectPairs(); //TODO: validate sub prefabs on opened scene
+            
+            if (!SceneLoaderSettingsValidator.Validate(out var settings))
+            {
+                var error = new ErrorObjectPair(SceneLoaderSettingsValidator.ReturnErrorText(settings), null);
+                pairs = pairs.Concat(new[] {error});
+            }
+            
             var errorObjectPairs = pairs as ErrorObjectPair[] ?? pairs.ToArray();
+            
             if (IsPlayModeAvailable(errorObjectPairs)) return;
             EditorApplication.Beep();
             EditorApplication.ExitPlaymode();

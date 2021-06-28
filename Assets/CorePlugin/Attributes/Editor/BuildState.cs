@@ -15,6 +15,8 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using CorePlugin.Editor;
+using CorePlugin.SceneManagement;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -36,11 +38,18 @@ namespace CorePlugin.Attributes.Editor
 
         private static void CheckSceneObjects(BuildPlayerOptions buildPlayerOptions)
         {
-            var errorObjectPairs = Enumerable.Empty<ErrorObjectPair>();
-            errorObjectPairs = errorObjectPairs.Concat(CheckSceneObjects());
-            errorObjectPairs = errorObjectPairs.Concat(CheckPrefabs());
-            var errors = errorObjectPairs as ErrorObjectPair[] ?? errorObjectPairs.ToArray();
+            var pairs = Enumerable.Empty<ErrorObjectPair>();
+            pairs = pairs.Concat(CheckSceneObjects());
+            pairs = pairs.Concat(CheckPrefabs());
 
+            if (!SceneLoaderSettingsValidator.Validate(out var settings))
+            {
+                var error = new ErrorObjectPair(SceneLoaderSettingsValidator.ReturnErrorText(settings), null);
+                pairs = pairs.Concat(new[] {error});
+            }
+
+            var errors = pairs as ErrorObjectPair[] ?? pairs.ToArray();
+            
             if (!errors.Any())
             {
                 BuildPlayerWindow.DefaultBuildMethods.BuildPlayer(buildPlayerOptions);

@@ -13,36 +13,28 @@
 
 #endregion
 
-using System;
-using UnityEngine;
+using CorePlugin.SceneManagement;
+using UnityEditor;
 
-namespace CorePlugin.Extensions
+namespace CorePlugin.Editor
 {
-    [Serializable]
-    public struct Range<T> where T : new()
+    /// <summary>
+    /// Editor for <seealso cref="CorePlugin.SceneManagement.SceneLoaderSettings"/> validation
+    /// </summary>
+    [CustomEditor(typeof(SceneLoaderSettings))]
+    public class SceneLoaderSettingsEditor : UnityEditor.Editor
     {
-        [SerializeField] private T min;
-        [SerializeField] private T max;
-            
-        public T Min => min;
-        public T Max => max;
-            
-        public Range(T minValue, T maxValue)
+        private SceneLoaderSettings sceneLoaderSettings;
+
+        private void OnEnable()
         {
-            min = minValue;
-            max = maxValue;
+            sceneLoaderSettings = (SceneLoaderSettings) target;
         }
 
-        public Range<T> UpdateMin(T minValue)
+        public override void OnInspectorGUI()
         {
-            min = minValue;
-            return this;
-        }
-            
-        public Range<T> UpdateMax(T maxValue)
-        {
-            max = maxValue;
-            return this;
+            base.OnInspectorGUI();
+            SceneLoaderSettingsValidator.ValidateScenesLoaderSettings(sceneLoaderSettings);
         }
     }
 }

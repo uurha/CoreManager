@@ -13,36 +13,22 @@
 
 #endregion
 
-using System;
-using UnityEngine;
+using System.Collections.Generic;
+using UnityEditor;
 
-namespace CorePlugin.Extensions
+namespace CorePlugin.Editor
 {
-    [Serializable]
-    public struct Range<T> where T : new()
+    internal class EditorSceneComparer : IEqualityComparer<EditorBuildSettingsScene>
     {
-        [SerializeField] private T min;
-        [SerializeField] private T max;
-            
-        public T Min => min;
-        public T Max => max;
-            
-        public Range(T minValue, T maxValue)
+        public bool Equals(EditorBuildSettingsScene s1, EditorBuildSettingsScene s2)
         {
-            min = minValue;
-            max = maxValue;
+            return s2 == null && s1 == null || s1 != null && s2 != null && s1.path == s2.path;
         }
 
-        public Range<T> UpdateMin(T minValue)
+        public int GetHashCode(EditorBuildSettingsScene scene)
         {
-            min = minValue;
-            return this;
-        }
-            
-        public Range<T> UpdateMax(T maxValue)
-        {
-            max = maxValue;
-            return this;
+            var hCode = scene.path;
+            return hCode.GetHashCode();
         }
     }
 }

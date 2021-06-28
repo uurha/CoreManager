@@ -1,4 +1,19 @@
-﻿using System;
+﻿#region license
+
+// Copyright 2021 Arcueid Elizabeth D'athemon
+// Licensed under the Apache License, Version 2.0 (the "License"); 
+// you may not use this file except in compliance with the License. 
+// You may obtain a copy of the License at 
+//     http://www.apache.org/licenses/LICENSE-2.0 
+// Unless required by applicable law or agreed to in writing, software 
+// distributed under the License is distributed on an "AS IS" BASIS, 
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+// See the License for the specific language governing permissions and 
+// limitations under the License.
+
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -98,7 +113,7 @@ namespace CorePlugin.Attributes.Editor.Drawers
             CheckBuildScene(newPath, newScene);
         }
 
-        private static void CheckBuildScene(string path, SceneAsset sceneToCheck)
+        private static void CheckBuildScene(string path, Object sceneToCheck)
         {
             if(sceneToCheck == null) return;
         
@@ -106,11 +121,11 @@ namespace CorePlugin.Attributes.Editor.Drawers
     
             if (buildScene == null)
             {
-                UnityEditorExtension.HelpBox($"Scene <b>{sceneToCheck.name}</b> not in build", MessageType.Error);
+                UnityEditorExtension.HelpBox($"Scene <b>{sceneToCheck.name}</b> not in build. Add scene to SceneLoaderSettings.", MessageType.Error);
             }
             else if (!buildScene.enabled)
             {
-                UnityEditorExtension.HelpBox($"Scene <b>{sceneToCheck.name}</b> not enabled", MessageType.Error);
+                UnityEditorExtension.HelpBox($"Scene <b>{sceneToCheck.name}</b> not enabled in build settings", MessageType.Error);
             }
         }
     }
