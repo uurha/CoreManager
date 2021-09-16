@@ -29,11 +29,11 @@ Any OS supported. Unity version 2020 and above. (Package requires C# 8.0)
 14. <b>Runtime console</b> - console with Unity logs for debug and/or release builds. Allows display console logs like in Unity Editor. Strips from release builds if other not predetermined.
 15. <b>Scene Loader</b> - add callbacks on scene changing.
 
-##Improvements
+## Improvements
 1. <b>RequireInterfaceAttribute</b>
 2. <b>Delegate</b> combination for subscribing (checkout samples to learn how to use)
 
-##Breaking changes
+## Breaking changes
 
 ### v1.1.2
 1. Event interfaces accept arrays instead of IEnumerable.
