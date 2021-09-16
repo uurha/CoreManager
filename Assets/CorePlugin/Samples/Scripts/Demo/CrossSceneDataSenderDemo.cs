@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CorePlugin.Attributes.Validation;
 using CorePlugin.Cross.Events.Interface;
+using CorePlugin.Extensions;
 using CorePlugin.Samples.Scripts.EventTypes;
 using CorePlugin.Samples.Scripts.Model;
 using TMPro;
@@ -46,18 +47,16 @@ namespace CorePlugin.Samples.Scripts.Demo
             IsValidDataParsedEvent?.Invoke(false);
         }
 
-        public void Subscribe(IEnumerable<Delegate> subscribers)
+        public void Subscribe(Delegate[] subscribers)
         {
-            var enumerable = subscribers as Delegate[] ?? subscribers.ToArray();
-            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.DataParsedDelegate>()) DataParsedEvent += parsedDelegate;
-            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.IsValidDataParsedDelegate>()) IsValidDataParsedEvent += parsedDelegate;
+            DataParsedEvent += subscribers.Combine<CustomEventTypes.DataParsedDelegate>();
+            IsValidDataParsedEvent += subscribers.Combine<CustomEventTypes.IsValidDataParsedDelegate>();
         }
 
-        public void Unsubscribe(IEnumerable<Delegate> unsubscribers)
+        public void Unsubscribe(Delegate[] subscribers)
         {
-            var enumerable = unsubscribers as Delegate[] ?? unsubscribers.ToArray();
-            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.DataParsedDelegate>()) DataParsedEvent -= parsedDelegate;
-            foreach (var parsedDelegate in enumerable.OfType<CustomEventTypes.IsValidDataParsedDelegate>()) IsValidDataParsedEvent -= parsedDelegate;
+            DataParsedEvent -= subscribers.Combine<CustomEventTypes.DataParsedDelegate>();
+            IsValidDataParsedEvent -= subscribers.Combine<CustomEventTypes.IsValidDataParsedDelegate>();
         }
 
         private event CustomEventTypes.DataParsedDelegate DataParsedEvent;

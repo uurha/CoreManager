@@ -38,7 +38,7 @@ namespace CorePlugin.Samples.Scripts
             loadButton.onClick.AddListener(LoadScene);
         }
 
-        public IEnumerable<Delegate> GetSubscribers()
+        public Delegate[] GetSubscribers()
         {
             var delegates = new Delegate[] {(CustomEventTypes.IsValidDataParsedDelegate) IsDataValid, (CustomEventTypes.DataParsedDelegate) DataReceiver};
             return delegates;
