@@ -1,9 +1,9 @@
 # CoreManager
 
 Reasons to use this package:
-  - It allows avoiding reference serialization via Inspector.
-  - It removes the need for GOD objects.
-  - Provides high script flexibility and low cohesion.
+- It allows avoiding reference serialization via Inspector.
+- It removes the need for GOD objects.
+- Provides high script flexibility and low cohesion.
 
 ## Technical details
 
@@ -36,4 +36,7 @@ Any OS supported. Unity version 2020 and above. (Package requires C# 8.0)
 ## Breaking changes
 
 ### v1.1.2
-1. Event interfaces accept arrays instead of IEnumerable.
+1. Event interfaces accept arrays instead of <b>IEnumerable</b>.
+
+### v1.1.3
+1. Event interfaces accept <b>params</b> arrays.

@@ -47,16 +47,16 @@ namespace CorePlugin.Samples.Scripts.Demo
             IsValidDataParsedEvent?.Invoke(false);
         }
 
-        public void Subscribe(Delegate[] subscribers)
+        public void Subscribe(params Delegate[] subscribers)
         {
-            DataParsedEvent += subscribers.Combine<CustomEventTypes.DataParsedDelegate>();
-            IsValidDataParsedEvent += subscribers.Combine<CustomEventTypes.IsValidDataParsedDelegate>();
+            EventExtensions.Subscribe(ref DataParsedEvent, subscribers);
+            EventExtensions.Subscribe(ref IsValidDataParsedEvent, subscribers);
         }
 
-        public void Unsubscribe(Delegate[] subscribers)
+        public void Unsubscribe(params Delegate[] subscribers)
         {
-            DataParsedEvent -= subscribers.Combine<CustomEventTypes.DataParsedDelegate>();
-            IsValidDataParsedEvent -= subscribers.Combine<CustomEventTypes.IsValidDataParsedDelegate>();
+            EventExtensions.Unsubscribe(ref DataParsedEvent, subscribers);
+            EventExtensions.Unsubscribe(ref IsValidDataParsedEvent, subscribers);
         }
 
         private event CustomEventTypes.DataParsedDelegate DataParsedEvent;
