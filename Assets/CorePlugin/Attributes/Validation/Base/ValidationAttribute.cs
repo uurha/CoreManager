@@ -14,12 +14,15 @@
 #endregion
 
 using System;
+using System.Diagnostics;
+using CorePlugin.Extensions;
 
 namespace CorePlugin.Attributes.Validation.Base
 {
     /// <summary>
     /// Base attribute for validation
     /// </summary>
+    [Conditional(EditorDefinition.UnityEditor)]
     public abstract class ValidationAttribute : Attribute
     {
         private protected string _error;

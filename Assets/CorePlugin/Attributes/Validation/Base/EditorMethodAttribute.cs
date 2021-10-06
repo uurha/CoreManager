@@ -13,22 +13,15 @@
 
 #endregion
 
-using System.Collections.Generic;
-using UnityEditor;
+using System;
+using System.Diagnostics;
+using CorePlugin.Extensions;
 
-namespace CorePlugin.Editor
+namespace CorePlugin.Attributes.Validation.Base
 {
-    internal class EditorSceneComparer : IEqualityComparer<EditorBuildSettingsScene>
+    [AttributeUsage(AttributeTargets.Method)]
+    [Conditional(EditorDefinition.UnityEditor)]
+    public abstract class EditorMethodAttribute : Attribute
     {
-        public bool Equals(EditorBuildSettingsScene s1, EditorBuildSettingsScene s2)
-        {
-            return s2 == null && s1 == null || s1 != null && s2 != null && s1.path == s2.path;
-        }
-
-        public int GetHashCode(EditorBuildSettingsScene scene)
-        {
-            var hCode = scene.path;
-            return hCode.GetHashCode();
-        }
     }
 }
