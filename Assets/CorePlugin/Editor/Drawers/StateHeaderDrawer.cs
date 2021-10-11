@@ -13,21 +13,25 @@
 
 #endregion
 
+using CorePlugin.Attributes.Headers;
+using UnityEditor;
 using UnityEngine;
 
-namespace CorePlugin.Attributes.Validation.Base
+namespace CorePlugin.Editor.Drawers
 {
-    /// <summary>
-    /// Base attribute for class validation.
-    /// </summary>
-
-    //TODO: Create Custom [RequireComponent] with defining public properties
-    public abstract class ClassValidationAttribute : ValidationAttribute
+    [CustomPropertyDrawer(typeof(StateHeaderAttribute))]
+    internal sealed class StateHeaderDrawer : DecoratorDrawer
     {
-        protected ClassValidationAttribute(bool showError) : base(showError)
+        public override void OnGUI(Rect position)
         {
+            position.yMin += EditorGUIUtility.singleLineHeight * 0.5f;
+            position = EditorGUI.IndentedRect(position);
+            GUI.Label(position, (attribute as HeaderAttribute)?.header, EditorStyles.boldLabel);
         }
 
-        public abstract bool Validate(Object instance);
+        public override float GetHeight()
+        {
+            return EditorGUIUtility.singleLineHeight * 1.5f;
+        }
     }
 }

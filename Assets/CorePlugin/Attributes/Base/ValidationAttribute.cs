@@ -1,4 +1,4 @@
-﻿#region license
+#region license
 
 // Copyright 2021 - 2021 Arcueid Elizabeth D'athemon
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,18 +14,31 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 using CorePlugin.Extensions;
-using Object = UnityEngine.Object;
 
-namespace CorePlugin.Attributes.Editor
+namespace CorePlugin.Attributes.Base
 {
-    [Serializable]
-    internal class ErrorObjectPair : Named<string, Object>
+    /// <summary>
+    /// Base attribute for validation
+    /// </summary>
+    [Conditional(EditorDefinition.UnityEditor)]
+    public abstract class ValidationAttribute : Attribute
     {
-        public ErrorObjectPair(string error, Object obj)
+        private protected string _error;
+
+        protected ValidationAttribute(bool showError)
         {
-            _key = error.Replace("\n", " ");
-            _value = obj;
+            ShowError = showError;
         }
+
+        public string ErrorMessage => _error;
+
+        public bool ShowError { get; }
+
+        private protected abstract bool ValidState(object obj);
+
+        private protected abstract string ErrorText();
     }
+
 }

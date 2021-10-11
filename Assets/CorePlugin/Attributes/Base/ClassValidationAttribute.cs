@@ -13,22 +13,21 @@
 
 #endregion
 
-using System.Collections.Generic;
-using UnityEditor;
+using UnityEngine;
 
-namespace CorePlugin.Editor
+namespace CorePlugin.Attributes.Base
 {
-    internal class EditorSceneComparer : IEqualityComparer<EditorBuildSettingsScene>
+    /// <summary>
+    /// Base attribute for class validation.
+    /// </summary>
+
+    //TODO: Create Custom [RequireComponent] with defining public properties
+    public abstract class ClassValidationAttribute : ValidationAttribute
     {
-        public bool Equals(EditorBuildSettingsScene s1, EditorBuildSettingsScene s2)
+        protected ClassValidationAttribute(bool showError) : base(showError)
         {
-            return s2 == null && s1 == null || s1 != null && s2 != null && s1.path == s2.path;
         }
 
-        public int GetHashCode(EditorBuildSettingsScene scene)
-        {
-            var hCode = scene.path;
-            return hCode.GetHashCode();
-        }
+        public abstract bool Validate(Object instance);
     }
 }

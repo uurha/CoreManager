@@ -13,25 +13,19 @@
 
 #endregion
 
-using CorePlugin.Attributes.Headers;
-using UnityEditor;
-using UnityEngine;
+using System;
+using CorePlugin.Extensions;
+using Object = UnityEngine.Object;
 
-namespace CorePlugin.Attributes.Editor.Drawers
+namespace CorePlugin.Editor.Helpers
 {
-    [CustomPropertyDrawer(typeof(StateHeaderAttribute))]
-    internal sealed class StateHeaderDrawer : DecoratorDrawer
+    [Serializable]
+    internal class ErrorObjectPair : Named<string, Object>
     {
-        public override void OnGUI(Rect position)
+        public ErrorObjectPair(string error, Object obj)
         {
-            position.yMin += EditorGUIUtility.singleLineHeight * 0.5f;
-            position = EditorGUI.IndentedRect(position);
-            GUI.Label(position, (attribute as HeaderAttribute)?.header, EditorStyles.boldLabel);
-        }
-
-        public override float GetHeight()
-        {
-            return EditorGUIUtility.singleLineHeight * 1.5f;
+            _key = error.Replace("\n", " ");
+            _value = obj;
         }
     }
 }
