@@ -142,9 +142,7 @@ namespace CorePlugin.Console
             layoutGroup.reverseArrangement = reverseOrder;
             reverseSortingToggle.isOn = reverseOrder;
             Application.logMessageReceivedThreaded += MessageReceivedThreaded;
-
-            foreach (var logButton in logButtons)
-                _onLogCountUpdated += logButton.Initialize(icons).SetInteractionAction(OnStateChanged).OnLogCountChanged;
+            foreach (var logButton in logButtons) _onLogCountUpdated += logButton.Initialize(icons).SetInteractionAction(OnStateChanged).OnLogCountChanged;
             _onConsoleMinimized += onMinimized;
             searchInputField.onValueChanged.AddListener(text => _recentSearchText = text);
             searchInputField.onValueChanged.AddListener(SearchLogs);
