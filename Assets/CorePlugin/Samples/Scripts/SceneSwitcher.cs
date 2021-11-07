@@ -18,7 +18,6 @@ using CorePlugin.Cross.Events.Interface;
 using CorePlugin.Cross.SceneData;
 using CorePlugin.Samples.Scripts.EventTypes;
 using CorePlugin.Samples.Scripts.Model;
-using CorePlugin.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,7 +27,7 @@ namespace CorePlugin.Samples.Scripts
     public class SceneSwitcher : MonoBehaviour, IEventSubscriber
     {
         [SerializeField] private Button loadButton;
-        [SerializeField] private SceneLoaderAsset scene;
+        [SerializeField] private string scene = "ReceiverSample";
 
         private DataTransfer _data;
 
@@ -53,7 +52,7 @@ namespace CorePlugin.Samples.Scripts
         {
             if (_data == null) return;
             SceneDataHandler.Instance.AddData(_data);
-            SceneLoader.LoadSceneAsync(scene, new LoadSceneOptions {UseIntermediate = true, SceneLoadMode = LoadSceneMode.Single});
+            SceneManager.LoadScene(scene);
         }
 
         public Delegate[] GetSubscribers()
