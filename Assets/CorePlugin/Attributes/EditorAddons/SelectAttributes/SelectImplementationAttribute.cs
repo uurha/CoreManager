@@ -14,24 +14,20 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 using CorePlugin.Extensions;
-using UnityEngine;
 
-namespace CorePlugin.Attributes.Headers
+namespace CorePlugin.Attributes.EditorAddons.SelectAttributes
 {
     /// <summary>
-    /// Replacement for Header("Settings")
+    /// Attribute for Implementation selection in Inspector.
+    /// Use in pair with [SerializeReference] Attribute.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
-    public class SettingsHeaderAttribute : HeaderAttribute
+    [Conditional(EditorDefinition.UnityEditor)]
+    [AttributeUsage(AttributeTargets.Field)]
+    public class SelectImplementationAttribute : SelectAttributeBase
     {
-        public SettingsHeaderAttribute() : base("Settings")
-        {
-        }
-
-        public SettingsHeaderAttribute(string additionalText, bool preHeader = true) : base(preHeader
-                                                                                                ? $"{additionalText.PrettyCamelCase()} Settings"
-                                                                                                : $"Settings {additionalText.PrettyCamelCase()}")
+        public SelectImplementationAttribute(Type type) : base(type)
         {
         }
     }

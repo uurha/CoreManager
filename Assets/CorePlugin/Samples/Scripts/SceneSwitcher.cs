@@ -51,13 +51,13 @@ namespace CorePlugin.Samples.Scripts
         private void LoadScene()
         {
             if (_data == null) return;
-            SceneDataHandler.Instance.AddData(_data);
+            SceneDataHandler.AddData(_data);
             SceneManager.LoadScene(scene);
         }
 
         public Delegate[] GetSubscribers()
         {
-            var delegates = new Delegate[] {(CustomEventTypes.IsValidDataParsedDelegate) IsDataValid, (CustomEventTypes.DataParsedDelegate) DataReceiver};
+            var delegates = new Delegate[] { (CustomEventTypes.IsValidDataParsedDelegate)IsDataValid, (CustomEventTypes.DataParsedDelegate)DataReceiver };
             return delegates;
         }
     }

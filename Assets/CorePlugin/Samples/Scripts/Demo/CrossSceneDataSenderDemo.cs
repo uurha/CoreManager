@@ -15,6 +15,7 @@
 
 using System;
 using System.Linq;
+using CorePlugin.Attributes.EditorAddons;
 using CorePlugin.Attributes.Validation;
 using CorePlugin.Cross.Events.Interface;
 using CorePlugin.Extensions;
@@ -25,6 +26,7 @@ using UnityEngine;
 
 namespace CorePlugin.Samples.Scripts.Demo
 {
+    [CoreManagerElement]
     public class CrossSceneDataSenderDemo : MonoBehaviour, IEventHandler
     {
         [SerializeField] [NotNull] private TMP_InputField intField;

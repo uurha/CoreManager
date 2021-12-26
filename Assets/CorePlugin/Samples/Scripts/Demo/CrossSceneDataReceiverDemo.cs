@@ -32,9 +32,9 @@ namespace CorePlugin.Samples.Scripts.Demo
             ReceiveData();
         }
 
-        public void ReceiveData()
+        private void ReceiveData()
         {
-            if (!SceneDataHandler.Instance.GetData(out DataTransfer data)) return;
+            if (!SceneDataHandler.GetData(out DataTransfer data)) return;
             intText.text = data.IntData.ToString();
             colorText.text = data.ColorData.ToString();
             stringText.text = data.StrData;

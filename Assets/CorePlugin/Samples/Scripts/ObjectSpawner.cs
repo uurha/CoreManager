@@ -30,7 +30,7 @@ namespace CorePlugin.Samples.Scripts
 
         private void Start()
         {
-            if (!SceneDataHandler.Instance.GetData(out DataTransfer data)) return;
+            if (!SceneDataHandler.GetData(out DataTransfer data)) return;
 
             for (var i = 0; i < data.IntData; i++)
             {

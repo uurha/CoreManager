@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using CorePlugin.Singletons;
+using UnityEngine;
 
 namespace CorePlugin.Dispatchers
 {
@@ -26,6 +27,8 @@ namespace CorePlugin.Dispatchers
     {
         private static readonly Queue<Action> ExecutionQueue = new Queue<Action>();
         private static readonly SemaphoreSlim ExecutionQueueLock = new SemaphoreSlim(1, 1);
+
+        public static event Action OnDestroyEvent;
 
         private void Awake()
         {
@@ -120,6 +123,19 @@ namespace CorePlugin.Dispatchers
             {
                 ExecutionQueueLock.Release();
             }
+        }
+
+        [RuntimeInitializeOnLoadMethod]
+        private static void Init()
+        {
+            Initialize();
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            OnDestroyEvent?.Invoke();
+            OnDestroyEvent = null;
         }
     }
 }

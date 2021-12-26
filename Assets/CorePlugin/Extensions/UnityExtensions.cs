@@ -19,7 +19,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using CorePlugin.Serializable.Interface;
 using UnityEngine;
-using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace CorePlugin.Extensions
@@ -45,6 +44,12 @@ namespace CorePlugin.Extensions
             list.Add(new Named<TKey, TValue>(key, value));
         }
 
+        /// <summary>
+        /// Gets object name and converts into CamelCase
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="remove"></param>
+        /// <returns></returns>
         public static string PrettyObjectName(this Object input, params string[] remove)
         {
             if (remove == null) return input.name.PrettyCamelCase();
@@ -54,9 +59,9 @@ namespace CorePlugin.Extensions
 
         public static string PrettyCamelCase(this string input)
         {
-            return Regex.Replace(input.Replace("_",""), "((?<!^)([A-Z][a-z]|(?<=[a-z])[A-Z]))", " $1").Trim();
+            return Regex.Replace(input.Replace("_", ""), "((?<!^)([A-Z][a-z]|(?<=[a-z])[A-Z]))", " $1").Trim();
         }
-        
+
         public static string ToTitleCase(this string input)
         {
             return Regex.Replace(input, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
