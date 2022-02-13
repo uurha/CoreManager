@@ -64,6 +64,16 @@ Any OS supported. Unity version 2020 and above. (Package requires C# 8.0)
     1. SelectImplementation Attribute
     2. SelectType Attribute
 
+### v2.0.3
+
+1. Updated 
+   1. ReferenceDistributor API
+   2. SelectImplementationAttribute
+   3. CrossSceneData 
+2. Removed:
+    1. SelectType Attribute
+
+
 [Scene Loader]: https://github.com/uurha/AdvancedSceneManagement
 
 [Runtime console]: https://github.com/uurha/UnityConsole
