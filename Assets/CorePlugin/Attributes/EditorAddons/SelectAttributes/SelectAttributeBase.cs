@@ -35,5 +35,9 @@ namespace CorePlugin.Attributes.EditorAddons.SelectAttributes
         {
             return m_type;
         }
+        
+        public SelectAttributeBase()
+        {
+        }
     }
 }

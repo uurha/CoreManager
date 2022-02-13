@@ -24,15 +24,15 @@ namespace CorePlugin.Editor.Drawers.SelectDrawers
 {
     public abstract class SelectDrawerBase<T> : PropertyDrawer where T : SelectAttributeBase
     {
-        private bool _initializeFold;
+        private protected bool _initializeFold;
 
         private protected List<Type> _reflectionType;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             if (property.propertyType != SerializedPropertyType.ManagedReference) return;
-            var utility = (T)attribute;
-            LazyGetAllInheritedType(utility.GetFieldType());
+            var att = (T)attribute;
+            LazyGetAllInheritedType(att.GetFieldType() ?? fieldInfo.FieldType);
             var popupPosition = GetPopupPosition(position);
 
             var typePopupNameArray =
@@ -44,8 +44,14 @@ namespace CorePlugin.Editor.Drawers.SelectDrawers
                                                        : $"{type.Assembly.ToString().Split(',')[0]} {type.FullName}")
                                    .ToArray();
 
-            //Get the type of serialized object 
+            //Get the type of serialized object
             var currentTypeIndex = Array.IndexOf(typeFullNameArray, property.managedReferenceFullTypename);
+
+            if (currentTypeIndex <= -1 || currentTypeIndex >= typeFullNameArray.Length)
+            {
+                currentTypeIndex = 0;
+            }
+            
             var currentObjectType = _reflectionType[currentTypeIndex];
             var selectedTypeIndex = EditorGUI.Popup(popupPosition, currentTypeIndex, typePopupNameArray);
             ValidateType(property, selectedTypeIndex, currentObjectType);
@@ -58,6 +64,11 @@ namespace CorePlugin.Editor.Drawers.SelectDrawers
             EditorGUI.PropertyField(position, property, label, true);
         }
 
+        private protected virtual string GetManagedReferenceFullTypename(SerializedProperty property)
+        {
+            return property.managedReferenceFullTypename;
+        }
+
         private protected abstract void ValidateType(SerializedProperty property, int selectedTypeIndex, Type currentObjectType);
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -65,7 +76,7 @@ namespace CorePlugin.Editor.Drawers.SelectDrawers
             return EditorGUI.GetPropertyHeight(property, true);
         }
 
-        private void LazyGetAllInheritedType(Type baseType)
+        private protected void LazyGetAllInheritedType(Type baseType)
         {
             if (_reflectionType != null) return;
 
@@ -76,7 +87,7 @@ namespace CorePlugin.Editor.Drawers.SelectDrawers
             _reflectionType.Insert(0, null);
         }
 
-        private Rect GetPopupPosition(Rect currentPosition)
+        private protected Rect GetPopupPosition(Rect currentPosition)
         {
             var popupPosition = new Rect(currentPosition);
             popupPosition.width -= EditorGUIUtility.labelWidth;

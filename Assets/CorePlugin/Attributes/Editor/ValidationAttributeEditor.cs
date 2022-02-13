@@ -22,6 +22,7 @@ using CorePlugin.Editor.Extensions;
 using CorePlugin.Extensions;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace CorePlugin.Attributes.Editor
 {

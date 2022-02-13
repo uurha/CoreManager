@@ -30,5 +30,9 @@ namespace CorePlugin.Attributes.EditorAddons.SelectAttributes
         public SelectImplementationAttribute(Type type) : base(type)
         {
         }
+        
+        public SelectImplementationAttribute() : base()
+        {
+        }
     }
 }

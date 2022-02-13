@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CorePlugin/Samples/Scenes/ReceiverSample.unity
     guid: cdb01b8ca2fd485429b30dc48560a7c8
-  - enabled: 1
-    path: Assets/CorePlugin/Samples/Scenes/IntermediateSample.unity
-    guid: 34d8b6a2399378c4d953bf14b62b2952
   m_configObjects: {}
