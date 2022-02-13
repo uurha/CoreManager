@@ -1,6 +1,6 @@
 ﻿#region license
 
-// Copyright 2021 - 2021 Arcueid Elizabeth D'athemon
+// Copyright 2021 - 2022 Arcueid Elizabeth D'athemon
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -51,6 +51,13 @@ namespace CorePlugin.Editor.Windows
         {
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
             GetTabsIndexes();
+        }
+
+        private void ClearEmbeddedInspector()
+        {
+            if (_embeddedInspector == null) return;
+            DestroyImmediate(_embeddedInspector);
+            _embeddedInspector = null;
         }
 
         private void GenerateMenu(Rect rect)
@@ -115,24 +122,19 @@ namespace CorePlugin.Editor.Windows
                                                stretchWidth = true, alignment = TextAnchor.MiddleCenter,
                                                fontStyle = FontStyle.BoldAndItalic
                                            });
-
             var bufferSubTab = _subTab;
+
             _subTab = UnityEditorExtension.SelectionGrid(_subTab, key.NamedObjects.Select(x => x.Name).ToArray(),
                                                          columnCount,
                                                          new GUIStyle(GUI.skin.button) { stretchWidth = true });
             if (_subTab >= key.Value.Count) return;
-
-            if (_subTab != bufferSubTab)
-            {
-                ClearEmbeddedInspector();
-            }
+            if (_subTab != bufferSubTab) ClearEmbeddedInspector();
 
             if (_subTab != -1)
             {
                 bufferObject = key.Value[_subTab].Object;
                 SetTabIndexes();
             }
-            
             EditorGUILayout.Separator();
 
             EditorGUILayout.BeginFoldoutHeaderGroup(true, $"{bufferObject.PrettyTypeName()} (Script)", null,
@@ -141,13 +143,6 @@ namespace CorePlugin.Editor.Windows
             RecycleInspector(bufferObject);
             _displayObject = bufferObject;
             _embeddedInspector.OnInspectorGUI();
-        }
-
-        private void ClearEmbeddedInspector()
-        {
-            if (_embeddedInspector == null) return;
-            DestroyImmediate(_embeddedInspector);
-            _embeddedInspector = null;
         }
 
         private void OnPlayModeStateChanged(PlayModeStateChange obj)

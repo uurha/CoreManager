@@ -1,6 +1,6 @@
 ﻿#region license
 
-// Copyright 2021 - 2021 Arcueid Elizabeth D'athemon
+// Copyright 2021 - 2022 Arcueid Elizabeth D'athemon
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -45,7 +45,7 @@ namespace CorePlugin.Logger
         {
             Debug.Log(message, context);
         }
-        
+
         [Conditional(EditorDefinition.Debug)] [Conditional(EditorDefinition.EnableReleaseLogs)]
         public static void Log(object obj)
         {

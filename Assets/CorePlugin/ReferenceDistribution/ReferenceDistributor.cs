@@ -1,6 +1,6 @@
 ﻿#region license
 
-// Copyright 2021 - 2021 Arcueid Elizabeth D'athemon
+// Copyright 2021 - 2022 Arcueid Elizabeth D'athemon
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -38,14 +38,6 @@ namespace CorePlugin.ReferenceDistribution
         private static ReferenceDistributor _instance;
         private static readonly string[] WarningCallers = { "Awake", "OnEnable" };
 
-        public static bool TryGetReference<T>(out T reference, [CallerMemberName] string callerName = "")
-            where T : IDistributingReference
-        {
-            ValidateCaller(callerName);
-            reference = !_instance._isInitialized ? default : _instance._distributingReferences.OfType<T>().FirstOrDefault();
-            return reference != null;
-        }
-
         /// <summary>
         /// Getting reference by type from list
         /// </summary>
@@ -69,6 +61,14 @@ namespace CorePlugin.ReferenceDistribution
         private void OnDisable()
         {
             _instance = null;
+        }
+
+        public static bool TryGetReference<T>(out T reference, [CallerMemberName] string callerName = "")
+            where T : IDistributingReference
+        {
+            ValidateCaller(callerName);
+            reference = !_instance._isInitialized ? default : _instance._distributingReferences.OfType<T>().FirstOrDefault();
+            return reference != null;
         }
 
         private static void ValidateCaller(string callerName)
