@@ -13,7 +13,6 @@
 
 #endregion
 
-using CorePlugin.Attributes.Headers;
 using CorePlugin.Attributes.Validation;
 using CorePlugin.Cross.SceneData;
 using CorePlugin.Samples.Scripts.Model;
@@ -23,9 +22,7 @@ namespace CorePlugin.Samples.Scripts
 {
     public class ObjectSpawner : MonoBehaviour
     {
-        [ReferencesHeader]
         [SerializeField] [NotNull] private Transform spawnPoint;
-        [PrefabHeader]
         [SerializeField] [PrefabRequired] private InstancedObject prefab;
 
         private void Start()

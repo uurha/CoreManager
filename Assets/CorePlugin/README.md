@@ -76,10 +76,10 @@ Any OS supported. Unity version 2020 and above. (Package requires C# 8.0)
 ### v2.0.4
 
 1. Updated
-   1. ReferenceDistributor API
+    1. ReferenceDistributor API
 2. Stripped, this is now available on GitHub repo:
-   1. [SelectImplementationAttribute]
-
+    1. [SelectImplementationAttribute]
+    2. [Headers]
 
 [Scene Loader]: https://github.com/uurha/AdvancedSceneManagement
 
@@ -88,3 +88,5 @@ Any OS supported. Unity version 2020 and above. (Package requires C# 8.0)
 [Editor Symbol Definer]: https://github.com/uurha/EditorSymbolDefiner
 
 [SelectImplementationAttribute]: https://github.com/uurha/BetterAttributes
+
+[Headers]: https://github.com/uurha/BetterAttributes

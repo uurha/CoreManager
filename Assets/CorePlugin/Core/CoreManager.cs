@@ -16,7 +16,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using CorePlugin.Attributes.EditorAddons;
-using CorePlugin.Attributes.Headers;
 using CorePlugin.Attributes.Validation;
 using CorePlugin.Core.Interface;
 using CorePlugin.Logger;
@@ -33,11 +32,9 @@ namespace CorePlugin.Core
     [OneAndOnly]
     public class CoreManager : MonoBehaviour
     {
-        [ReferencesHeader]
         [SerializeField] [NotNull]
         private ReferenceDistributor referenceDistributor;
 
-        [PrefabHeader]
         [SerializeField] [PrefabRequired] [HasComponent(typeof(ICore))]
         [CoreManagerElementsField]
         private List<GameObject> managers;
