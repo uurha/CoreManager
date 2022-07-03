@@ -24,7 +24,7 @@ namespace CorePlugin.Samples.Scripts
     {
         [SerializeField] [NotNull] private Transform spawnPoint;
         [SerializeField] [PrefabRequired] private InstancedObject prefab;
-
+        
         private void Start()
         {
             if (!SceneDataHandler.GetData(out DataTransfer data)) return;
