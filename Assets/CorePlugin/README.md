@@ -73,9 +73,18 @@ Any OS supported. Unity version 2020 and above. (Package requires C# 8.0)
 2. Removed:
     1. SelectType Attribute
 
+### v2.0.4
+
+1. Updated
+   1. ReferenceDistributor API
+2. Stripped, this is now available on GitHub repo:
+   1. [SelectImplementationAttribute]
+
 
 [Scene Loader]: https://github.com/uurha/AdvancedSceneManagement
 
 [Runtime console]: https://github.com/uurha/UnityConsole
 
 [Editor Symbol Definer]: https://github.com/uurha/EditorSymbolDefiner
+
+[SelectImplementationAttribute]: https://github.com/uurha/BetterAttributes

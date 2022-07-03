@@ -48,6 +48,17 @@ namespace CorePlugin.ReferenceDistribution
             ValidateCaller(callerName);
             return !_instance._isInitialized ? default : _instance._distributingReferences.OfType<T>().FirstOrDefault();
         }
+        
+        /// <summary>
+        /// Getting reference by type from list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static IEnumerable<T> GetReferences<T>([CallerMemberName] string callerName = "") where T : IDistributingReference
+        {
+            ValidateCaller(callerName);
+            return !_instance._isInitialized ? default : _instance._distributingReferences.OfType<T>();
+        }
 
         /// <summary>
         /// Initializing distribution references
