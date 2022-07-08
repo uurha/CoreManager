@@ -44,5 +44,10 @@ namespace CorePlugin.Dispatchers
         {
             return GetInstance().StartCoroutine(coroutine);
         }
+
+        public static void StopStaticCoroutine(Coroutine coroutine)
+        {
+            GetInstance().StopCoroutine(coroutine);
+        }
     }
 }

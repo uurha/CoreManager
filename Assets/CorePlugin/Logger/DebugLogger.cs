@@ -16,6 +16,7 @@
 using System;
 using System.Diagnostics;
 using CorePlugin.Extensions;
+using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
@@ -99,5 +100,50 @@ namespace CorePlugin.Logger
         {
             Debug.LogException(exception, context);
         }
+
+        #region DRAWLINE
+
+        [Conditional(EditorDefinition.Debug)]
+        public static void DrawLine(Vector3 start, Vector3 dir)
+        {
+            Debug.DrawLine(start, dir, Color.magenta);
+        }
+
+        [Conditional(EditorDefinition.Debug)]
+        public static void DrawLine(Vector3 start, Vector3 end, Color blue)
+        {
+            Debug.DrawLine(start, end, blue);
+        }
+
+        [Conditional(EditorDefinition.Debug)]
+        public static void DrawLine(Vector3 start, Vector3 end, Color blue, float duration)
+        {
+            Debug.DrawLine(start, end, blue, duration);
+        }
+
+        #endregion
+
+        #region DRAWRAY
+
+        [Conditional(EditorDefinition.Debug)]
+        public static void DrawRay(Vector3 start, Vector3 dir)
+        {
+            Debug.DrawRay(start, dir, Color.magenta);
+        }
+
+        [Conditional(EditorDefinition.Debug)]
+        public static void DrawRay(Vector3 start, Vector3 dir, Color blue)
+        {
+            Debug.DrawRay(start, dir, blue);
+        }
+
+        [Conditional(EditorDefinition.Debug)]
+        public static void DrawRay(Vector3 start, Vector3 dir, Color blue, float duration)
+        {
+            Debug.DrawRay(start, dir, blue, duration);
+        }
+
+        #endregion
+
     }
 }
