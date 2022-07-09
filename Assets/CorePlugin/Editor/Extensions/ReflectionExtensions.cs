@@ -26,7 +26,6 @@ namespace CorePlugin.Extensions
 {
     public  static  class ReflectionExtensions
     {
-        #if UNITY_EDITOR
         public const BindingFlags Flags = BindingFlags.Public | BindingFlags.NonPublic |
                                           BindingFlags.Static | BindingFlags.Instance |
                                           BindingFlags.DeclaredOnly;
@@ -129,6 +128,5 @@ namespace CorePlugin.Extensions
                        ? Enumerable.Empty<T>()
                        : t.GetCustomAttributes().OfType<T>().Concat(GetClassAttributes<T>(t.BaseType));
         }
-        #endif
     }
 }
