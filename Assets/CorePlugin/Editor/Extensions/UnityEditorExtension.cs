@@ -63,7 +63,7 @@ namespace CorePlugin.Editor.Extensions
             name = remove.Aggregate(name, (current, s) => current.Replace(s, string.Empty));
             return name.PrettyCamelCase();
         }
-
+        
         public static int SelectionGrid(int selected, string[] texts, int xCount, GUIStyle style,
                                         params GUILayoutOption[] options)
         {
