@@ -47,38 +47,38 @@ Any OS supported. Unity version 2020 and above. (Package requires C# 8.0)
 ### v2.0.1
 
 1. Striped part of functions is now available on GitHub repo.
-   1. <b>[Scene Loader]</b> - allows to asynchronously load scene through an intermediate scene and allows to serialize
-      SceneAssets through Inspector (use SceneLoaderAsset).
-   2. <b>[Runtime console]</b> - console with Unity logs for debug and/or release builds. Allows display console logs
-      like in Unity Editor. Strips from release build if other not predetermined.
-   3. <b>[Editor Symbol Definer]</b> - allows defining Scripting Define Symbols in the project thought attribute or
-      button in Inspector.
+    1. <b>[Scene Loader]</b> - allows to asynchronously load scene through an intermediate scene and allows to serialize
+       SceneAssets through Inspector (use SceneLoaderAsset).
+    2. <b>[Runtime console]</b> - console with Unity logs for debug and/or release builds. Allows display console logs
+       like in Unity Editor. Strips from release build if other not predetermined.
+    3. <b>[Editor Symbol Definer]</b> - allows defining Scripting Define Symbols in the project thought attribute or
+       button in Inspector.
 
 ### v2.0.2
 
 1. Fixed build issue with Validation Attributes
 2. Removed redundant prefabs and scripts
 3. Added:
-   1. SelectImplementation Attribute
-   2. SelectType Attribute
+    1. SelectImplementation Attribute
+    2. SelectType Attribute
 
 ### v2.0.3
 
 1. Updated
-   1. ReferenceDistributor API
-   2. SelectImplementationAttribute
-   3. CrossSceneData
+    1. ReferenceDistributor API
+    2. SelectImplementationAttribute
+    3. CrossSceneData
 2. Removed:
-   1. SelectType Attribute
+    1. SelectType Attribute
 
 ### v2.0.4
 
 1. Updated
-   1. ReferenceDistributor API
+    1. ReferenceDistributor API
 2. Stripped, this is now available on GitHub repo:
-   1. [Select Implementation]
-   2. [Headers]
-   3. [Editor Buttons]
+    1. [Select Implementation]
+    2. [Headers]
+    3. [Editor Buttons]
 
 [Scene Loader]: https://github.com/uurha/AdvancedSceneManagement
 
