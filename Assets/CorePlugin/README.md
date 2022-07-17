@@ -28,8 +28,6 @@ Any OS supported. Unity version 2020 and above. (Package requires C# 8.0)
 9. <b>Custom Build</b> start - prevents application build if scenes included in the build or prefabs with validation
    attributes contain validation failures.
 10. <b>SaveSystem</b> - system to save/load JSON files.
-11. <b>UIStateTools & UIManager</b> - base UI system for page-based UI.
-12. <b>Extensions</b> - for Editor and base classes.
 
 ## Improvements
 
