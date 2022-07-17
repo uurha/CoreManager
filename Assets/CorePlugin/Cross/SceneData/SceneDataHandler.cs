@@ -84,7 +84,14 @@ namespace CorePlugin.Cross.SceneData
         private bool GetDataInternal<T>(out T data) where T : ISceneData, new()
         {
             var isGet = _data.TryGetValue(typeof(T), out var buffer);
-            data = (T)buffer;
+            if(isGet)
+            {
+                data = (T)buffer;
+            }
+            else
+            {
+                data = default(T);
+            }
             return isGet;
         }
 
